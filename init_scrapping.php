@@ -3,7 +3,7 @@
 /*Auteur      : Amine El Ouazzani 
  *Projet      : Arrakis
  *Date        : 09/08/2016 O2:39 AM
- *Licence     : GPL v3
+ *Licence     : GNU GPL v3
  *Description : Classe de scrapping site web HTML/JSON
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
@@ -14,23 +14,21 @@ class ScrappingCURL
 	
 	private $ch;
 	private $DOMResultat;
-	private $pURL;
 	private $jsonresultat;
 	
 	//constructeur: initialisation de la variable $pURL et initialisation cURL
 	
-	public function __construct($initUrl)
+	public function __construct()
 	{
-		$this->pURL=$initUrl;
 		$this->ch = curl_init();
 	}
 	
 	//scrapping uniquement par html
 	
-	public function Func_Get_Source_Code_From_URL()
+	public function Func_Get_Source_Code_From_URL($pUrl)
 	{
 	
-		curl_setopt($this->ch, CURLOPT_URL, $this->pUrl);
+		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
@@ -41,9 +39,9 @@ class ScrappingCURL
 	
 	//scrapping uniquement par json
 	
-	public function Func_Get_Source_Code_From_JSON()
+	public function Func_Get_Source_Code_From_JSON($pUrl)
 	{
-		curl_setopt($this->ch, CURLOPT_URL, $this->pUrl);
+		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
