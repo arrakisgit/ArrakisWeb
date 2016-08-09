@@ -1,4 +1,13 @@
 <?php
+
+/*Auteur      : Amine El Ouazzani
+ *Projet      : Arrakis
+ *Date        : 09/08/2016 O8:45 PM
+ *Licence     : GPL v3
+ *Description : Interfaces de scrapping site web HTML/JSON
+ *git         : https://github.com/arrakisgit/ArrakisWeb.git
+ */
+
 interface Channel
 {
 	
