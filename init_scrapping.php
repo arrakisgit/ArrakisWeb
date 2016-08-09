@@ -5,6 +5,7 @@
  *Date        : 09/08/2016 O2:39 AM
  *Licence     : GPL v3
  *Description : Classe de scrapping site web HTML/JSON
+ *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
 class ScrappingCURL
