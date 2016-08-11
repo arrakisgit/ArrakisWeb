@@ -17,16 +17,31 @@ class Arte extends ScrappingCURL implements IChannel
 	private $ArrayShows;
 	private $ArrayEpisodes;
 	
-	public function __construct()
+	public function __construct($ViewMode)
 	{
 		parent::__construct();
+		
 		$this->URL_CATEGORIES='http://www.arte.tv/papi/tvguide/videos/plus7/program/F/L2/XXX/ALL/-1/AIRDATE_DESC/0/0/DE_FR.json';
 		$this->URL_MOST_VIEWED='http://www.arte.tv/papi/tvguide/videos/plus7/program/F/L2/ALL/ALL/-1/VIEWS/0/0/DE_FR.json';
 		$this->URL_LAST_CHANCE='http://www.arte.tv/papi/tvguide/videos/plus7/program/F/L2/ALL/ALL/-1/LAST_CHANCE/0/0/DE_FR.json';
+		
 		$this->ArrayCategories=Array();
 		$this->ArrayShows=Array();
 		$this->ArrayEpisodes=Array();
-		$this->ResultJSON = parent::Func_Get_Source_Code_From_JSON($this->URL_CATEGORIES);
+		
+		if ($ViewMode=='CAT')
+		{
+			$this->ResultJSON = parent::Func_Get_Source_Code_From_JSON($this->URL_CATEGORIES);
+		}
+		elseif ($ViewMode=='MOV')
+		{
+			$this->ResultJSON = parent::Func_Get_Source_Code_From_JSON($this->URL_MOST_VIEWED);
+		}
+		elseif ($ViewMode=='LST')
+		{
+			$this->ResultJSON = parent::Func_Get_Source_Code_From_JSON($this->URL_LAST_CHANCE);
+		}
+		
 	}
 	
 	public function Categories()
@@ -70,23 +85,34 @@ class Arte extends ScrappingCURL implements IChannel
 			if ($programItem->PID=$showSelected)
 			{
 				return File_Video_Url($programItem->VDO->videoStreamUrl);
-					
 			}
 		}
 	}
-	
-	private function File_Video_Url($stream_url)
+	public function Durations($stream_url)
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
 		foreach($jsonresult->video as $videos)
 		{
-			foreach($videos->VSR as $VSR_Item)
-			{
-				if($VSR_Item->VFO=='HBBTV' && $VSR_Item->VQU=='HQ')
-				{
-					return $VSR_Item->VUR;
-				}
-			}
+			return $videos->videoDurationSeconds;
+		}
+	}
+	
+	
+	public function Images($stream_url)
+	{
+		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
+		foreach($jsonresult->video as $videos)
+		{
+			return $videos->programImage;
+		}
+	}
+	
+	public function Descriptions($stream_url)
+	{
+		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
+		foreach($jsonresult->video as $videos)
+		{
+			return $videos->VDE;
 		}
 	}
 		

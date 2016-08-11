@@ -15,9 +15,9 @@ interface IChannel
 	public function Shows($categorySelected);
 	public function StreamUrl($showSelected);
 	public function Live();
-	public function Descriptions($showSelected);
-	public function Images($showSelected);
-	public function Durations($showSelected);
+	public function Descriptions($stream_url);
+	public function Images($stream_url);
+	public function Durations($stream_url);
 	
 }
 ?>
