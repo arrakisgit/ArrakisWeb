@@ -40,7 +40,7 @@ $(document).ready(function() {
 <div class="container">
 	<video width="700" height="400">
 		<?php
-		echo "<source src=\"".$UrlPath."\" type=\"video\/mp4\">"
+		echo '<source src="'.$UrlPath.'" type="video/mp4">';
 		?>
 	</video>
 </div>
