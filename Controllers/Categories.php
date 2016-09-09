@@ -11,14 +11,17 @@ include_once '../lib_php/Includer.php';
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Category extends CI_Controller
+{
 
-    public function index($Channel) {
+    public function index($Channel)
+    {
     	if ($Channel=="Arte")
     	{
     		$ChannelCategories = new Arte("CAT");
-    		$ArrayCategories = $ChannelCategories.Categories();
-    		$this->load->view('Categories_Channels',$ArrayCategories);
+    		$ArrayCat = $ChannelCategories->Categories();
+    		$page_insert=$this->load->view('Categories_Channels',$ArrayCat,true);
+    		$this->load->view('template', array('page_insert' => $page_insert));
     	}
     }
 
