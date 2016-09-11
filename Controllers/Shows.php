@@ -24,6 +24,10 @@ class Shows extends CI_Controller
     		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[0],'ArrayShows'=>$ArrayShows));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
+    	else 
+    	{
+    		$this->load->view('bad_file');
+    	}
     }
 
 }
