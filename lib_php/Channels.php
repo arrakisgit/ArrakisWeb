@@ -124,7 +124,7 @@ class Arte extends ScrappingCURL implements IChannel
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($stream_url);
 		$flag="vide";
-		for($idCur=0;$idCur<=50;$idCur++)
+		for($idCur=1;$idCur<=50;$idCur++)
 		{
 			$vfo=$jsonresult['video']['VSR'][$idCur]['VFO'];
 			$vqu=$jsonresult['video']['VSR'][$idCur]['VQU'];
