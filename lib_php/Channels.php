@@ -130,17 +130,17 @@ class Arte extends ScrappingCURL implements IChannel
 			$vfo=$vsr['VFO'];
 			$vqu=$vsr['VQU'];
 			$vur=$vsr['VUR'];
-			if (($vqu=="HD") && ($vfo=="HBBTV"))
+			/*if (($vqu=="HD") && ($vfo=="HBBTV"))
 			{
 				$flag=$vur;
 			}
 			else
 			{
 				$flag="nada";
-			}
+			}*/
 		}
 			
-		return $flag;
+		return $vur;//$flag;
 		
 	}
 		
