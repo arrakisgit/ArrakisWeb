@@ -87,8 +87,8 @@ class Arte extends ScrappingCURL implements IChannel
 		{
 			if ($programItem['PID']=$showSelected)
 			{
-				$urlPath=$programItem['VDO']['videoStreamUrl'];
-				return $this->File_Video_Url($urlPath);
+				//$urlPath=$programItem['VDO']['videoStreamUrl'];
+				return $this->File_Video_Url($programItem['VDO']['videoStreamUrl']);
 			}
 		}
 	}
