@@ -18,6 +18,7 @@ interface IChannel
 	public function Descriptions($stream_url);
 	public function Images($stream_url);
 	public function Durations($stream_url);
+	public function File_Video_Url($stream_url);
 	
 }
 ?>
