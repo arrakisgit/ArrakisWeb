@@ -128,7 +128,7 @@ class Arte extends ScrappingCURL implements IChannel
 		$ArrayVSR=$jsonresult['video']['VSR'];
 		foreach($ArrayVSR as $itemArray)
 		{
-			$str=$itemArray;
+			//$str=$itemArray;
 		}
 			/*$vfo=$jsonresult['video']['VSR'][$idCur]['VFO'];
 			$vqu=$jsonresult['video']['VSR'][$idCur]['VQU'];
@@ -142,7 +142,7 @@ class Arte extends ScrappingCURL implements IChannel
 				$flag="nada";
 			}*/
 		
-		return $str;
+		return $ArrayVSR;
 		
 	}
 		
