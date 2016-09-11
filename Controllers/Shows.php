@@ -21,7 +21,7 @@ class Shows extends CI_Controller
     	{
     		$ChannelCategories = new Arte("CAT");
     		$ArrayShows = $ChannelCategories->Shows($Channel[1]);
-    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[0],'ArrayShows'=>$ArrayShows));
+    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
     	else 
