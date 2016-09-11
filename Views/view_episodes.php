@@ -33,12 +33,10 @@ $(document).ready(function() {
 
 </head>
 <body>
-<?php echo $urlEpisode;?>
+
 <div class="container">
 	<video width="700" height="400">
-		<?php
-		echo '<source src="'.$urlEpisode.'" type="video/mp4">';
-		?>
+	<source src='citron.mp4' type='video/mp4'>
 	</video>
 </div>
 
