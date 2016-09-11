@@ -118,6 +118,19 @@ class Arte extends ScrappingCURL implements IChannel
 			return $videos->VDE;
 		}
 	}
+	
+	public function File_Video_Url($stream_url)
+	{
+		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
+		foreach($jsonresult['video']['VSR']['VFO'] as $vfo)
+		{
+			if (($vfo['VQU']=="HD") && ($vfo=="HBBTV"))
+			{
+				return $vfo['VUR'];
+			}
+		}
+		
+	}
 		
 }
 
