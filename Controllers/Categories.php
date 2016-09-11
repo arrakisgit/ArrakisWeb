@@ -20,7 +20,7 @@ class Categories extends CI_Controller
     	{
     		$ChannelCategories = new Arte("CAT");
     		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channel'=>$Channel,'ArrayCat'=>$ArrayCat));
+    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
     }

@@ -6,10 +6,10 @@
  *Description : View CodeIgniter manage les catégories des chaînes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-echo $Channel.'\n';
+echo $Channels.'\n';
 foreach ($ArrayCat as $labelCat=>$channelID)
 {
-	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Shows/index/".$Channel.'_'.$channelID.'>'.$labelCat."</a></br>";
+	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Shows/index/".$Channels.'_'.$channelID.'>'.$labelCat."</a></br>";
 }
 
 ?>
