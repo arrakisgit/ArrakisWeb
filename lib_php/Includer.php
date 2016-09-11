@@ -7,10 +7,10 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-include 'Channels.php';
-include 'Interfaces.php';
-include 'init_scrapping.php';
-include 'Utils_Functions.php';
+include_once 'Channels.php';
+include_once 'Interfaces.php';
+include_once 'init_scrapping.php';
+include_once 'Utils_Functions.php';
 
 
 ?>

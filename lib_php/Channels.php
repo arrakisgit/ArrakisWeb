@@ -7,6 +7,10 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
+include_once 'Interfaces.php';
+include_once 'init_scrapping.php';
+include_once 'Utils_Functions.php';
+
 class Arte extends ScrappingCURL implements IChannel
 {
 	private $URL_CATEGORIES;
@@ -44,47 +48,46 @@ class Arte extends ScrappingCURL implements IChannel
 		
 	}
 	
+	public function Live()
+	{
+		
+	}
+	
 	public function Categories()
 	{
 		foreach($this->ResultJSON->programFRList as $programItem)
 		{
-			foreach($programItem->VDO as $VDO_item)
-			{
-				if(array_key_exists($VDO_item->VCH->label, $this->ArrayCategories)==false)
+				if(array_key_exists($programItem['VDO']['VCH'][0]['label'], $this->ArrayCategories)==false)
 					{
-						$this->ArrayCategories[$VDO_item->VCH->label]=$VDO_item->VCH->channelID;
+						$this->ArrayCategories[$programItem['VDO']['VCH'][0]['label']]=$programItem['VDO']['VCH'][0]['channelID'];
 					}
 					
-			}
 		}
 		return $this->ArrayCategories;
 	}
 	
 	public function Shows($categorySelected)
 	{
-		foreach($this->ResultJSON->programFRList as $programItem)
+		foreach($this->ResultJSON['programFRList'] as $programItem)
 		{
-			foreach($programItem->VDO as $VDO_item)
-			{
-				if($VDO_item->VCH->label==$categorySelected)
+				if($programItem['VDO']['VCH'][0]['label']==$categorySelected)
 				{
-					if(array_key_exists($programItem->PID, $this->ArrayShows)==false)
+					if(array_key_exists($programItem['PID'], $this->ArrayShows)==false)
 					{
-						$this->ArrayShows[$programItem->PID]=$programItem->TIT;
+						$this->ArrayShows[$programItem['PID']]=$programItem['TIT'];
 					}
 				}	
 			}
-		}
 		return $this->ArrayShows;
 	}
 	
 	public function StreamUrl($showSelected)
 	{
-		foreach($this->ResultJSON->programFRList as $programItem)
+		foreach($this->ResultJSON['programFRList'] as $programItem)
 		{
-			if ($programItem->PID=$showSelected)
+			if ($programItem['PID']=$showSelected)
 			{
-				return File_Video_Url($programItem->VDO->videoStreamUrl);
+				return File_Video_Url($programItem['VDO']['videoStreamUrl']);
 			}
 		}
 	}
