@@ -48,5 +48,15 @@ class ScrappingCURL
 		$this->jsonresultat=json_decode($resultat, true);
 		return $this->jsonresultat;
 	}
+	public function Func_Get_Source_Code_From_JSON_SESSION($pUrl)
+	{
+		$this->ch = curl_init();
+		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
+		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+		$resultat = curl_exec ($this->ch);
+		curl_close($this->ch);
+		$this->jsonresultat=json_decode($resultat, true);
+		return $this->jsonresultat;
+	}
 }
 ?>
