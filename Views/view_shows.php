@@ -9,7 +9,7 @@
 echo "testa!!!";
 foreach ($ArrayShows as $labelShow=>$showID)
 {
-	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$showID."'>".$labelShow."</a></br>";
+	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$labelShow."'>".$showID."</a></br>";
 }
 
 ?>
