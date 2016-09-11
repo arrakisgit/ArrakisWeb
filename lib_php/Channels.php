@@ -126,9 +126,9 @@ class Arte extends ScrappingCURL implements IChannel
 		$flag="vide";
 		for($idCur=1;$idCur<=50;$idCur++)
 		{
-			$vfo=$jsonresult['video']['VSR'][$idCur]['VFO'];
+			/*$vfo=$jsonresult['video']['VSR'][$idCur]['VFO'];
 			$vqu=$jsonresult['video']['VSR'][$idCur]['VQU'];
-			$vur=$jsonresult['video']['VSR'][$idCur]['VUR'];
+			$vur=$jsonresult['video']['VSR'][$idCur]['VUR'];*/
 			if (($vqu=="HD") && ($vfo=="HBBTV"))
 			{
 				$flag=$vur;
@@ -138,7 +138,7 @@ class Arte extends ScrappingCURL implements IChannel
 				$flag="nada";
 			}
 		}
-		return $flag;
+		return $vur=$jsonresult['video']['VSR'][6]['VUR'];;
 		
 	}
 		
