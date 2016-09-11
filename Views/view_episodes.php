@@ -27,6 +27,7 @@ $(document).ready(function() {
 
 <?php 
 	echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='video/mp4'></video></div>";
+	echo "<div><br>".$Shows."</br></div>";
 ?>
 
 </body></html>
