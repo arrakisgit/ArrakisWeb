@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 <div class="container">
 	<video width="700" height="400">
-	<source src='citron.mp4' type='video/mp4'>
+	<source src='citrons.mp4' type='video/mp4'>
 	</video>
 </div>
 
