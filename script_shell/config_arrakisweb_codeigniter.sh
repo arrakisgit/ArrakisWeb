@@ -17,3 +17,8 @@ sudo cp -R Shows.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Episodes.php /var/www/html/ArrakisWeb/application/controllers
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb/Views
 sudo cp -R *.php /var/www/html/ArrakisWeb/application/views
+cd /var/www/html/ArrakisWeb/application/ArrakisWeb
+sudo rm -r /var/www/html/ArrakisWeb_Lib/libs_css
+sudo rm -r /var/www/html/ArrakisWeb_Lib/libs_js
+sudo cp -R libs_css /var/www/html/ArrakisWeb_Lib
+sudo cp -R libs_js /var/www/html/ArrakisWeb_Lib

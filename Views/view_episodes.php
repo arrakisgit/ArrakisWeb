@@ -11,14 +11,14 @@
 
 <title>Video/Audio</title>
 
-<link rel="stylesheet" type="text/css" href="../ArrakisWeb/libs_css/style.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.1.20/ArrakisWeb_Lib/libs_css/style.css">
 <style type="text/css">
 
 </style>
 
-<script src="../ArrakisWeb/libs_js/jquery.js"></script>
+<script src="http://192.168.1.20/ArrakisWeb_Lib/libs_js/jquery.js"></script>
 
-<script src="../ArrakisWeb/libs_js/jLecteur.js"></script>
+<script src="http://192.168.1.20/ArrakisWeb_Lib/libs_js/jLecteur.js"></script>
 
 <script type="text/javascript">
 
