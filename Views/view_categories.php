@@ -9,7 +9,7 @@
 
 foreach ($ArrayCat as $labelCat=>$channelID)
 {
-	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Shows/index/".$Channels."_".$labelCat."'>".$labelCat."</a></br>";
+	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Shows/index/".$Channels."_".$channelID."'>".$labelCat."</a></br>";
 }
 
 ?>

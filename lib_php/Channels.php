@@ -70,7 +70,7 @@ class Arte extends ScrappingCURL implements IChannel
 	{
 		foreach($this->ResultJSON['programFRList'] as $programItem)
 		{
-				if($programItem['VDO']['VCH'][0]['label']==$categorySelected)
+				if($programItem['VDO']['VCH'][0]['channelID']==$categorySelected)
 				{
 					if(array_key_exists($programItem['PID'], $this->ArrayShows)==false)
 					{
