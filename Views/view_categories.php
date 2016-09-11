@@ -6,7 +6,7 @@
  *Description : View CodeIgniter manage les catégories des chaînes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-
+echo 'test';
 foreach ($ArrayCat as $labelCat=>$channelID)
 {
 	echo "<br>".$labelCat."--------->".$channelID."</br>";
