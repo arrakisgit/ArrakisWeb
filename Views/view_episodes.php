@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 </head>
 <body>
-
+<?php echo $urlEpisode;?>
 <div class="container">
 	<video width="700" height="400">
 		<?php
