@@ -55,7 +55,7 @@ class Arte extends ScrappingCURL implements IChannel
 	
 	public function Categories()
 	{
-		foreach($this->ResultJSON->programFRList as $programItem)
+		foreach($this->ResultJSON['programFRList'] as $programItem)
 		{
 				if(array_key_exists($programItem['VDO']['VCH'][0]['label'], $this->ArrayCategories)==false)
 					{
