@@ -1,12 +1,3 @@
-<?php
-/*Auteur      : Amine El Ouazzani
- *Projet      : Arrakis
- *Date        : 20/08/2016 2:35 PM
- *Licence     : GNU GPL v3
- *Description : Fonctions de gestion des fichiers HTML/JSON
- *git         : https://github.com/arrakisgit/ArrakisWeb.git
- */
-?>
 <html><head>
 
 <title>Video/Audio</title>
