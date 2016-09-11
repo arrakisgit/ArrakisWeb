@@ -20,8 +20,8 @@ class Categories extends CI_Controller
     	{
     		$ChannelCategories = new Arte("CAT");
     		$ArrayCat = $ChannelCategories->Categories();
-    		$page_insert=$this->load->view('view_categories',array('ArrayCat'=>$ArrayCat),true);
-    		$this->load->view('Template', array('page_insert' => $page_insert));
+    		$this->load->view('view_categories',array('ArrayCat'=>$ArrayCat));
+    		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
     }
 
