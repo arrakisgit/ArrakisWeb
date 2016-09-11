@@ -136,7 +136,7 @@ class Arte extends ScrappingCURL implements IChannel
 				$flag="nada";
 			}
 		}*/
-		return var_dump($jsonresult['video']['VSR']);
+		return implode('§',$jsonresult['video']['VSR']);
 			//$vfo=$jsonresult['video']['VSR']['VFO'][5];
 					//if (($vfo['VQU']=="HD") && ($vfo=="HBBTV"))
 					//{
