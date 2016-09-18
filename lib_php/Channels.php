@@ -139,7 +139,7 @@ class Arte extends ScrappingCURL implements IChannel
 			}
 			else
 			{
-				$flag="nop pas HQ";
+				$flag=var_dump($jsonresult);
 			}
 			
 		}
