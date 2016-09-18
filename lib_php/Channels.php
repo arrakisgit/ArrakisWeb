@@ -131,7 +131,7 @@ class Arte extends ScrappingCURL implements IChannel
 			$vurl=$vsr['url'];
 			$vmediatype=$vsr['mediaType'];
 			$vcode=$vsr['versionCode'];
-			$flag=$flag."|".$vmediatype;
+			$flag=$flag."|".$vcode;
 			//$flag=$flag."|".$vqu."=>".$vfo;
 			/*if ($vqu=="HQ" && $vformat=="HBBTV" && $vmediatype=="mp4" && $vcode=="VF")
 			{
