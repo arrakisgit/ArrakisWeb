@@ -88,7 +88,7 @@ class Arte extends ScrappingCURL implements IChannel
 			if ($programItem['PID']=$showSelected)
 			{
 				//$urlPath=$programItem['VDO']['videoStreamUrl'];
-				return $this->File_Video_Url($programItem['VDO']['videoStreamUrl']);
+				return $this->File_Video_Url($programItem['VDO']['videoPlayerUrl']);
 			}
 		}
 	}
@@ -124,13 +124,15 @@ class Arte extends ScrappingCURL implements IChannel
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($stream_url);
 		$flag="vide___";
-		foreach ($jsonresult['video']['VSR'] as $vsr)
+		foreach ($jsonresult['videoJsonPlayer']['VSR'] as $vsr)
 		{
-			$vfo=$vsr['VFO'];
+			$vformat=$vsr['videoFormat'];
 			$vqu=$vsr['VQU'];
-			$vur=$vsr['VUR'];
+			$vurl=$vsr['url'];
+			$vmediatype=$vsr['mediaType'];
+			$vcode=$vsr['versionCode'];
 			//$flag=$flag."|".$vqu."=>".$vfo;
-			if ($vqu=="HQ" && $vfo=="HBBTV")
+			if ($vqu=="HQ" && $vformat=="HBBTV" && $vmediatype=="mp4" && $vcode=="VF")
 			{
 				$flag=$vur;
 				break;
