@@ -144,7 +144,7 @@ class Arte extends ScrappingCURL implements IChannel
 			
 		}
 			
-		return var_dump($jsonresult);//$flag;
+		return $vqu;//var_dump($jsonresult);//$flag;
 		
 	}
 		
