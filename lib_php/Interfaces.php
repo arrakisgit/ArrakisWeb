@@ -13,6 +13,7 @@ interface IChannel
 	
 	public function Categories();
 	public function Shows($categorySelected);
+	public function Episodes($showSelected);
 	public function StreamUrl($showSelected);
 	public function Live();
 	public function Descriptions($stream_url);

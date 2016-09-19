@@ -95,9 +95,9 @@ class Arte extends ScrappingCURL implements IChannel
 	public function Durations($stream_url)
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
-		foreach($jsonresult->video as $videos)
+		foreach($jsonresult['video'] as $videos)
 		{
-			return $videos->videoDurationSeconds;
+			return $videos['videoDurationSeconds'];
 		}
 	}
 	
@@ -105,18 +105,18 @@ class Arte extends ScrappingCURL implements IChannel
 	public function Images($stream_url)
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
-		foreach($jsonresult->video as $videos)
+		foreach($jsonresult['video'] as $videos)
 		{
-			return $videos->programImage;
+			return $videos['programImage'];
 		}
 	}
 	
 	public function Descriptions($stream_url)
 	{
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON($stream_url);
-		foreach($jsonresult->video as $videos)
+		foreach($jsonresult['video'] as $videos)
 		{
-			return $videos->VDE;
+			return $videos['VDE'];
 		}
 	}
 	
@@ -131,8 +131,7 @@ class Arte extends ScrappingCURL implements IChannel
 			$vurl=$vsr['url'];
 			$vmediatype=$vsr['mediaType'];
 			$vcode=$vsr['versionShortLibelle'];
-			//$flag=$flag."|".$vcode;
-			//$flag=$flag."|".$vqu."=>".$vfo;
+
 			if ($vqu=="HQ" && $vformat=="HBBTV" && $vmediatype=="mp4" && $vcode=="VF")
 			{
 				$flag=$vurl;
@@ -140,7 +139,7 @@ class Arte extends ScrappingCURL implements IChannel
 			}
 			else
 			{
-				$flag=$stream_url;//var_dump($jsonresult);
+				$flag="no data available";
 			}
 			
 		}
@@ -151,6 +150,131 @@ class Arte extends ScrappingCURL implements IChannel
 		
 }
 
+class FranceTV extends ScrappingCURL implements IChannel
+{
+	private $URL_BASE_VIDEOS;
+	private $URL_BASE_IMAGES;
+	private $ROOT_JSON_FILES;
+	private $FILE_JSON_FRANCE2;
+	private $FILE_JSON_FRANCE3;
+	private $FILE_JSON_FRANCE4;
+	private $FILE_JSON_FRANCE5;
+	private $FILE_JSON_FRANCEO;
+	private $JSON_RESULT_FRANCETV;
+	private $FRANCETV_CATEGORIES;
+	private $FRANCETV_SHOWS;
+	private $FRANCETV_EPISODES;
+	
+	public function __construct($FranceTvChannel)
+	{
+		$this->ROOT_JSON_FILES="http://localhost/ArrakisWeb_Libs/libs_json/FranceTV/";
+		$this->FILE_JSON_FRANCE2=$this->ROOT_JSON_FILES."catch_up_france2.json";
+		$this->FILE_JSON_FRANCE3=$this->ROOT_JSON_FILES."catch_up_france3.json";
+		$this->FILE_JSON_FRANCE4=$this->ROOT_JSON_FILES."catch_up_france4.json";
+		$this->FILE_JSON_FRANCE5=$this->ROOT_JSON_FILES."catch_up_france5.json";
+		$this->FILE_JSON_FRANCEO=$this->ROOT_JSON_FILES."catch_up_franceo.json";
+		$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
+		$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
+		$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
+		$this->FRANCETV_CATEGORIES=Array();
+		$this->FRANCETV_EPISODES=Array();
+		$this->FRANCETV_SHOWS=Array();
+		
+		switch ($FranceTvChannel)
+		{
+			case 'France2':
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE2);
+				break;
+			case 'France3':
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE3);
+				break;
+			case 'France4':
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE4);
+				break;
+			case 'France5':
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE5);
+				break;
+			case 'FranceO':
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCEO);
+				break;
+		}
+	}
+	
+	public function Categories()
+	{
+		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		{
+			if(array_key_exists($program['rubrique'], $this->FRANCETV_CATEGORIES)==false)
+			{
+				$this->FRANCETV_CATEGORIES[$program['rubrique']]=$program['rubrique'];
+			}
+				
+		}
+		return $this->FRANCETV_CATEGORIES;
+	}
+	
+	public function Shows($categorySelected)
+	{
+		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		{
+			if($program['rubrique']==$categorySelected)
+			{
+				if(array_key_exists($program['titre'], $this->FRANCETV_SHOWS)==false)
+				{
+					$this->FRANCETV_SHOWS[$program['titre']]=$program['titre'];
+				}
+			}
+		}
+		return $this->FRANCETV_SHOWS;
+	}
+	
+	//a finir
+	public function Episodes($showSelected)
+	{
+		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		{
+			if($program['rubrique']==$categorySelected)
+			{
+				if(array_key_exists($program['titre'], $this->FRANCETV_EPISODES)==false)
+				{
+					$this->FRANCETV_EPISODES[$program['titre']]=$program['titre'];
+				}
+			}
+		}
+		return $this->FRANCETV_EPISODES;
+	}
+	
+	public function StreamUrl($showSelected)
+	{
+		
+	}
+	
+	public function Live()
+	{
+		
+	}
+	
+	public function Descriptions($stream_url)
+	{
+		
+	}
+	
+	public function Images($stream_url)
+	{
+		
+	}
+	
+	public function Durations($stream_url)
+	{
+		
+	}
+	
+	public function File_Video_Url($stream_url)
+	{
+		
+	}
+	
+}
 		
 
 
