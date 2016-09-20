@@ -190,19 +190,19 @@ class FranceTV extends ScrappingCURL implements IChannel
 		switch ($FranceTvChannel)
 		{
 			case 'France2':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE2);
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE2);
 				break;
 			case 'France3':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE3);
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE3);
 				break;
 			case 'France4':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE4);
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE4);
 				break;
 			case 'France5':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCE5);
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE5);
 				break;
 			case 'FranceO':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON($this->FILE_JSON_FRANCEO);
+				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCEO);
 				break;
 		}
 	}
