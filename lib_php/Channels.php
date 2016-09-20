@@ -147,6 +147,11 @@ class Arte extends ScrappingCURL implements IChannel
 		return $flag;
 		
 	}
+	
+	public function Episodes($showSelected)
+	{
+		
+	}
 		
 }
 
@@ -243,7 +248,6 @@ class FranceTV extends ScrappingCURL implements IChannel
 		return $this->FRANCETV_SHOWS;
 	}
 	
-	//a finir
 	public function Episodes($showSelected)
 	{
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)

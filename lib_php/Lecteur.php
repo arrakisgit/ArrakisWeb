@@ -9,6 +9,7 @@
 
 session_start();
 $UrlPath=$_SESSION['URLVIDEO'];
+
 ?>
 <html><head>
 
