@@ -26,7 +26,14 @@ $(document).ready(function() {
 <body>
 
 <?php 
-	echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='video/mp4'></video></div>";
+	if($typeVid=="mp4")
+	{
+		echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='video/mp4'></video></div>";
+	}
+	elseif ($typeVid=="m3u8")
+	{
+		echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='application/x-mpegURL'></video></div>";
+	}
 	echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
 ?>
 

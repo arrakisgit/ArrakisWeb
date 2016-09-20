@@ -161,6 +161,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 	private $FILE_JSON_FRANCE5;
 	private $FILE_JSON_FRANCEO;
 	private $JSON_RESULT_FRANCETV;
+	private $JSON_RESULT_CATEGORIES_FRANCETV;
 	private $FRANCETV_CATEGORIES;
 	private $FRANCETV_SHOWS;
 	private $FRANCETV_EPISODES;
@@ -176,6 +177,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
 		$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
 		$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
+		$this->JSON_RESULT_CATEGORIES_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."categories.json");
 		$this->FRANCETV_CATEGORIES=Array();
 		$this->FRANCETV_EPISODES=Array();
 		$this->FRANCETV_SHOWS=Array();
@@ -202,26 +204,39 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Categories()
 	{
-		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		$ARRAY_CATEGORIES=Array();
+		foreach($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'] as $categories)
 		{
-			if(array_key_exists($program['rubrique'], $this->FRANCETV_CATEGORIES)==false)
+			foreach($categories['genres'] as $genre)
 			{
-				$this->FRANCETV_CATEGORIES[$program['rubrique']]=$program['rubrique'];
+				if(array_key_exists($genre, $this->FRANCETV_CATEGORIES)==false)
+				{
+					$this->FRANCETV_CATEGORIES[$genre]=$categories['titre'];
+				}	
 			}
 				
 		}
-		return $this->FRANCETV_CATEGORIES;
+		
+		foreach($this->FRANCETV_CATEGORIES as $gender=>$title)
+		{
+			if(array_key_exists($title, $ARRAY_CATEGORIES)==false)
+			{
+				$ARRAY_CATEGORIES[$title]=$title;
+			}
+		}
+		
+		return $ARRAY_CATEGORIES;
 	}
 	
 	public function Shows($categorySelected)
 	{
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
-			if($program['rubrique']==$categorySelected)
+			if($this->FRANCETV_CATEGORIES[$program['rubrique']]==$categorySelected)
 			{
-				if(array_key_exists($program['titre'], $this->FRANCETV_SHOWS)==false)
+				if(array_key_exists($program['id_programme'], $this->FRANCETV_SHOWS)==false)
 				{
-					$this->FRANCETV_SHOWS[$program['titre']]=$program['titre'];
+					$this->FRANCETV_SHOWS[$program['id_programme']]=$program['titre'];
 				}
 			}
 		}
@@ -233,11 +248,11 @@ class FranceTV extends ScrappingCURL implements IChannel
 	{
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
-			if($program['rubrique']==$categorySelected)
+			if($program['titre']==$showSelected)
 			{
-				if(array_key_exists($program['titre'], $this->FRANCETV_EPISODES)==false)
+				if(array_key_exists($program['id_diffusion'], $this->FRANCETV_EPISODES)==false)
 				{
-					$this->FRANCETV_EPISODES[$program['titre']]=$program['titre'];
+					$this->FRANCETV_EPISODES[$program['id_diffusion']]=$program['titre'];
 				}
 			}
 		}
@@ -269,9 +284,15 @@ class FranceTV extends ScrappingCURL implements IChannel
 		
 	}
 	
-	public function File_Video_Url($stream_url)
+	public function File_Video_Url($showSelected)
 	{
-		
+		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		{
+			if($program['id_diffusion']==$showSelected)
+			{
+				return $this->URL_BASE_VIDEOS.$program['url_video'];
+			}
+		}
 	}
 	
 }
