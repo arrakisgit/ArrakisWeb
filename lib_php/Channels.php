@@ -210,7 +210,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 	public function Categories()
 	{
 		$ARRAY_CATEGORIES=Array();
-		foreach($this->JSON_RESULT_FRANCETV['categories'] as $categories)
+		foreach($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'] as $categories)
 		{
 			foreach($categories['genres'] as $genre)
 			{
