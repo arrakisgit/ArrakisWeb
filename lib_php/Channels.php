@@ -173,7 +173,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function __construct($FranceTvChannel)
 	{
-		$this->ROOT_JSON_FILES="http://192.168.1.20/ArrakisWeb_Libs/libs_json/FranceTV/";
+		$this->ROOT_JSON_FILES="http://192.168.1.20/ArrakisWeb_Lib/libs_json/FranceTV/";
 		$this->FILE_JSON_FRANCE2=$this->ROOT_JSON_FILES."catch_up_france2.json";
 		$this->FILE_JSON_FRANCE3=$this->ROOT_JSON_FILES."catch_up_france3.json";
 		$this->FILE_JSON_FRANCE4=$this->ROOT_JSON_FILES."catch_up_france4.json";
