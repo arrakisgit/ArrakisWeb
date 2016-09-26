@@ -223,7 +223,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 				}
 				else
 				{
-					foreach($categories['Formats'] as $formats)
+					foreach($categories['formats'] as $formats)
 					{
 						if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
 						{
