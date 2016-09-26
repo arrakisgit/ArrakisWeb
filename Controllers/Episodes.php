@@ -19,9 +19,10 @@ class Episodes extends CI_Controller
     	$Channel=explode('_',$id);
     	if ($Channel[0]=="Arte")
     	{
+    		$typeVid="mp4";
     		$ChannelCategories = new Arte("CAT");
     		$urlEpisode = $ChannelCategories->StreamUrl($Channel[1]);
-    		$this->load->view('view_episodes',array('id'=>$id,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
+    		$this->load->view('view_episodes',array('typeVid'=>$typeVid,'id'=>$id,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
     	else 
