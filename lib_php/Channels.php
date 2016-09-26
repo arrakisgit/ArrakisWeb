@@ -216,7 +216,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 			{
 				if(array_key_exists($genres['genre'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[$genres['genre']]=$categories['titre'];
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 
@@ -224,7 +224,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 			{
 				if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[$formats['format']]=$categories['titre'];
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 					
