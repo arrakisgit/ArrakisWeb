@@ -7,9 +7,10 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-foreach ($ArrayCat as $labelCat=>$channelID)
+echo $ArrayCat;
+/*foreach ($ArrayCat as $labelCat=>$channelID)
 {
 	echo "<br><a href='http://192.168.1.20/ArrakisWeb/index.php/Shows/index/".$Channels."_".$channelID."'>".$labelCat."</a></br>";
-}
+}*/
 
 ?>
