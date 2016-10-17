@@ -29,12 +29,17 @@ $(document).ready(function() {
 	if($typeVid=="mp4")
 	{
 		echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='video/mp4'></video></div>";
+		echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
 	}
-	elseif ($typeVid=="m3u8")
+	elseif ($typeVid=="FRTV")
 	{
-		echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='application/x-mpegURL'></video></div>";
+		foreach ($Episodes as $labelShow=>$showID)
+		{
+			//echo 
+			echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+		}
+		//echo "<div class='container'><video width='700' height='400'><source src='".$Episode."' type='application/x-mpegURL'></video></div>";
 	}
-	echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
 ?>
 
 </body></html>
