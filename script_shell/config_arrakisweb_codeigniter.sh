@@ -1,3 +1,4 @@
+sudo git pull
 cd /var/www/html/ArrakisWeb/application/controllers
 sudo rm -r lib_php/
 sudo rm -r Categories.php
