@@ -214,35 +214,36 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			foreach($categories['genres'] as $genres)
 			{
-				if(array_key_exists($genres['genre'], $this->FRANCETV_CATEGORIES)==false)
+				if(array_key_exists($genres['genre'], $ARRAY_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
+					$ARRAY_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 
 			foreach($categories['formats'] as $formats)
 			{
-				if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
+				if(array_key_exists($formats['format'], $ARRAY_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
+					$ARRAY_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 					
 		}
 		
-		foreach($this->FRANCETV_CATEGORIES as $gender=>$title)
+		foreach($ARRAY_CATEGORIES as $gender=>$title)
 		{
-			if(array_key_exists($title, $ARRAY_CATEGORIES)==false)
+			if(array_key_exists($title, $this->FRANCETV_CATEGORIES)==false)
 			{
-				$ARRAY_CATEGORIES[$title]=$title;
+				$this->FRANCETV_CATEGORIES[$title]=$title;
 			}
 		}
 		
-		return $ARRAY_CATEGORIES;//var_dump($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'][0]['genres'][0]['genre']);//
+		return $this->FRANCETV_CATEGORIES;//var_dump($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'][0]['genres'][0]['genre']);//
 	}
 	
 	public function Shows($categorySelected)
 	{
+	
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
 			$currentprog='vide';
