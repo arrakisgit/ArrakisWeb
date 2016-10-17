@@ -25,6 +25,41 @@ class Episodes extends CI_Controller
     		$this->load->view('view_episodes',array('typeVid'=>$typeVid,'id'=>$id,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
+    	elseif ($Channel[0]=="France2")
+    	{
+    		$ChannelCategories = new FranceTV("France2");
+    		$ArrayShows = $ChannelCategories->Shows($Channel);
+    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    		//$this->load->view('Template', array('page_insert' => $page_insert));
+    		}
+    		elseif ($Channel[0]=="France3")
+    		{
+    			$ChannelCategories = new FranceTV("France3");
+    			$ArrayShows = $ChannelCategories->Shows($Channel);
+    			$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    			//$this->load->view('Template', array('page_insert' => $page_insert));
+    		}
+    		elseif ($Channel[0]=="France4")
+    		{
+    			$ChannelCategories = new FranceTV("France4");
+    			$ArrayShows = $ChannelCategories->Shows($Channel);
+    			$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    			//$this->load->view('Template', array('page_insert' => $page_insert));
+    		}
+    		elseif ($Channel[0]=="France5")
+    		{
+    			$ChannelCategories = new FranceTV("France5");
+    			$ArrayShows = $ChannelCategories->Shows($Channel);
+    			$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    			//$this->load->view('Template', array('page_insert' => $page_insert));
+    		}
+    		elseif ($Channel[0]=="FranceO")
+    		{
+    			$ChannelCategories = new FranceTV("FranceO");
+    			$ArrayShows = $ChannelCategories->Shows($Channel);
+    			$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    			//$this->load->view('Template', array('page_insert' => $page_insert));
+    		}
     	else 
     	{
     		$this->load->view('bad_file');

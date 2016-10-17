@@ -11,7 +11,7 @@
 foreach ($ArrayShows as $labelShow=>$showID)
 {
 	//echo 
-	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Shows."_".$Channels."_".$labelShow."'>".$showID."</a></br>";
+	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
 }
 
 ?>
