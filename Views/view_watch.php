@@ -10,7 +10,10 @@
 
 <div id="player"></div>
     <script>
-        var player = new Clappr.Player({source: <?php echo "'".$urlEpisode."',"?> parentId: "#player" plugins: { playback: [Clappr.HLS] }, baseUrl: '/latest'});
+        var player = new Clappr.Player({source: <?php echo "'".$urlEpisode."',\n"?>
+        								parentId: "#player", 
+            							plugins: { playback: [Clappr.HLS] },
+            							baseUrl: '/latest'});
       
     </script>
 <?php 

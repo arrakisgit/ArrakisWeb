@@ -16,14 +16,13 @@ class Watch extends CI_Controller
 	public function index($id)
 	{
 		$Channel=explode('_',$id);
-		if ($Channel[0]=="France2")
-		{
+		
 			$typeVid="m3u8";
-			$ChannelCategories = new FranceTV("France2");
+			$ChannelCategories = new FranceTV($Channel[0]);
 			$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
 			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
 			
-		}
+		
 	}
 }
 ?>

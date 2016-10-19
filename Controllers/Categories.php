@@ -23,42 +23,14 @@ class Categories extends CI_Controller
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
-    	if ($Channel=="France2")
+    	else
     	{
-    		$ChannelCategories = new FranceTV("France2");
+    		$ChannelCategories = new FranceTV($Channel);
     		$ArrayCat = $ChannelCategories->Categories();
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
-    	if ($Channel=="France3")
-    	{
-    		$ChannelCategories = new FranceTV("France3");
-    		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
-    		//$this->load->view('Template', array('page_insert' => $page_insert));
-    	}
-    	if ($Channel=="France4")
-    	{
-    		$ChannelCategories = new FranceTV("France4");
-    		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
-    		//$this->load->view('Template', array('page_insert' => $page_insert));
-    	}
-    	if ($Channel=="France5")
-    	{
-    		$ChannelCategories = new FranceTV("France5");
-    		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
-    		//$this->load->view('Template', array('page_insert' => $page_insert));
-    	}
-    	if ($Channel=="FranceO")
-    	{
-    		$ChannelCategories = new FranceTV("FranceO");
-    		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
-    		//$this->load->view('Template', array('page_insert' => $page_insert));
-    	}
-    }
+    	    }
 
 }
 ?>

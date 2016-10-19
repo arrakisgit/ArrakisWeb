@@ -26,50 +26,15 @@ class Episodes extends CI_Controller
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
     		
     	}
-    	elseif ($Channel[0]=="France2")
+    	else
     	{
     		
-    		$ChannelCategories = new FranceTV("France2");
+    		$ChannelCategories = new FranceTV($Channel[0]);
     		$Episodes = $ChannelCategories->Episodes($Channel);
     		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
     		
     	}
-    	elseif ($Channel[0]=="France3")
-    	{
-    		
-    		$ChannelCategories = new FranceTV("France3");
-    		$Episodes = $ChannelCategories->Shows($Channel);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
-    		
-    	}
-    	elseif ($Channel[0]=="France4")
-    	{
-    		
-    		$ChannelCategories = new FranceTV("France4");
-    		$Episodes = $ChannelCategories->Shows($Channel);
-    		$this->load->view('view_episodes',array('typeVid'=>$typeVid,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
-    		
-    	}
-    	elseif ($Channel[0]=="France5")
-    	{
-    		
-    		$ChannelCategories = new FranceTV("France5");
-    		$Episodes = $ChannelCategories->Shows($Channel);
-    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
-    		
-    	}
-    	elseif ($Channel[0]=="FranceO")
-    	{
-    		
-    		$ChannelCategories = new FranceTV("FranceO");
-    		$Episodes = $ChannelCategories->Shows($Channel);
-    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
-    		
-    	}
-    	else 
-    	{
-    		$this->load->view('bad_file');
-    	}
+    	
     }
 
 }
