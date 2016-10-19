@@ -14,8 +14,9 @@
       var typeVid = <?php echo "'".$typeVid."';\n" ?>
       if (typeVid=="mp4")
       {
+            alert('ok');
 	      	var player = new Clappr.Player({
-	        source: <?php echo "'".$urlEpisode."',"?>
+	        source: <?php echo "'".$urlEpisode."',\n"?>
 	        plugins: [ChromecastPlugin],
 	        parentId: '#player',
 	        chromecast: {
