@@ -23,7 +23,7 @@ class Episodes extends CI_Controller
     		$typeVid="mp4";
     		$ChannelCategories = new Arte("CAT");
     		$urlEpisode = $ChannelCategories->StreamUrl($Channel[2]);
-    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$id,'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
+    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
     		
     	}
     	elseif ($Channel[0]=="France2")
