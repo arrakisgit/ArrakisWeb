@@ -11,7 +11,7 @@
 
 <div id="player"></div>
     <script>
-      var typeVid = <?php echo "'".$typeVid."';\n" ?>
+      var typeVid = <?php echo "\"".$typeVid."\";\n" ?>
       if (typeVid=="mp4")
       {
             alert('ok');
