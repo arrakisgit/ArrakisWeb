@@ -29,7 +29,7 @@ class Episodes extends CI_Controller
     	elseif ($Channel[0]=="France2")
     	{
     		$ChannelCategories = new FranceTV("France2");
-    		$Episodes = $ChannelCategories->Shows($Channel);
+    		$Episodes = $ChannelCategories->Episodes($Channel);
     		$this->load->view('view_episodes',array('typeVid'=>$typeVid,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
