@@ -280,7 +280,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
-			if($program['titre']==$showSelected[2])
+			if($program['id_programme']==$showSelected[2])
 			{
 				if(array_key_exists($program['id_diffusion'], $this->FRANCETV_EPISODES)==false)
 				{
@@ -288,7 +288,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 				}
 			}
 		}
-		return var_dump($this->JSON_RESULT_FRANCETV['programmes']);//$this->FRANCETV_EPISODES;
+		return $this->FRANCETV_EPISODES;
 	}
 	
 	public function StreamUrl($showSelected)
