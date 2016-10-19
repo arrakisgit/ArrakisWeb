@@ -3,6 +3,8 @@
 <title>Video/Audio</title>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+
 
 </head>
 <body>
@@ -10,10 +12,21 @@
 
 <div id="player"></div>
     <script>
-        var player = new Clappr.Player({source: <?php echo "'".$urlEpisode."',\n"?>
+        var player = new Clappr.Player({
+            							source: <?php echo "'".$urlEpisode."',\n"?>
         								parentId: "#player", 
-            							plugins: { playback: [Clappr.HLS] },
-            							baseUrl: '/latest'});
+            							plugins: { playback: [Clappr.HLS],
+												   playback: [ChromecastPlugin]},
+            							baseUrl: '/latest',
+            							chromecast: {
+            							          appId: '9DFB77C0',
+            							          contentType: 'video/mp4',
+            							          media: {
+            							            type: ChromecastPlugin.Movie,
+            							            title: 'Awesome Hot Air Balloon Slackline',
+            							            subtitle: 'You won\'t get much closer to Skylining than this!'
+            							          }
+            							        }});
       
     </script>
 <?php 
