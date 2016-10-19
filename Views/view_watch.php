@@ -16,7 +16,7 @@
 <?php 
 
 		//echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='application/x-mpegURL'></video></div>";
-		echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
+		//echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
 	//}
 	
 ?>
