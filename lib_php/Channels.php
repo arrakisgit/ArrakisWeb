@@ -288,7 +288,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 				}
 			}
 		}
-		return $this->FRANCETV_EPISODES;
+		return $categShow[2];//$this->FRANCETV_EPISODES;
 	}
 	
 	public function StreamUrl($showSelected)
