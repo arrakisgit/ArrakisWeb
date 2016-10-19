@@ -275,12 +275,12 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Episodes($showSelected)
 	{
-		$categShow=explode('_', $showSelected);
-		$this->FRANCETV_SHOWS=$this->Shows($categShow[1]);
+		//$categShow=explode('_', $showSelected);
+		$this->FRANCETV_SHOWS=$this->Shows($showSelected[1]);
 		
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
-			if($program['titre']==$categShow[2])
+			if($program['titre']==$showSelected[2])
 			{
 				if(array_key_exists($program['id_diffusion'], $this->FRANCETV_EPISODES)==false)
 				{
@@ -288,7 +288,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 				}
 			}
 		}
-		return var_dump($categShow[2]);//$this->FRANCETV_EPISODES;
+		return var_dump($showSelected[2]);//$this->FRANCETV_EPISODES;
 	}
 	
 	public function StreamUrl($showSelected)
