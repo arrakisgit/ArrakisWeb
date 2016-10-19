@@ -19,11 +19,7 @@
                 							playback: [Clappr.HLS]},
             							baseUrl: '/latest',
             							chromecast: {
-            						          appId: '9DFB77C0',
-            						          media: {
-            						            title: 'Awesome Hot Air Balloon Slackline',
-            						            subtitle: 'You won\'t get much closer to Skylining than this!'
-            						          }
+            						          appId: '9DFB77C0'
             						        }
             							});
       
