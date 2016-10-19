@@ -20,8 +20,8 @@ class Watch extends CI_Controller
 		{
 			$typeVid="m3u8";
 			$ChannelCategories = new FranceTV("France2");
-			$Episodes = $ChannelCategories->File_Video_Url($Channel);
-			$this->load->view('view_watch',array('typeVid'=>$typeVid,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
+			$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
+			$this->load->view('view_watch',array('typeVid'=>$typeVid,'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
 			
 		}
 	}
