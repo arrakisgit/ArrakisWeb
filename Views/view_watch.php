@@ -29,20 +29,20 @@ $(document).ready(function() {
 
 <?php 
 
-	if($typeVid=="mp4")
+	/*if($typeVid=="mp4")
 	{
 		echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='video/mp4'></video></div>";
 		echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
 	}
 	elseif ($typeVid=="m3u8")
-	{
+	{*/
 		echo "<div id='player'></div>";
   		echo "<script>";
     	echo "var player = new Clappr.Player({source: '".$urlEpisode."', parentId: '#player'});";
   		echo "</script>";
 		//echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='application/x-mpegURL'></video></div>";
-		//echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
-	}
+		echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
+	//}
 	
 ?>
 </body></html>
