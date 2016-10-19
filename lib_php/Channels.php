@@ -318,9 +318,10 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function File_Video_Url($showSelected)
 	{
+		$this->FRANCETV_SHOWS=$this->Shows($showSelected[1]);
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
-			if($program['id_diffusion']==$showSelected)
+			if($program['id_diffusion']==$showSelected[2])
 			{
 				return $this->URL_BASE_VIDEOS.$program['url_video'];
 			}
