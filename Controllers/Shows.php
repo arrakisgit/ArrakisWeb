@@ -33,7 +33,7 @@ class Shows extends CI_Controller
     	}
     	elseif (substr($Channel[0], 0,3)=='BFM')
     	{
-    		$ChannelCategories = new BFMTV();
+    		$ChannelCategories = new BFMTV($Channel[0]);
     		$ArrayShows = $ChannelCategories->Shows($Channel[1]);
     		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
     		//$this->load->view('view_debug', array('result' => $ArrayShows));
