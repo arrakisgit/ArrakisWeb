@@ -23,14 +23,14 @@ class Categories extends CI_Controller
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
-    	elseif (substr($Channel, 0,5)=='France')
+    	elseif (substr($Channel, 0,6)=='France')
     	{
     		$ChannelCategories = new FranceTV($Channel);
     		$ArrayCat = $ChannelCategories->Categories();
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('Template', array('page_insert' => $page_insert));
     	}
-    	elseif(substr($Channel, 0,2)=='BFM')
+    	elseif(substr($Channel, 0,3)=='BFM')
     	{
     		$ChannelCategories = new BFMTV($Channel);
     		$ArrayCat = $ChannelCategories->Categories();
