@@ -234,7 +234,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($title, $this->FRANCETV_CATEGORIES)==false)
 			{
-				if ($titre=="Serie & Fiction")
+				if ($title=="Serie & Fiction")
 				{
 					$this->FRANCETV_CATEGORIES["Serie"]="Serie";
 				}
