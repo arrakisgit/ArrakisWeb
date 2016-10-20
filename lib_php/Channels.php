@@ -251,13 +251,13 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Shows($categorySelected)
 	{
-		
+		$arrayDump = Array();
 		if ($categorySelected=="Serie")
 		{
 			$categorySelected="Série & Fiction";
 		}
 		
-		$this->FRANCETV_CATEGORIES=$this->Categories();
+		$arrayDump=$this->Categories();
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
 			$currentprog='vide';
