@@ -246,9 +246,9 @@ class BFMTV extends ScrappingCURL implements IChannel
 		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_VIDEOS.$stream_url.'&quality=2');
 		foreach($json_result['video']['medias'] as $media)
 		{
-			if($media['encoding_rate']>$quality)
+			if(intval($media['encoding_rate']>$quality))
 			{
-				$quality=$media['encoding_rate'];
+				$quality=intval($media['encoding_rate']);
 				$url_video=$media['video_url'];
 			}
 				
