@@ -236,9 +236,9 @@ class FranceTV extends ScrappingCURL implements IChannel
 			{
 					if ($title=="Serie & Fiction")
 					{
-						$ARRAY_CATEGORIES[$title]="Serie";
+						$ARRAY_CATEGORIES["Serie"]=$title;
 					}
-					else 
+					else
 					{
 						$ARRAY_CATEGORIES[$title]=$title;
 					}
