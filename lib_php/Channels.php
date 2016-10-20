@@ -193,9 +193,9 @@ class BFMTV extends ScrappingCURL implements IChannel
 		{
 			if ($menu['type']=='REPLAY')
 			{
-				if(array_key_exists($menu['category'], $ArrayCategories)==false)
+				if(array_key_exists($menu['title'], $ArrayCategories)==false)
 				{
-					$ArrayCategories[$menu['category']]=$menu['title'];
+					$ArrayCategories[$menu['title']]=$menu['category'];
 				}
 			}
 		}
