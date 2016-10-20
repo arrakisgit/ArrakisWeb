@@ -234,7 +234,14 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($title, $this->FRANCETV_CATEGORIES)==false)
 			{
-				$this->FRANCETV_CATEGORIES[$title]=$title;
+				if ($titre=="Serie & Fiction")
+				{
+					$this->FRANCETV_CATEGORIES["Serie"]="Serie";
+				}
+				else
+				{
+					$this->FRANCETV_CATEGORIES[$title]=$title;
+				}
 			}
 		}
 		
@@ -243,6 +250,10 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Shows($categorySelected)
 	{
+		if ($categorySelected=="Serie")
+		{
+			$categorySelected="Serie & Fiction";
+		}
 		$this->FRANCETV_CATEGORIES=$this->Categories();
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
