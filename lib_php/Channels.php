@@ -263,8 +263,8 @@ class FranceTV extends ScrappingCURL implements IChannel
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
 			$currentprog='vide';
-			$genreprg=str_replace('\u00e9','e',str_replace('é','e',$program['genre_simplifie']));
-			$formatprg=str_replace('\u00e9','e',str_replace('é','e',$program['format']));
+			$genreprg=str_replace('\\u00e9','e',str_replace('é','e',$program['genre_simplifie']));
+			$formatprg=str_replace('\\u00e9','e',str_replace('é','e',$program['format']));
 			
 			if(array_key_exists($genreprg, $this->FRANCETV_CATEGORIES)==true)
 			{
