@@ -203,7 +203,17 @@ class BFMTV extends ScrappingCURL implements IChannel
 	}
 	public function Shows($categorySelected)
 	{
-		
+		$ArrayShows=Array();
+		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_SHOWS.$categorySelected);
+		foreach($json_result['videos'] as $videolist)
+		{
+			if(array_key_exists($videolist['video'], $ArrayShows)==false)
+			{
+				$ArrayShows[$videolist['title']]=$videolist['video'];
+			}
+			
+		}
+		return $ArrayShows;
 	}
 	public function Episodes($showSelected)
 	{
