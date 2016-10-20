@@ -45,7 +45,7 @@ class ScrappingCURL
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
-		$this->jsonresultat=json_decode($resultat,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES, true);
+		$this->jsonresultat=json_decode($resultat, true);
 		return $this->jsonresultat;
 	}
 	public function Func_Get_Source_Code_From_JSON_SESSION($pUrl)
@@ -55,7 +55,7 @@ class ScrappingCURL
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
-		$this->jsonresultat=json_decode($resultat,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ,true);
+		$this->jsonresultat=json_decode($resultat, true);
 		return $this->jsonresultat;
 	}
 }
