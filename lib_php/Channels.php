@@ -214,38 +214,33 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			foreach($categories['genres'] as $genres)
 			{
-				if(array_key_exists($genres['genre'], $ARRAY_CATEGORIES)==false)
+				if(array_key_exists($genres['genre'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$ARRAY_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 
 			foreach($categories['formats'] as $formats)
 			{
-				if(array_key_exists($formats['format'], $ARRAY_CATEGORIES)==false)
+				if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$ARRAY_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 					
 		}
 		
-		foreach($ARRAY_CATEGORIES as $gender=>$title)
+		foreach($this->FRANCETV_CATEGORIES as $gender=>$title)
 		{
-			if(array_key_exists($title, $this->FRANCETV_CATEGORIES)==false)
+			if(array_key_exists($title, $this->$ARRAY_CATEGORIES)==false)
 			{
-				if ($title=="Serie & Fiction")
-				{
-					$this->FRANCETV_CATEGORIES["Serie"]="Serie";
-				}
-				else
-				{
-					$this->FRANCETV_CATEGORIES[$title]=$title;
-				}
+				
+					$this->$ARRAY_CATEGORIES[$title]=$title;
+				
 			}
 		}
 		
-		return $this->FRANCETV_CATEGORIES;//var_dump($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'][0]['genres'][0]['genre']);//
+		return $this->$ARRAY_CATEGORIES;//var_dump($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'][0]['genres'][0]['genre']);//
 	}
 	
 	public function Shows($categorySelected)
@@ -255,7 +250,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
 			$currentprog='vide';
-			$genreprg=str_replace('\u00e','e',$program['genre_simplifie']);
+			$genreprg=str_replace('\u00e','e',$program['genre']);
 			$formatprg=str_replace('\u00e9','e',$program['format']);
 			
 			if(array_key_exists($genreprg, $this->FRANCETV_CATEGORIES)==true)
