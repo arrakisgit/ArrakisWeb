@@ -38,7 +38,7 @@ class Episodes extends CI_Controller
     	{
     		$typeVid='m3u8';
     		$ChannelCategories = new BFMTV($Channel[0]);
-    		$urlEpisode = $ChannelCategories->StreamUrl($Channel[2]);
+    		$urlEpisode = $ChannelCategories->File_Video_Url($Channel[2]);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
     	}
     }
