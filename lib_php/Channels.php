@@ -209,7 +209,7 @@ class BFMTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($videolist['video'], $ArrayShows)==false)
 			{
-				$ArrayShows[$videolist['title']]=$videolist['video'];
+				$ArrayShows[$videolist['video']]=$videolist['title'];
 			}
 			
 		}
