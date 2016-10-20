@@ -26,7 +26,7 @@ class Episodes extends CI_Controller
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
     		
     	}
-    	else
+    	elseif (substr($Channel[0], 0,6)=='France')
     	{
     		
     		$ChannelCategories = new FranceTV($Channel[0]);
@@ -34,7 +34,13 @@ class Episodes extends CI_Controller
     		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
     		
     	}
-    	
+    	elseif (substr($Channel[0], 0,3)=='BFM')
+    	{
+    		$typeVid='m3u8';
+    		$ChannelCategories = new BFMTV($Channel[0]);
+    		$urlEpisode = $ChannelCategories->StreamUrl($Channel[2]);
+    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
+    	}
     }
 
 }

@@ -241,7 +241,19 @@ class BFMTV extends ScrappingCURL implements IChannel
 	}
 	public function File_Video_Url($stream_url)
 	{
-		
+		$url_video='';
+		$quality=0;
+		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_VIDEOS.$stream_url.'&quality=2');
+		foreach($json_result['video']['medias'] as $media)
+		{
+			if($media['encoding_rate']>$quality)
+			{
+				$quality=$media['encoding_rate'];
+				$url_video=$media['video_url'];
+			}
+				
+		}
+		return $url_video;
 	}
 }
 
