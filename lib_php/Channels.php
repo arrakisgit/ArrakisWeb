@@ -216,7 +216,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 			{
 				if(array_key_exists($genres['genre'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[$genres['genre']]=$categories['titre'];
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 
@@ -224,7 +224,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 			{
 				if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
 				{
-					$this->FRANCETV_CATEGORIES[$formats['format']]=$categories['titre'];
+					$this->FRANCETV_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
 				}
 			}
 					
@@ -234,7 +234,9 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($title, $ARRAY_CATEGORIES)==false)
 			{
-					if ($title=="Série & Fiction")
+					$title=str_replace('é','e',$title);
+					
+					if ($title=="Serie & Fiction")
 					{
 						$ARRAY_CATEGORIES["Serie"]="Serie";
 					}
@@ -254,15 +256,15 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$arrayDump = Array();
 		if ($categorySelected=="Serie")
 		{
-			$categorySelected="Série & Fiction";
+			$categorySelected="Serie & Fiction";
 		}
 		
 		$arrayDump=$this->Categories();
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
 		{
 			$currentprog='vide';
-			$genreprg=$program['genre_simplifie'];
-			$formatprg=$program['format'];
+			$genreprg=str_replace('é','e',$program['genre_simplifie']);
+			$formatprg=str_replace('é','e',$program['format']);
 			
 			if(array_key_exists($genreprg, $this->FRANCETV_CATEGORIES)==true)
 			{
