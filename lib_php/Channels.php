@@ -155,6 +155,86 @@ class Arte extends ScrappingCURL implements IChannel
 		
 }
 
+class BFMTV extends ScrappingCURL implements IChannel
+{
+	private $BFM_TV_TOKEN;
+	private $BFM_TV_URL_TOKEN;
+	private $BFM_TV_URL_CATEGORIES;
+	private $BFM_TV_URL_SHOWS;
+	private $BFM_TV_URL_VIDEOS;
+	private $JSON_TOKEN_RESULT_BFM_TV;
+	private $JSON_CATEGORIES_RESULT_BFM_TV;
+	private $JSON_SHOWS_RESULT_BFM_TV;
+	private $JSON_VIDEOS_RESULT_BFM_TV;
+	
+	public function __construct($Channel)
+	{
+		switch($Channel)
+		{
+			case 'BFMTV':
+				$this->BFM_TV_URL_TOKEN='http://api.nextradiotv.com/bfmtv-android/4/';
+			case 'BFMBUSINESS':
+				$this->BFM_TV_URL_TOKEN='http://api.nextradiotv.com/bfmbusiness-iphone/3/';
+		}
+		
+		$this->JSON_TOKEN_RESULT_BFM_TV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_TOKEN);
+		$this->BFM_TV_TOKEN=$this->JSON_TOKEN_RESULT_BFM_TV['session']['token'];
+		$this->BFM_TV_URL_CATEGORIES=$this->BFM_TV_URL_TOKEN.$this->BFM_TV_TOKEN.'/getMainMenu';
+		$this->BFM_TV_URL_SHOWS=$this->BFM_TV_URL_TOKEN.$this->BFM_TV_TOKEN.'/getVideosList?count=40&page=1&category=';
+		$this->BFM_TV_URL_VIDEOS=$this->BFM_TV_URL_TOKEN.$this->BFM_TV_TOKEN.'/getVideo?idVideo=';
+		
+	}
+	
+	public function Categories()
+	{
+		$ArrayCategories=Array();
+		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_CATEGORIES);
+		foreach($json_result['menu']['right'] as $menu)
+		{
+			if ($menu['type']=='REPLAY')
+			{
+				if(array_key_exists($menu['category'], $ArrayCategories)==false)
+				{
+					$ArrayCategories[$menu['category']]=$menu['title'];
+				}
+			}
+		}
+		return $ArrayCategories;
+	}
+	public function Shows($categorySelected)
+	{
+		
+	}
+	public function Episodes($showSelected)
+	{
+		
+	}
+	public function StreamUrl($showSelected)
+	{
+		
+	}
+	public function Live()
+	{
+		
+	}
+	public function Descriptions($stream_url)
+	{
+		
+	}
+	public function Images($stream_url)
+	{
+		
+	}
+	public function Durations($stream_url)
+	{
+		
+	}
+	public function File_Video_Url($stream_url)
+	{
+		
+	}
+}
+
 class FranceTV extends ScrappingCURL implements IChannel
 {
 	private $URL_BASE_VIDEOS;
