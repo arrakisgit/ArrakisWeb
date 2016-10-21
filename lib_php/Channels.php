@@ -308,7 +308,8 @@ class Itele extends ScrappingCURL implements IChannel
 			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['uid'];
 		}
 		
-		return $this->ITELE_ARRAY_SHOWS;
+		//return $this->ITELE_ARRAY_SHOWS;
+		return $this->ITELE_ARRAY_CATEGORIES[$categorySelected];
 	}
 	public function Episodes($showSelected)
 	{
