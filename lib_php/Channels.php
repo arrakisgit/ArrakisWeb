@@ -304,7 +304,21 @@ class Itele extends ScrappingCURL implements IChannel
 	public function Shows($categorySelected)
 	{
 		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ITELE_ARRAY_CATEGORIES[$categorySelected]);
-		foreach($json_result['news'] as $cat)
+		
+		if ($json_result['topnews']!=null)
+		{
+			$elem='topnews';
+		}
+		if($json_result['news']!=null)
+		{
+			$elem='news';
+		}
+		if($json_result['videos']!=null)
+		{
+			$elem='videos';
+		}
+		
+		foreach($json_result[$elem] as $cat)
 		{
 			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['title'];
 		}
@@ -339,7 +353,19 @@ class Itele extends ScrappingCURL implements IChannel
 	public function File_Video_Url($stream_url)
 	{
 		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ITELE_ARRAY_CATEGORIES[$stream_url[1]]);
-		foreach($json_result['news'] as $cat)
+		if ($json_result['topnews']!=null)
+		{
+			$elem='topnews';
+		}
+		if($json_result['news']!=null)
+		{
+			$elem='news';
+		}
+		if($json_result['videos']!=null)
+		{
+			$elem='videos';
+		}
+		foreach($json_result[$elem] as $cat)
 		{
 			if ($cat['uid']==$stream_url[2])
 			{
