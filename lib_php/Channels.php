@@ -309,11 +309,11 @@ class Itele extends ScrappingCURL implements IChannel
 		{
 			$elem='topnews';
 		}
-		if($json_result['news']!=null)
+		elseif($json_result['news']!=null)
 		{
 			$elem='news';
 		}
-		if($json_result['videos']!=null)
+		elseif($json_result['videos']!=null)
 		{
 			$elem='videos';
 		}
@@ -357,11 +357,11 @@ class Itele extends ScrappingCURL implements IChannel
 		{
 			$elem='topnews';
 		}
-		if($json_result['news']!=null)
+		elseif($json_result['news']!=null)
 		{
 			$elem='news';
 		}
-		if($json_result['videos']!=null)
+		elseif($json_result['videos']!=null)
 		{
 			$elem='videos';
 		}
