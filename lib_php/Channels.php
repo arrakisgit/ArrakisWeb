@@ -270,8 +270,8 @@ class Itele extends ScrappingCURL implements IChannel
 		$this->ITELE_ARRAY_CATEGORIES=Array();
 		$this->ITELE_URL='http://service.itele.fr/iphone/';
 		$this->ITELE_FOLDER_CATEGORIES='categorie_news?query=';
-		$this->ITELE_ARRAY_CATEGORIES['A la une']=$this->ITELE_URL.'topnews';
-		$this->ITELE_ARRAY_CATEGORIES['Dernières émissions']=$this->ITELE_URL.'dernieres_emissions';
+		$this->ITELE_ARRAY_CATEGORIES['Alaune']=$this->ITELE_URL.'topnews';
+		$this->ITELE_ARRAY_CATEGORIES['Dernieresemissions']=$this->ITELE_URL.'dernieres_emissions';
 		$this->ITELE_ARRAY_CATEGORIES['France']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'france';
 		$this->ITELE_ARRAY_CATEGORIES['Monde']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'monde';
 		$this->ITELE_ARRAY_CATEGORIES['Politique']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'politique';
@@ -287,8 +287,8 @@ class Itele extends ScrappingCURL implements IChannel
 	public function Categories()
 	{
 		$Array_Categories=Array();
-		$Array_Categories['A la une']='A la une';
-		$Array_Categories['Dernières émissions']='Dernières émissions';
+		$Array_Categories['Alaune']='A la une';
+		$Array_Categories['Dernieres emissions']='Dernieres emissions';
 		$Array_Categories['France']='France';
 		$Array_Categories['Monde']='Monde';
 		$Array_Categories['Politique']='Politique';
@@ -306,11 +306,11 @@ class Itele extends ScrappingCURL implements IChannel
 		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ITELE_ARRAY_CATEGORIES[$categorySelected]);
 		foreach($json_result['news'] as $cat)
 		{
-			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['uid'];
+			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['title'];
 		}
 		
-		//return $this->ITELE_ARRAY_SHOWS;
-		return $this->ITELE_ARRAY_CATEGORIES[$categorySelected];
+		return $this->ITELE_ARRAY_SHOWS;
+		//return $this->ITELE_ARRAY_CATEGORIES[$categorySelected];
 	}
 	public function Episodes($showSelected)
 	{

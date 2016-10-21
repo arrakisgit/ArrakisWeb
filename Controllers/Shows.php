@@ -42,8 +42,8 @@ class Shows extends CI_Controller
     	{
     		$ChannelCategories = new Itele();
     		$ArrayShows = $ChannelCategories->Shows($Channel[1]);
-    		//$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
-    		$this->load->view('view_debug', array('result' => $ArrayShows));
+    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    		//$this->load->view('view_debug', array('result' => $ArrayShows));
     	}
     }
 
