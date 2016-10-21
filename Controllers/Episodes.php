@@ -41,6 +41,13 @@ class Episodes extends CI_Controller
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel[2]);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
     	}
+    	elseif ($Channel[0]=='Itele')
+    	{
+    		$typeVid='m3u8';
+    		$ChannelCategories = new Itele();
+    		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
+    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[2],'urlEpisode'=>$urlEpisode));
+    	}
     }
 
 }

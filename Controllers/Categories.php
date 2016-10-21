@@ -36,6 +36,12 @@ class Categories extends CI_Controller
     		$ArrayCat = $ChannelCategories->Categories();
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     	}
+    	elseif($Channel=='Itele')
+    	{
+    		$ChannelCategories = new Itele();
+    		$ArrayCat = $ChannelCategories->Categories();
+    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
+    	}
     	    
     }
 

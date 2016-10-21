@@ -257,6 +257,98 @@ class BFMTV extends ScrappingCURL implements IChannel
 	}
 }
 
+class Itele extends ScrappingCURL implements IChannel
+{
+	private $ITELE_ARRAY_CATEGORIES;
+	private $ITELE_ARRAY_SHOWS;
+	private $ITELE_ARRAY_EPISODES;
+	private $ITELE_URL;
+	private $ITELE_FOLDER_CATEGORIES;
+	
+	public function __construct()
+	{
+		$this->ITELE_ARRAY_CATEGORIES=Array();
+		$this->ITELE_FOLDER_CATEGORIES='categorie_news?query=';
+		$this->ITELE_ARRAY_CATEGORIES['A la une']=$this->ITELE_URL.'topnews';
+		$this->ITELE_ARRAY_CATEGORIES['Dernières émissions']=$this->ITELE_URL.'dernieres_emissions';
+		$this->ITELE_ARRAY_CATEGORIES['France']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'france';
+		$this->ITELE_ARRAY_CATEGORIES['Monde']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'monde';
+		$this->ITELE_ARRAY_CATEGORIES['Politique']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'politique';
+		$this->ITELE_ARRAY_CATEGORIES['Justice']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'justique';
+		$this->ITELE_ARRAY_CATEGORIES['Economie']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'economie';
+		$this->ITELE_ARRAY_CATEGORIES['Sport']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'sport';
+		$this->ITELE_ARRAY_CATEGORIES['Culture']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'culture';
+		$this->ITELE_ARRAY_CATEGORIES['Insolite']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'insolite';
+		$this->ITELE_ARRAY_SHOWS=Array();
+		$this->ITELE_ARRAY_EPISODES=Array();
+		$this->ITELE_URL='http://service.itele.fr/iphone/';
+	}
+	public function Categories()
+	{
+		$Array_Categories=Array();
+		$Array_Categories['A la une']='A la une';
+		$Array_Categories['Dernières émissions']='Dernières émissions';
+		$Array_Categories['France']='France';
+		$Array_Categories['Monde']='Monde';
+		$Array_Categories['Politique']='Politique';
+		$Array_Categories['Justice']='Justique';
+		$Array_Categories['Economie']='Economie';
+		$Array_Categories['Sport']='Sport';
+		$Array_Categories['Culture']='Culture';
+		$Array_Categories['Insolite']='Insolite';
+		
+		return $Array_Categories;
+		
+	}
+	public function Shows($categorySelected)
+	{
+		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ITELE_ARRAY_CATEGORIES[$categorySelected]);
+		foreach($json_result['news'] as $cat)
+		{
+			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['uid'];
+		}
+		
+		return $this->ITELE_ARRAY_SHOWS;
+	}
+	public function Episodes($showSelected)
+	{
+		
+	}
+	public function StreamUrl($showSelected)
+	{
+		
+	}
+	public function Live()
+	{
+		
+	}
+	public function Descriptions($stream_url)
+	{
+		
+	}
+	public function Images($stream_url)
+	{
+		
+	}
+	public function Durations($stream_url)
+	{
+		
+	}
+	public function File_Video_Url($stream_url)
+	{
+		$json_result=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ITELE_ARRAY_CATEGORIES[$stream_url[1]]);
+		foreach($json_result['news'] as $cat)
+		{
+			if ($cat['uid']==$stream_url[2])
+			{
+				return $cat['video_url'];
+			}
+		}
+		
+		return $this->ITELE_ARRAY_SHOWS;
+	}
+}
+
 class FranceTV extends ScrappingCURL implements IChannel
 {
 	private $URL_BASE_VIDEOS;
