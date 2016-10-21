@@ -287,8 +287,8 @@ class Itele extends ScrappingCURL implements IChannel
 	public function Categories()
 	{
 		$Array_Categories=Array();
-		$Array_Categories['Alaune']='A la une';
-		$Array_Categories['Dernieres emissions']='Dernieres emissions';
+		$Array_Categories['A la une']='Alaune';
+		$Array_Categories['Dernieres emissions']='Dernieresemissions';
 		$Array_Categories['France']='France';
 		$Array_Categories['Monde']='Monde';
 		$Array_Categories['Politique']='Politique';
