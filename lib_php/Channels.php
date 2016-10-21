@@ -268,6 +268,7 @@ class Itele extends ScrappingCURL implements IChannel
 	public function __construct()
 	{
 		$this->ITELE_ARRAY_CATEGORIES=Array();
+		$this->ITELE_URL='http://service.itele.fr/iphone/';
 		$this->ITELE_FOLDER_CATEGORIES='categorie_news?query=';
 		$this->ITELE_ARRAY_CATEGORIES['A la une']=$this->ITELE_URL.'topnews';
 		$this->ITELE_ARRAY_CATEGORIES['Dernières émissions']=$this->ITELE_URL.'dernieres_emissions';
@@ -281,7 +282,7 @@ class Itele extends ScrappingCURL implements IChannel
 		$this->ITELE_ARRAY_CATEGORIES['Insolite']=$this->ITELE_URL.$this->ITELE_FOLDER_CATEGORIES.'insolite';
 		$this->ITELE_ARRAY_SHOWS=Array();
 		$this->ITELE_ARRAY_EPISODES=Array();
-		$this->ITELE_URL='http://service.itele.fr/iphone/';
+
 	}
 	public function Categories()
 	{
