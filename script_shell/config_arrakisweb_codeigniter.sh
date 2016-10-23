@@ -38,3 +38,4 @@ sudo rm -r /var/www/html/ArrakisWeb_Lib/libs_css
 sudo rm -r /var/www/html/ArrakisWeb_Lib/libs_js
 sudo cp -R libs_css /var/www/html/ArrakisWeb_Lib
 sudo cp -R libs_js /var/www/html/ArrakisWeb_Lib
+cd /var/www/html/ArrakisWeb/application/ArrakisWeb
