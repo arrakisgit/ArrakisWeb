@@ -155,6 +155,74 @@ class Arte extends ScrappingCURL implements IChannel
 		
 }
 
+class NRJPlay extends ScrappingCURL implements IChannel
+{
+	private $NRJPLAY_URL;
+	private $NRJPLAY_ARRAY_CATEGORIES;
+	private $NRJPLAY_ARRAY_SHOWS;
+	private $NTJPLAY_ARRAY_EPISODES;
+	
+	public function __construct($channel)
+	{
+		$this->NRJPLAY_URL='http://www.nrj-play.fr/'.$channel.'/replay';
+		$this->NRJPLAY_ARRAY_SHOWS=Array();
+		$this->NRJPLAY_ARRAY_CATEGORIES=Array();
+		$this->NRJPLAY_ARRAY_EPISODES=Array();
+	}
+	public function Categories()
+	{
+		$html_result=parent::Func_Get_Source_Code_From_URL($this->NRJPLAY_URL);
+		foreach($html_result->getElementsByTagName('div') as $elem_div)
+		{
+			if ($elem_div->attributes->getNamedItem('class')->value=='subNav-menu-item')
+			{
+				foreach($elem_div->getElementsByTagName('a') as $elem_a)	
+				{
+					if($elem_a->attributes->getNamedItem('class')->value!='active')
+					{
+						if(array_key_exists($elem_a->nodevalue, $this->NRJPLAY_ARRAY_CATEGORIES)==false)
+						{
+							$this->NRJPLAY_ARRAY_CATEGORIES[$elem_a->nodevalue]=$elem_a->nodevalue;
+						}
+					}
+				}
+			}
+		}
+		return $this->NRJPLAY_ARRAY_CATEGORIES;
+	}
+	public function Shows($categorySelected)
+	{
+		
+	}
+	public function Episodes($showSelected)
+	{
+		
+	}
+	public function StreamUrl($showSelected)
+	{
+		
+	}
+	public function Live()
+	{
+		
+	}
+	public function Descriptions($stream_url)
+	{
+		
+	}
+	public function Images($stream_url)
+	{
+		
+	}
+	public function Durations($stream_url)
+	{
+		
+	}
+	public function File_Video_Url($stream_url)
+	{
+		
+	}
+}
 class BFMTV extends ScrappingCURL implements IChannel
 {
 	private $BFM_TV_TOKEN;
@@ -175,6 +243,8 @@ class BFMTV extends ScrappingCURL implements IChannel
 				$this->BFM_TV_URL_TOKEN='http://api.nextradiotv.com/bfmtv-android/4/';
 			case 'BFMBUSINESS':
 				$this->BFM_TV_URL_TOKEN='http://api.nextradiotv.com/bfmbusiness-iphone/3/';
+			case 'RMC':
+				$this->BFM_TV_URL_CATEGORIES='http://api.nextradiotv.com/rmc-android/';
 		}
 		
 		$this->JSON_TOKEN_RESULT_BFM_TV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->BFM_TV_URL_TOKEN);
