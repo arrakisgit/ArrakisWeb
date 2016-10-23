@@ -68,7 +68,7 @@ class ScrappingCURL
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
-		$this->DOMResultat = new DOMDocument();
+		//$this->DOMResultat = new DOMDocument();
 		//$html5=new HTML5();
 		$this->DOMResultat=$this->parse($resultat);
 		return $this->DOMResultat;
@@ -82,7 +82,7 @@ class ScrappingCURL
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
-		$this->DOMResultat = new DOMDocument();
+		//$this->DOMResultat = new DOMDocument();
 		//$html5=new HTML5();
 		$this->DOMResultat=$this->parse($resultat);
 		return $this->DOMResultat;
