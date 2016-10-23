@@ -1,9 +1,9 @@
+cd /var/www/html/ArrakisWeb/application/ArrakisWeb
+sudo git pull
 cd /var/www/html/ArrakisWeb
 sudo rm -r Panel.php
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb/ihm
 sudo cp -R Panel.php /var/www/html/ArrakisWeb
-cd /var/www/html/ArrakisWeb/application/ArrakisWeb
-sudo git pull
 cd /var/www/html/ArrakisWeb/application/controllers
 sudo rm -r lib_php/
 sudo rm -r Categories.php

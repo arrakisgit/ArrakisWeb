@@ -46,7 +46,8 @@ class Categories extends CI_Controller
     	{
     		$ChannelCategories = new NRJPlay(strtolower($Channel));
     		$ArrayCat = $ChannelCategories->Categories();
-    		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
+    		//$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
+    		$this->load->view('view_debug', array('result' => $ArrayCat));
     	}
     	    
     }

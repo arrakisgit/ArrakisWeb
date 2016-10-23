@@ -171,6 +171,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	}
 	public function Categories()
 	{
+		return $this->NRJPLAY_URL;
 		$html_result=parent::Func_Get_Source_Code_From_URL($this->NRJPLAY_URL);
 		foreach($html_result->getElementsByTagName('div') as $elem_div)
 		{
