@@ -8,7 +8,7 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-require __DIR__ . '/vendor/autoload.php';
+require '/vendor/autoload.php';
 use Masterminds\HTML5;
 
 class ScrappingCURL
