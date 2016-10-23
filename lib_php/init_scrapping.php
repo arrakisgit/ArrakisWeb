@@ -9,7 +9,12 @@
  */
 
 require '/vendor/autoload.php';
-use Masterminds\HTML5;
+//use Masterminds\HTML5;
+use Masterminds\HTML5\Tests\Parser;
+use Masterminds\HTML5\Parser\StringInputStream;
+use Masterminds\HTML5\Parser\Scanner;
+use Masterminds\HTML5\Parser\Tokenizer;
+use Masterminds\HTML5\Parser\DOMTreeBuilder;
 
 class ScrappingCURL
 {
@@ -64,8 +69,8 @@ class ScrappingCURL
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
 		$this->DOMResultat = new DOMDocument();
-		$html5=new HTML5();
-		$this->DOMResultat=$html5->loadHTML($resultat);
+		//$html5=new HTML5();
+		$this->DOMResultat=$this->parse($resultat);
 		return $this->DOMResultat;
 	}
 	
@@ -78,8 +83,8 @@ class ScrappingCURL
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
 		$this->DOMResultat = new DOMDocument();
-		$html5=new HTML5();
-		$this->DOMResultat=$html5->loadHTML($resultat);
+		//$html5=new HTML5();
+		$this->DOMResultat=$this->parse($resultat);
 		return $this->DOMResultat;
 	}
 	
@@ -103,6 +108,16 @@ class ScrappingCURL
 		curl_close($this->ch);
 		$this->jsonresultat=json_decode($resultat, true);
 		return $this->jsonresultat;
+	}
+	protected function parse($string, array $options = array())
+	{
+		$treeBuilder = new DOMTreeBuilder(false, $options);
+		$input = new StringInputStream($string);
+		$scanner = new Scanner($input);
+		$parser = new Tokenizer($scanner, $treeBuilder);
+		$parser->parse();
+		$this->errors = $treeBuilder->getErrors();
+		return $treeBuilder->document();
 	}
 }
 ?>
