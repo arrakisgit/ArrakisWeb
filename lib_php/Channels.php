@@ -181,7 +181,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 			{
 				//foreach($elem_div->getElementsByTagName('a') as $elem_a)	
 				//{
-				$elem_a=$elem_div->item(0)->getElementByTagElement('a');
+				$elem_a=$elem_div->getElementByTagElement('a');
 				
 				if($elem_a->getAttribute('class')!='active')
 				{
