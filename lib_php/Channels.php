@@ -200,13 +200,13 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		{
 			if($elem_div->getAttribute('class')=='row list-programs')
 			{
+				$elem_a=$elem_div->getElementsByTagName('a');
 				foreach($elem_div->getElementsByTagName('h2') as $elem_h2)
 				{
 					if ($elem_h2->getAttribute('class')=='linkProgram-title')
 					{
 						if(array_key_exists($elem_h2->nodeValue, $this->NRJPLAY_ARRAY_SHOWS)==false)
 						{
-							$elem_a=$elem_div->getElementsByTagName('a');
 							$title=strrev(explode('/',strrev($elem_a->item(0)->getAttribute('href')))[0]);
 							$this->NRJPLAY_ARRAY_SHOWS[$title]=$elem_h2->nodeValue;
 						}
