@@ -196,21 +196,21 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	{
 		$NRJPLAY_URL_CATEGORIES=$this->NRJPLAY_URL."/".$categorySelected;
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($NRJPLAY_URL_CATEGORIES);
-		$cpt=0;
 		foreach($html_result->getElementsByTagName('div') as $elem_div)
 		{
 			if($elem_div->getAttribute('class')=='row list-programs')
 			{
-				$elem_a=$elem_div->getElementsByTagName('a');
-				foreach($elem_div->getElementsByTagName('h2') as $elem_h2)
+				foreach($elem_div->getElementsByTagName('div') as $elem_details)
 				{
-					if ($elem_h2->getAttribute('class')=='linkProgram-title')
+					if ($elem_details->getAttribute('class')=='linkProgram-details')
 					{
-						$title=strrev(explode('/',strrev($elem_a->item($cpt)->getAttribute('href')))[0]);
+						$elem_a=$elem_details->getElementsByTagName('a');
+						$elem_h=$elem_details->getElementsByTagName('h2');
+						$title=strrev(explode('/',strrev($elem_a->item(0)->getAttribute('href')))[0]);
+						$libelle=$elem_h->item(0)->nodeValue;
 						if(array_key_exists($title, $this->NRJPLAY_ARRAY_SHOWS)==false)
 						{
-							$this->NRJPLAY_ARRAY_SHOWS[$title]=$elem_h2->nodeValue;
-							$cpt++;
+							$this->NRJPLAY_ARRAY_SHOWS[$title]=$libelle;
 						}
 					}
 				}
