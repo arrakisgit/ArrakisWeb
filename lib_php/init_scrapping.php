@@ -11,7 +11,6 @@
 require '/vendor/autoload.php';
 use Masterminds\HTML5;
 use GuzzleHttp\Client;
-//use GuzzleHttp\EntityBody;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
 use Masterminds\HTML5\Parser\Scanner;
 use Masterminds\HTML5\Parser\StringInputStream;
@@ -66,32 +65,20 @@ class ScrappingCURL
 	public function Func_Get_Source_Code_From_URL_HTML5($pUrl)
 	{
 	
-		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
-		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-		$resultat = curl_exec ($this->ch);
-		curl_close($this->ch);
-		//$this->DOMResultat = new DOMDocument();
-		//$html5=new HTML5();
-		$this->DOMResultat=$this->parse($resultat);
+		$client = new GuzzleHttp\Client();
+		$response = $client->get($pUrl);
+		$responseHTML = $response->getBody();
+		$html5=new HTML5(array('disable_html_ns' => true,));
+		$this->DOMResultat=$html5->loadHTML($responseHTML);
 		return $this->DOMResultat;
 	}
 	
 	public function Func_Get_Source_Code_From_URL_HTML5_SESSION($pUrl)
 	{
-	
-		/*$this->ch = curl_init();
-		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
-		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-		$resultat = curl_exec ($this->ch);
-		curl_close($this->ch);
-		//$this->DOMResultat = new DOMDocument();*/
 		$client = new GuzzleHttp\Client();
 		$response = $client->get($pUrl);
-		// Send a request to https://foo.com/api/test
-		//$response = $client->request('GET', 'test');
 		$responseHTML = $response->getBody();
 		$html5=new HTML5(array('disable_html_ns' => true,));
-		//$this->DOMResultat=$this->parse($resultat);
 		$this->DOMResultat=$html5->loadHTML($responseHTML);
 		return $this->DOMResultat;
 	}
