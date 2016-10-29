@@ -11,7 +11,7 @@
 require '/vendor/autoload.php';
 use Masterminds\HTML5;
 use GuzzleHttp\Client;
-use GuzzleHttp\EntityBody;
+//use GuzzleHttp\EntityBody;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
 use Masterminds\HTML5\Parser\Scanner;
 use Masterminds\HTML5\Parser\StringInputStream;
