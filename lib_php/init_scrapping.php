@@ -10,11 +10,13 @@
 
 require '/vendor/autoload.php';
 //use Masterminds\HTML5;
-use Masterminds\HTML5\Tests\Parser;
-use Masterminds\HTML5\Parser\StringInputStream;
-use Masterminds\HTML5\Parser\Scanner;
-use Masterminds\HTML5\Parser\Tokenizer;
+use GuzzleHttp\Client;
+use GuzzleHttp\EntityBody;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
+use Masterminds\HTML5\Parser\Scanner;
+use Masterminds\HTML5\Parser\StringInputStream;
+use Masterminds\HTML5\Parser\Tokenizer;
+use Masterminds\HTML5\Tests\Parser;
 
 class ScrappingCURL
 {
@@ -83,10 +85,14 @@ class ScrappingCURL
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
 		//$this->DOMResultat = new DOMDocument();*/
-		$response = GuzzleHttp\get($pUrl)->getBody();
+		$client = new GuzzleHttp\Client();
+		$response = $client->get($pUrl);
+		// Send a request to https://foo.com/api/test
+		//$response = $client->request('GET', 'test');
+		$responseHTML = $response->getBody();
 		$html5=new HTML5(array('disable_html_ns' => true,));
 		//$this->DOMResultat=$this->parse($resultat);
-		$this->DOMResultat=$html5->loadHTML($response);
+		$this->DOMResultat=$html5->loadHTML($responseHTML);
 		return $this->DOMResultat;
 	}
 	
