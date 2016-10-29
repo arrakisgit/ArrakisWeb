@@ -171,18 +171,14 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	}
 	public function Categories()
 	{
-		//return $this->NRJPLAY_URL;
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->NRJPLAY_URL);
-		//return var_dump($html_result);
+		
 		foreach($html_result->getElementsByTagName('li') as $elem_div)
 		{
-			//return var_dump($elem_div);
 			if ($elem_div->getAttribute('class')=='subNav-menu-item')
 			{
 				foreach($elem_div->getElementsByTagName('a') as $elem_a)	
 				{
-					//$elem_a=$elem_div->getElementsByTagName('a');
-				
 					if(strpos($elem_a->getAttribute('class'),'active')===false)
 					{
 						if(array_key_exists($elem_a->nodeValue, $this->NRJPLAY_ARRAY_CATEGORIES)==false)
@@ -195,10 +191,30 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		}
 		return $this->NRJPLAY_ARRAY_CATEGORIES;
 	}
+	
 	public function Shows($categorySelected)
 	{
-		
+		$NRJPLAY_URL_CATEGORIES=$this->NRJPLAY_URL."/".$categorySelected;
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($NRJPLAY_URL_CATEGORIES);
+		foreach($html_result->getElementsByTagName('div') as $elem_div)
+		{
+			if($elem_div->getAttribute('class')=='row list-programs')
+			{
+				foreach($elem_div->getElementsByTagName('h2') as $elem_h2)
+				{
+					if ($elem_h2->getAttribute('class')=='linkProgram-title')
+					{
+						if(array_key_exists($elem_h2->nodeValue, $this->NRJPLAY_ARRAY_SHOWS)==false)
+						{
+							$this->NRJPLAY_ARRAY_SHOWS[$elem_h2->nodeValue]=$elem_h2->nodeValue;
+						}
+					}
+				}
+			}
+		}
+		return $this->NRJPLAY_ARRAY_SHOWS;
 	}
+	
 	public function Episodes($showSelected)
 	{
 		
