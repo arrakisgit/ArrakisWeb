@@ -9,7 +9,7 @@
  */
 
 require '/vendor/autoload.php';
-//use Masterminds\HTML5;
+use Masterminds\HTML5;
 use GuzzleHttp\Client;
 use GuzzleHttp\EntityBody;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
