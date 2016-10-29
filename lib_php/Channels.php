@@ -183,13 +183,13 @@ class NRJPlay extends ScrappingCURL implements IChannel
 				//{
 				$elem_a=$elem_div->getElementsByTagName('a');
 				
-				if($elem_a->getAttribute('class')!='active')
-				{
+				//if($elem_a->getAttribute('class')!='active')
+				//{
 					if(array_key_exists($elem_a->nodeValue, $this->NRJPLAY_ARRAY_CATEGORIES)==false)
 					{
 						$this->NRJPLAY_ARRAY_CATEGORIES[$elem_a->nodeValue]=$elem_a->nodeValue;
 					}
-				}
+				//}
 				//}
 			}
 			else 
