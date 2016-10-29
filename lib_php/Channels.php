@@ -183,7 +183,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 					{
 						if(array_key_exists($elem_a->nodeValue, $this->NRJPLAY_ARRAY_CATEGORIES)==false)
 						{
-							$this->NRJPLAY_ARRAY_CATEGORIES[$elem_a->nodeValue]=strrev(explode("\/",strrev($elem_a->getAttribute('href')))[0]);
+							$this->NRJPLAY_ARRAY_CATEGORIES[$elem_a->nodeValue]=strrev(explode("/",strrev($elem_a->getAttribute('href')))[0]);
 						}
 					}
 				}
