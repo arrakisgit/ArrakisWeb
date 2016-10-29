@@ -174,10 +174,10 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		//return $this->NRJPLAY_URL;
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->NRJPLAY_URL);
 		//return var_dump($html_result);
-		foreach($html_result->getElementsByTagName('div') as $elem_div)
+		foreach($html_result->getElementsByTagName('li') as $elem_div)
 		{
 			//return var_dump($elem_div);
-			if ($elem_div->getAttribute('class')=='subNav allPrograms')
+			if ($elem_div->getAttribute('class')=='subNav-menu-item')
 			{
 				foreach($elem_div->getElementsByTagName('a') as $elem_a)	
 				{
@@ -190,13 +190,6 @@ class NRJPlay extends ScrappingCURL implements IChannel
 							$this->NRJPLAY_ARRAY_CATEGORIES[$elem_a->nodeValue]=$elem_a->nodeValue;
 						}
 					}
-				}
-			}
-			else 
-			{
-				if(array_key_exists($elem_div->getAttribute('class'), $this->NRJPLAY_ARRAY_CATEGORIES)==false)
-				{
-					$this->NRJPLAY_ARRAY_CATEGORIES[$elem_div->getAttribute('class')]=$elem_div->getAttribute('class');
 				}
 			}
 		}
