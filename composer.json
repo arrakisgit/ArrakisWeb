@@ -1,5 +1,6 @@
 {
   "require" : {
-    "masterminds/html5": "2.*"
+    "masterminds/html5": "2.*", 
+    "guzzlehttp/guzzle": "~6.0@dev"
   }
 }

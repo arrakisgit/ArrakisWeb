@@ -77,14 +77,16 @@ class ScrappingCURL
 	public function Func_Get_Source_Code_From_URL_HTML5_SESSION($pUrl)
 	{
 	
-		$this->ch = curl_init();
+		/*$this->ch = curl_init();
 		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
 		curl_close($this->ch);
-		//$this->DOMResultat = new DOMDocument();
-		//$html5=new HTML5();
-		$this->DOMResultat=$this->parse($resultat);
+		//$this->DOMResultat = new DOMDocument();*/
+		$response = GuzzleHttp\get($pUrl)->getBody();
+		$html5=new HTML5(array('disable_html_ns' => true,));
+		//$this->DOMResultat=$this->parse($resultat);
+		$this->DOMResultat=$html5->loadHTML($response);
 		return $this->DOMResultat;
 	}
 	
