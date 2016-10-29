@@ -176,6 +176,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		//return var_dump($html_result);
 		foreach($html_result->getElementsByTagName('div') as $elem_div)
 		{
+			return var_dump($elem_div);
 			if ($elem_div->attributes->getNamedItem('class')->value=='subNav-menu-item')
 			{
 				foreach($elem_div->getElementsByTagName('a') as $elem_a)	
