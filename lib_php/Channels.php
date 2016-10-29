@@ -227,6 +227,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		{
 			if($elem_select->getAttribute('class')=='section-replay')
 			{
+				return $elem_select;
 				foreach($elem_select->getElementsByTagName('div') as $elem_div)
 				{
 					if (substr($elem_div->getAttribute('class'),0,16)=='caption')
