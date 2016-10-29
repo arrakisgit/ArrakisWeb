@@ -52,6 +52,13 @@ class Shows extends CI_Controller
     		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
     		//$this->load->view('view_debug', array('result' => $ArrayShows));
     	}
+    	elseif ($Channel[0]=='Cherie25')
+    	{
+    		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
+    		$ArrayShows = $ChannelCategories->Shows($Channel[1]);
+    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    		//$this->load->view('view_debug', array('result' => $ArrayShows));
+    	}
     }
 
 }

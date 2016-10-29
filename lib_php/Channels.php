@@ -221,7 +221,28 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	
 	public function Episodes($showSelected)
 	{
-		
+		$NRJPLAY_URL_CATEGORIES=$this->NRJPLAY_URL."/".$showSelected;
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($NRJPLAY_URL_CATEGORIES);
+		foreach($html_result->getElementsByTagName('selection') as $elem_select)
+		{
+			if($elem_select->getAttribute('class')=='section-replay')
+			{
+				foreach($elem_select->getElementsByTagName('div') as $elem_div)
+				{
+					if (substr($elem_div->getAttribute('class'),0,16)=='caption')
+					{
+						$elem_a=$elem_div->item(0)->getElementsByTagName('a')->item(0);
+						$title=strrev(explode('/',strrev($elem_a->getAttribute('href')))[0]);
+						$libelle=$elem_a->nodeValue;
+						if(array_key_exists($title, $this->NTJPLAY_ARRAY_EPISODES)==false)
+						{
+							$this->NTJPLAY_ARRAY_EPISODES[$title]=$libelle;
+						}
+					}
+				}
+			}
+		}
+		return $this->NTJPLAY_ARRAY_EPISODES;
 	}
 	public function StreamUrl($showSelected)
 	{
