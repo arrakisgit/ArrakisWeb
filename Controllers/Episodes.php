@@ -55,6 +55,13 @@ class Episodes extends CI_Controller
     		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
     	}
+    	elseif($Channel[0]=='Cherie25')
+    	{
+    		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
+    		$Episodes = $ChannelCategories->Episodes($Channel[2]);
+    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
+    	}
     }
 
 }

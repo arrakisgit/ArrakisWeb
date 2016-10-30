@@ -270,7 +270,24 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	}
 	public function File_Video_Url($stream_url)
 	{
+		$NRJPLAY_URL_SHOWS=$this->NRJPLAY_URL."/".$stream_url;
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($NRJPLAY_URL_SHOWS);
+		foreach($html_result->getElementsByTagName('div') as $elem_select)
+		{
+			if($elem_select->getAttribute('class')=='playerVideo replay')
+			{
 		
+				foreach($elem_select->getElementsByTagName('meta') as $elem_meta)
+				{
+					if ($elem_meta->getAttribute('itemprop')=='contentUrl')
+					{
+						$url_videos=$elem_meta->getAttribute('content');
+						
+					}
+				}
+			}
+		}
+		return $url_videos;
 	}
 }
 class BFMTV extends ScrappingCURL implements IChannel
