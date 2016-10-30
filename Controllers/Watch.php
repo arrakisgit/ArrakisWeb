@@ -26,6 +26,7 @@ class Watch extends CI_Controller
     	}
     	elseif ($Channel[0]=='NRJ12')
     	{
+    		$typeVid="mp4";
     		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel[2]);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
@@ -33,6 +34,7 @@ class Watch extends CI_Controller
     	}
     	elseif($Channel[0]=='Cherie25')
     	{
+    		$typeVid="mp4";
     		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel[2]);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
