@@ -232,7 +232,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 				{
 					if ($elem_div->getAttribute('class')=='caption')
 					{
-						$elem_a=$elem_div->item(0)->getElementsByTagName('a');
+						$elem_a=$elem_div->getElementsByTagName('a');
 						$title=strrev(explode('/',strrev($elem_a->item(0)->getAttribute('href')))[0]);
 						$libelle=$elem_a->nodeValue;
 						if(array_key_exists($title, $this->NTJPLAY_ARRAY_EPISODES)==false)
