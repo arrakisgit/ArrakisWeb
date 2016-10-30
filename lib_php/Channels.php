@@ -223,9 +223,9 @@ class NRJPlay extends ScrappingCURL implements IChannel
 	{
 		$NRJPLAY_URL_CATEGORIES=$this->NRJPLAY_URL."/".$showSelected;
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($NRJPLAY_URL_CATEGORIES);
-		foreach($html_result->getElementsByTagName('selection') as $elem_select)
+		foreach($html_result->getElementsByTagName('div') as $elem_select)
 		{
-			if($elem_select->getAttribute('class')=='section-replay')
+			if($elem_select->getAttribute('class')=='diaporama replay-carousel')
 			{
 				return $elem_select;
 				foreach($elem_select->getElementsByTagName('div') as $elem_div)
