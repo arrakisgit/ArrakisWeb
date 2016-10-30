@@ -27,5 +27,9 @@
 <a href='http://192.168.0.18/ArrakisWeb/index.php/Categories/index/BFMTV'>BFM TV</a>
 <br>
 <a href='http://192.168.0.18/ArrakisWeb/index.php/Categories/index/Itele'>I Télé</a>
+<br>
+<a href='http://192.168.0.18/ArrakisWeb/index.php/Categories/index/NRJ12'>NRJ 12</a>
+<br>
+<a href='http://192.168.0.18/ArrakisWeb/index.php/Categories/index/Cherie25'>Chérie 25</a>
 </body>
 </html>
