@@ -167,7 +167,7 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		$this->NRJPLAY_URL='http://www.nrj-play.fr/'.$channel.'/replay';
 		$this->NRJPLAY_ARRAY_SHOWS=Array();
 		$this->NRJPLAY_ARRAY_CATEGORIES=Array();
-		$this->NRJPLAY_ARRAY_EPISODES=Array();
+		$this->NTJPLAY_ARRAY_EPISODES=Array();
 	}
 	public function Categories()
 	{
