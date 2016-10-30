@@ -52,14 +52,32 @@ class Episodes extends CI_Controller
     	{
     		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
     		$Episodes = $ChannelCategories->Episodes($Channel[2]);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    		
+    		if (is_null($Episodes)==true || empty($Episodes)==true)
+    		{
+    			$urlsend='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			header('Location: '.$urlsend);
+    		}
+    		else
+    		{
+    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    		}
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
     	}
     	elseif($Channel[0]=='Cherie25')
     	{
     		$ChannelCategories = new NRJPlay(strtolower($Channel[0]));
     		$Episodes = $ChannelCategories->Episodes($Channel[2]);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    		
+    		if (is_null($Episodes)==true || empty($Episodes)==true)
+    		{
+    			$urlsend='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			header('Location: '.$urlsend);
+    		}
+    		else
+    		{
+    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    		}
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
     	}
     }
