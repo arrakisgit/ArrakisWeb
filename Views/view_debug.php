@@ -6,5 +6,5 @@
  *Description : View debug
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-echo '<pre>'.$result.'</pre>';
+echo '<pre>'.var_dump($result).'</pre>';
 ?>
