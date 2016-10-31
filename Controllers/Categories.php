@@ -56,6 +56,13 @@ class Categories extends CI_Controller
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
     		//$this->load->view('view_debug', array('result' => $ArrayCat));
     	}
+    	elseif($Channel=='Kodi')
+    	{
+    		$ChannelCategories = new Kodi('http://192.168.0.30','8080');
+    		$ArrayCat = $ChannelCategories->Categories();
+    		//$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
+    		$this->load->view('view_debug', array('result' => var_dump($ArrayCat)));
+    	}
     	    
     }
 

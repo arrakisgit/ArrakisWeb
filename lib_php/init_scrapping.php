@@ -104,6 +104,70 @@ class ScrappingCURL
 		$this->jsonresultat=json_decode($resultat, true);
 		return $this->jsonresultat;
 	}
+	
+	// module de requetage JSON-RPC en POST
+	public function Func_Send_JSON_POST_KODI($pHost,$pPort,$pLib)
+	{
+		$urlSRV=$pHost.':'.$pPort.'/jsonrpc';
+		if($pLib=='tvshows')
+		{
+			$postData = array(
+					'jsonrpc' => '2.0',
+					'method' => 'VideoLibrary.GetTVShows',
+					'params' => array(
+							'filter'=> array(
+									'field'=>'playcount',
+									'operator'=>'is',
+									'value'=>'0'),
+							'limits'=>array(
+									'start'=>0,
+									'end'=>75),
+							'properties'=>array(
+									'art',
+									'genre',
+									'plot',
+									'title',
+									'originaltitle',
+									'year',
+									'rating',
+									'thumbnail',
+									'playcount',
+									'file',
+									'fanart'),
+							'sort'=>array(
+									'order'=>'ascending',
+									'method'=>'label'),
+							),
+					'id'=>'libTvShows');
+							
+		}
+		
+		// Setup cURL
+		$this->ch = curl_init($urlSRV);
+		curl_setopt_array($this->ch, array(
+				CURLOPT_POST => TRUE,
+				CURLOPT_RETURNTRANSFER => TRUE,
+				CURLOPT_HTTPHEADER => array(
+						'Content-Type: application/json'
+				),
+				CURLOPT_POSTFIELDS => json_encode($postData)
+		));
+		
+		// Send the request
+		$response = curl_exec($this->ch);
+		
+		// Check for errors
+		if($response === FALSE){
+			die(curl_error($this->ch));
+		}
+		
+		// Decode the response
+		$responseData = json_decode($response, TRUE);
+		
+		return $responseData;
+		
+		
+	}
 	protected function parse($string, array $options = array())
 	{
 		$treeBuilder = new DOMTreeBuilder(false, $options);

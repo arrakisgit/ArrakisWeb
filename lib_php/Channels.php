@@ -704,6 +704,56 @@ class FranceTV extends ScrappingCURL implements IChannel
 	}
 	
 }
+
+class Kodi extends ScrappingCURL implements IChannel
+{
+	private $KODI_URL_HOST;
+	private $KODI_HOST_PORT;
+	
+	public function __construct($host,$port)
+	{
+		$this->KODI_URL_HOST=$host;
+		$this->KODI_HOST_PORT=$port;
+		
+	}
+	public function Categories()
+	{
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows');
+		return $resulJSON;
+	}
+	public function Shows($categorySelected)
+	{
+		
+	}
+	public function Episodes($showSelected)
+	{
+		
+	}
+	public function StreamUrl($showSelected)
+	{
+		
+	}
+	public function Live()
+	{
+		
+	}
+	public function Descriptions($stream_url)
+	{
+		
+	}
+	public function Images($stream_url)
+	{
+		
+	}
+	public function Durations($stream_url)
+	{
+		
+	}
+	public function File_Video_Url($stream_url)
+	{
+		
+	}
+}
 		
 
 
