@@ -6,5 +6,5 @@
  *Description : View debug
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-echo $result;
+echo '<pre>'.$result.'</pre>';
 ?>
