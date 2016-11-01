@@ -146,30 +146,19 @@ class ScrappingCURL
 			//$params='tvshowid'=> .$idShow.')',
 			$postData = array(
 					'jsonrpc'=> '2.0',
-					'method'=> 'VideoLibrary.GetEpisodes',
+					'id'=>1,
+					'method'=> 'VideoLibrary.GetSeasons',
 					'params'=> array(
-							'sort'=> array(
-									'method'=>'episode'),
 							'tvshowid'=> (int) $idShow, 
 							'properties'=>array(
-									'title', 
 									'playcount', 
 									'season', 
 									'episode', 
 									'showtitle', 
-									'plot', 
-									'file', 
-									'rating', 
-									'resume', 
-									'tvshowid', 
-									'art', 
-									'streamdetails',
-									'firstaired', 
-									'runtime', 
-									'writer', 
-									'dateadded',
-									'lastplayed'), 
-							'limits'=>array('end'=>1)
+									'thumbnail'), 
+							'limits'=>array(
+									'start'=>0,
+									'end'=>500)
 							)
 					);
 			
