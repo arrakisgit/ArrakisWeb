@@ -784,7 +784,7 @@ class Kodi extends ScrappingCURL implements IChannel
 		$pConcat=$idShow.'_'.$idSeason;
 		
 		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes_details',$pConcat);
-		//return $resulJSON;
+		return $resulJSON;
 		foreach($resulJSON['result'] as $tvshow_result)
 		{
 			//if ($tvshow_result['seasonid']==$idSeason)
