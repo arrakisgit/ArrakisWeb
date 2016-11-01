@@ -749,7 +749,7 @@ class Kodi extends ScrappingCURL implements IChannel
 				{
 					if (array_key_exists($tvshow['title'],$this->KODI_ARRAY_SHOWS)==false)
 					{
-						$this->KODI_ARRAY_SHOWS[$tvshow['title']]=$tvshow['tvshowid'];
+						$this->KODI_ARRAY_SHOWS[$tvshow['tvshowid']]=$tvshow['title'];
 					}
 				}
 			}
