@@ -40,6 +40,13 @@ class Watch extends CI_Controller
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
     	}
+    	elseif ($Channel[0]=='Kodi')
+    	{
+    		$typeVid="mp4";
+    		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
+    		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
+    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
+    	}
 		
 	}
 }

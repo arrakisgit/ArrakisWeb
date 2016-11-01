@@ -784,16 +784,14 @@ class Kodi extends ScrappingCURL implements IChannel
 		$pConcat=$idShow.'_'.$idSeason;
 		
 		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes_details',$pConcat);
-		//return $resulJSON;
+		
 		foreach($resulJSON['result']['episodes'] as $tvshow_result)
 		{
-			//if ($tvshow_result['seasonid']==$idSeason)
-			//{
 				if(array_key_exists($tvshow_result['episodeid'], $this->KODI_ARRAY_EPISODES)==false)
 				{
 					$this->KODI_ARRAY_EPISODES[$tvshow_result['episodeid']]=$tvshow_result['label'];
 				}
-			//}
+			
 		}
 		return $this->KODI_ARRAY_EPISODES;
 		
@@ -833,7 +831,21 @@ class Kodi extends ScrappingCURL implements IChannel
 	}
 	public function File_Video_Url($stream_url)
 	{
+		$idShow=$stream_url[2];
+		$idSeason=$stream_url[3];
+		$idVid=$stream_url[4];
 		
+		$pConcat=$idShow.'_'.$idSeason;
+		
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes_details',$pConcat);
+		
+		foreach($resulJSON['result']['episodes'] as $tvshow_result)
+		{
+				if ($tvshow_result['episodeid']==$idVid)
+				{
+					return $tvshow_result['file'] ;
+				}		
+		}
 	}
 }
 		
