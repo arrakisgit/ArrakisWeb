@@ -174,7 +174,7 @@ class ScrappingCURL
 					'method'=> 'VideoLibrary.GetEpisodes',
 					'params'=> array(
 							'tvshowid'=> (int) $params[0],
-							'seasonid'=> (int) $params[1],
+							'season'=> (int) $params[1],
 							'properties'=>array(
 									'playcount',
 									'season',
