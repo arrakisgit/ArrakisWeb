@@ -721,6 +721,7 @@ class Kodi extends ScrappingCURL implements IChannel
 	public function Categories()
 	{
 		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows');
+		return $resulJSON;
 		foreach($resulJSON['params']['properties']['genre'] as $genre)
 		{
 			foreach ($genre as $genre_item)
