@@ -11,7 +11,7 @@ include_once 'lib_php/Includer.php';
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Shows extends CI_Controller
+class Seasons extends CI_Controller
 {
 
 	public function index($id)
