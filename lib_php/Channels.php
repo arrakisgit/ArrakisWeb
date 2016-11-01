@@ -709,18 +709,31 @@ class Kodi extends ScrappingCURL implements IChannel
 {
 	private $KODI_URL_HOST;
 	private $KODI_HOST_PORT;
+	private $KODI_ARRAY_CATEGORIES;
 	
 	public function __construct($host,$port)
 	{
 		$this->KODI_URL_HOST=$host;
 		$this->KODI_HOST_PORT=$port;
+		$this->KODI_ARRAY_CATEGORIES=array();
 		
 	}
 	public function Categories()
 	{
 		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows');
-		return $resulJSON;
+		foreach($resulJSON['genre'] as $genre)
+		{
+			foreach ($genre as $genre_item)
+			{
+				if (array_key_exists($genre_item, $this->KODI_ARRAY_CATEGORIES)==false)
+				{
+					$this->KODI_ARRAY_CATEGORIES[$genre_item]=$genre_item;
+				}
+			}
+		}
+		return $this->KODI_ARRAY_CATEGORIES;
 	}
+	
 	public function Shows($categorySelected)
 	{
 		

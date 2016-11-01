@@ -162,9 +162,9 @@ class ScrappingCURL
 		}
 		
 		// Decode the response
-		$responseData = json_decode($response, TRUE);
+		$this->jsonresultat = json_decode($response, TRUE);
 		
-		return $responseData;
+		return $this->jsonresultat;
 		
 		
 	}
