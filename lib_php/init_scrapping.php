@@ -147,7 +147,7 @@ class ScrappingCURL
 					'jsonrpc'=> '2.0',
 					'method'=> 'VideoLibrary.GetEpisodes',
 					'params'=> array(
-							'tvshowid'=> $idShow,
+							'tvshowid'=> 'int('.$idShow.')',
 							'sort'=> array(
 									'method'=>'episode'),
 							'filter'=> array(
