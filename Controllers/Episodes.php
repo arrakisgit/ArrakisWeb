@@ -84,8 +84,8 @@ class Episodes extends CI_Controller
     	{
     		$ChannelCategories = new Kodi('http://192.168.0.30','8080');
     		$Episodes = $ChannelCategories->Episodes($Channel);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'Seasons'=>$Channel[3],'Episodes'=>$Episodes));
-    		//$this->load->view('view_debug', array('result' => $Episodes));
+    		//$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'Seasons'=>$Channel[3],'Episodes'=>$Episodes));
+    		$this->load->view('view_debug', array('result' => $Episodes));
     	}
     }
 
