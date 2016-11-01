@@ -150,6 +150,7 @@ class ScrappingCURL
 					'params'=> array(
 							'sort'=> array(
 									'method'=>'episode'),
+							'tvshowid'=> (int) $idShow,
 							'filter'=> array(
 									'field'=> 'playcount',
 									'operator'=> 'lessthan',
@@ -172,12 +173,11 @@ class ScrappingCURL
 									'writer', 
 									'dateadded',
 									'lastplayed'), 
-							'limits'=>array(
-									array('end'=>1),
-									'tvshowid'=> (int) $idShow)
+							'limits'=>array('end'=>1)
 							)
 					);
 			
+			//"VideoLibrary.GetEpisodes", {"tvshowid": int(show_id)}))
 			//"VideoLibrary.GetEpisodes", {"limits":{"end":1},"tvshowid": int(show_id), "filter":{"field":"lastplayed", "operator":"greaterthan", "value":"0"}, "properties":["season", "episode", "lastplayed", "firstaired", "resume"], "sort":{"method":"lastplayed", "order":"descending"}})
 		}
 		
