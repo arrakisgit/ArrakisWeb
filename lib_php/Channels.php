@@ -781,18 +781,19 @@ class Kodi extends ScrappingCURL implements IChannel
 	{
 		$idShow=$showSelected[2];
 		$idSeason=$showSelected[3];
+		$pConcat=$idShow.'_'.$idSeason;
 		
-		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes',$idShow);
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes_details',$pConcat);
 		
-		foreach($resulJSON['result']['seasons'] as $tvshow_result)
+		foreach($resulJSON['result'] as $tvshow_result)
 		{
-			if ($tvshow_result['seasonid']==$idSeason)
-			{
-				if(array_key_exists($tvshow_result['episodeid'], $this->KODI_ARRAY_EPISODES)==false)
+			//if ($tvshow_result['seasonid']==$idSeason)
+			//{
+				if(array_key_exists($tvshow_result['title'], $this->KODI_ARRAY_EPISODES)==false)
 				{
-					$this->KODI_ARRAY_EPISODES[$tvshow_result['episodeid']]=$tvshow_result['episode'];
+					$this->KODI_ARRAY_EPISODES[$tvshow_result['title']]=$tvshow_result['title'];
 				}
-			}
+			//}
 		}
 		return $this->KODI_ARRAY_EPISODES;
 		

@@ -165,6 +165,30 @@ class ScrappingCURL
 			//"VideoLibrary.GetEpisodes", {"tvshowid": int(show_id)}))
 			//"VideoLibrary.GetEpisodes", {"limits":{"end":1},"tvshowid": int(show_id), "filter":{"field":"lastplayed", "operator":"greaterthan", "value":"0"}, "properties":["season", "episode", "lastplayed", "firstaired", "resume"], "sort":{"method":"lastplayed", "order":"descending"}})
 		}
+		elseif ($pLib=='tvshows_episodes_details')
+		{
+			$params=explode('_', $idShow);
+			$postData = array(
+					'jsonrpc'=> '2.0',
+					'id'=>1,
+					'method'=> 'VideoLibrary.GetEpisodes',
+					'params'=> array(
+							'tvshowid'=> (int) $params[0],
+							'seasonid'=> (int) $params[1],
+							'properties'=>array(
+									'playcount',
+									'season',
+									'episode',
+									'file',
+									'title',
+									'showtitle',
+									'thumbnail'),
+							'limits'=>array(
+									'start'=>0,
+									'end'=>500)
+					)
+			);
+		}
 		
 		// Setup cURL
 		//return $postData;
