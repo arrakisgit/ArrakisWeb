@@ -178,7 +178,7 @@ class ScrappingCURL
 		}
 		
 		// Setup cURL
-		return $postData;
+		//return $postData;
 		$this->ch = curl_init($urlSRV);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
