@@ -21,8 +21,8 @@ class Seasons extends CI_Controller
 		{
 			$ChannelCategories = new Kodi('http://192.168.0.30','8080');
 			$ArraySeason = $ChannelCategories->Seasons($Channel[2]);
-			$this->load->view('view_shows_season',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'ArraySeason'=>$ArraySeason));
-			//$this->load->view('view_debug', array('result' => $ArrayShows));
+			//$this->load->view('view_shows_season',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'ArraySeason'=>$ArraySeason));
+			$this->load->view('view_debug', array('result' => $ArraySeason));
 		}
 			
 	}
