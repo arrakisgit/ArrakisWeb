@@ -31,7 +31,7 @@ class Episodes extends CI_Controller
     		
     		$ChannelCategories = new FranceTV($Channel[0]);
     		$Episodes = $ChannelCategories->Episodes($Channel);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Episodes'=>$Episodes));
+    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Categories'=>'Cat','Seasons'=>'Seasons','Episodes'=>$Episodes));
     		
     	}
     	elseif (substr($Channel[0], 0,3)=='BFM')
@@ -60,7 +60,7 @@ class Episodes extends CI_Controller
     		}
     		else
     		{
-    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'Seasons'=>'Seasons','Episodes'=>$Episodes));
     		}
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
     	}
@@ -76,9 +76,15 @@ class Episodes extends CI_Controller
     		}
     		else
     		{
-    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[2],'Episodes'=>$Episodes));
+    			$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'Seasons'=>'Seasons','Episodes'=>$Episodes));
     		}
     		//$this->load->view('view_debug', array('result' => var_dump($Episodes)));
+    	}
+    	elseif($Channel[0]=='Kodi')
+    	{
+    		$ChannelCategories = new Kodi();
+    		$Episodes = $ChannelCategories->Episodes($Channel);
+    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'Seasons'=>$Channel[3],'Episodes'=>$Episodes));
     	}
     }
 

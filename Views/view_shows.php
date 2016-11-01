@@ -10,8 +10,14 @@
 //echo $ArrayShows;
 foreach ($ArrayShows as $labelShow=>$showID)
 {
-	//echo 
-	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+	if($Channels!='Kodi')
+	{
+		echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+	}
+	else
+	{
+		echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Seasons/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+	}
 }
 
 ?>
