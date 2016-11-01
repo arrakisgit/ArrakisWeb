@@ -150,11 +150,7 @@ class ScrappingCURL
 					'params'=> array(
 							'sort'=> array(
 									'method'=>'episode'),
-							'tvshowid'=> (int) $idShow,
-							'filter'=> array(
-									'field'=> 'playcount',
-									'operator'=> 'lessthan',
-									'value'=>'1'), 
+							'tvshowid'=> (int) $idShow, 
 							'properties'=>array(
 									'title', 
 									'playcount', 
