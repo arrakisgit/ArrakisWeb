@@ -143,11 +143,12 @@ class ScrappingCURL
 		}
 		elseif ($pLib=='tvshows_episodes')
 		{
+			//$params='tvshowid'=> .$idShow.')',
 			$postData = array(
 					'jsonrpc'=> '2.0',
 					'method'=> 'VideoLibrary.GetEpisodes',
 					'params'=> array(
-							'tvshowid'=> 'int('.$idShow.')',
+							'tvshowid'=> (int) $idShow,
 							'sort'=> array(
 									'method'=>'episode'),
 							'filter'=> array(
@@ -172,8 +173,7 @@ class ScrappingCURL
 									'writer', 
 									'dateadded',
 									'lastplayed'), 
-							'limits'=>array('end'=>1)),
-							'id'=> '1'
+							'limits'=>array('end'=>1))
 					);
 		}
 		
