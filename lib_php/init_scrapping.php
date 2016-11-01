@@ -148,7 +148,6 @@ class ScrappingCURL
 					'jsonrpc'=> '2.0',
 					'method'=> 'VideoLibrary.GetEpisodes',
 					'params'=> array(
-							'tvshowid'=> (int) $idShow,
 							'sort'=> array(
 									'method'=>'episode'),
 							'filter'=> array(
@@ -173,8 +172,13 @@ class ScrappingCURL
 									'writer', 
 									'dateadded',
 									'lastplayed'), 
-							'limits'=>array('end'=>1))
+							'limits'=>array(
+									array('end'=>1),
+									'tvshowid'=> (int) $idShow)
+							)
 					);
+			
+			//"VideoLibrary.GetEpisodes", {"limits":{"end":1},"tvshowid": int(show_id), "filter":{"field":"lastplayed", "operator":"greaterthan", "value":"0"}, "properties":["season", "episode", "lastplayed", "firstaired", "resume"], "sort":{"method":"lastplayed", "order":"descending"}})
 		}
 		
 		// Setup cURL
