@@ -154,7 +154,6 @@ class ScrappingCURL
 									'playcount', 
 									'season', 
 									'episode', 
-									'episodeid',
 									'showtitle', 
 									'thumbnail'), 
 							'limits'=>array(
