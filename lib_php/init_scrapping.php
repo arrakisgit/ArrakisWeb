@@ -106,7 +106,7 @@ class ScrappingCURL
 	}
 	
 	// module de requetage JSON-RPC en POST
-	public function Func_Send_JSON_POST_KODI($pHost,$pPort,$pLib)
+	public function Func_Send_JSON_POST_KODI($pHost,$pPort,$pLib,$idShow)
 	{
 		$urlSRV=$pHost.':'.$pPort.'/jsonrpc';
 		if($pLib=='tvshows')
@@ -140,6 +140,41 @@ class ScrappingCURL
 							),
 					'id'=>'libTvShows');
 							
+		}
+		elseif ($pLib=='tvshows_episodes')
+		{
+			$postData = array(
+					'jsonrpc'=> '2.0',
+					'method'=> 'VideoLibrary.GetEpisodes',
+					'params'=> array(
+							'tvshowid'=> $idShow,
+							'sort'=> array(
+									'method'=>'episode'),
+							'filter'=> array(
+									'field'=> 'playcount',
+									'operator'=> 'lessthan',
+									'value'=>'1'), 
+							'properties'=>array(
+									'title', 
+									'playcount', 
+									'season', 
+									'episode', 
+									'showtitle', 
+									'plot', 
+									'file', 
+									'rating', 
+									'resume', 
+									'tvshowid', 
+									'art', 
+									'streamdetails',
+									'firstaired', 
+									'runtime', 
+									'writer', 
+									'dateadded',
+									'lastplayed'), 
+							'limits'=>array('end'=>1)),
+							'id'=> '1'
+					);
 		}
 		
 		// Setup cURL

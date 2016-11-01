@@ -13,12 +13,14 @@ sudo rm -r lib_php/
 sudo rm -r Categories.php
 sudo rm -r Shows.php
 sudo rm -r Episodes.php
+sudo rm -r Seasons.php
 sudo rm -r Watch.php
 sudo rm -r debug.php
 cd /var/www/html/ArrakisWeb/application/views
 sudo rm -r Template.php
 sudo rm -r view_categories.php
 sudo rm -r view_shows.php
+sudo rm -r view_shows_season.php
 sudo rm -r view_episodes.php
 sudo rm -r view_watch.php
 sudo rm -r view_debug.php
@@ -28,6 +30,7 @@ sudo cp -R lib_php /var/www/html/ArrakisWeb/application/controllers
 cd Controllers
 sudo cp -R Categories.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Shows.php /var/www/html/ArrakisWeb/application/controllers
+sudo cp -R Seasons.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Episodes.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Watch.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R debug.php /var/www/html/ArrakisWeb/application/controllers

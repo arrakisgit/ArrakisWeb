@@ -62,8 +62,8 @@ class Shows extends CI_Controller
     	elseif ($Channel[0]=='Kodi')
     	{
     		$ChannelCategories = new Kodi('http://192.168.0.30','8080');
-    		$ArrayShows = $ChannelCategories->Shows($Channel[1]);
-    		$this->load->view('view_shows',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'ArrayShows'=>$ArrayShows));
+    		$ArrayShows = $ChannelCategories->Seasons($Channel[2]);
+    		$this->load->view('view_shows_season',array('Channels'=>$Channel[0],'Categories'=>$Channel[1],'Shows'=>$Channel[2],'ArrayShows'=>$ArrayShows));
     		//$this->load->view('view_debug', array('result' => $ArrayShows));
     	}
     }

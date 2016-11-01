@@ -47,7 +47,10 @@ class Arte extends ScrappingCURL implements IChannel
 		}
 		
 	}
+	public function Seasons($showSelected)
+	{
 	
+	}
 	public function Live()
 	{
 		
@@ -168,6 +171,10 @@ class NRJPlay extends ScrappingCURL implements IChannel
 		$this->NRJPLAY_ARRAY_SHOWS=Array();
 		$this->NRJPLAY_ARRAY_CATEGORIES=Array();
 		$this->NTJPLAY_ARRAY_EPISODES=Array();
+	}
+	public function Seasons($showSelected)
+	{
+		
 	}
 	public function Categories()
 	{
@@ -321,7 +328,10 @@ class BFMTV extends ScrappingCURL implements IChannel
 		$this->BFM_TV_URL_VIDEOS=$this->BFM_TV_URL_TOKEN.$this->BFM_TV_TOKEN.'/getVideo?idVideo=';
 		
 	}
+	public function Seasons($showSelected)
+	{
 	
+	}
 	public function Categories()
 	{
 		$ArrayCategories=Array();
@@ -437,6 +447,10 @@ class Itele extends ScrappingCURL implements IChannel
 		
 		return $Array_Categories;
 		
+	}
+	public function Seasons($showSelected)
+	{
+	
 	}
 	public function Shows($categorySelected)
 	{
@@ -565,7 +579,10 @@ class FranceTV extends ScrappingCURL implements IChannel
 				break;
 		}
 	}
+	public function Seasons($showSelected)
+	{
 	
+	}
 	public function Categories()
 	{
 		$ARRAY_CATEGORIES=Array();
@@ -711,6 +728,8 @@ class Kodi extends ScrappingCURL implements IChannel
 	private $KODI_HOST_PORT;
 	private $KODI_ARRAY_CATEGORIES;
 	private $KODI_ARRAY_SHOWS;
+	private $KODI_ARRAY_SEASONS;
+	private $KODI_ARRAY_EPISODES;
 	
 	public function __construct($host,$port)
 	{
@@ -718,11 +737,13 @@ class Kodi extends ScrappingCURL implements IChannel
 		$this->KODI_HOST_PORT=$port;
 		$this->KODI_ARRAY_CATEGORIES=array();
 		$this->KODI_ARRAY_SHOWS=array();
+		$this->KODI_ARRAY_SEASONS=array();
+		$this->KODI_ARRAY_EPISODES=array();
 		
 	}
 	public function Categories()
 	{
-		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows');
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows','');
 		//return $resulJSON;
 		foreach($resulJSON['result']['tvshows'] as $tvshow)
 		{
@@ -739,7 +760,7 @@ class Kodi extends ScrappingCURL implements IChannel
 	
 	public function Shows($categorySelected)
 	{
-		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows');
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows','');
 		//return $resulJSON;
 		foreach($resulJSON['result']['tvshows'] as $tvshow)
 		{
@@ -758,7 +779,36 @@ class Kodi extends ScrappingCURL implements IChannel
 	}
 	public function Episodes($showSelected)
 	{
+		$idShow=$showSelected[2];
+		$idSeason=$showSelected[3];
 		
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes',$idShow);
+		
+		foreach($resulJSON['result'] as $tvshow_result)
+		{
+			if ($tvshow_result['season']==$idSeason)
+			{
+				if(array_key_exists($tvshow_result['showtitle'], $this->KODI_ARRAY_EPISODES)==false)
+				{
+					$this->KODI_ARRAY_EPISODES[$tvshow_result['showtitle']]=$tvshow_result['showtitle'];
+				}
+			}
+		}
+		return $this->KODI_ARRAY_EPISODES;
+		
+	}
+	public function Seasons($showSelected)
+	{
+		$resulJSON=parent::Func_Send_JSON_POST_KODI($this->KODI_URL_HOST, $this->KODI_HOST_PORT, 'tvshows_episodes',$showSelected);
+		//return $resulJSON;
+		foreach($resulJSON['result']['season'] as $tvshow_season)
+		{
+			if(array_key_exists($tvshow_season, $this->KODI_ARRAY_SEASONS)==false)
+			{
+				$this->KODI_ARRAY_SEASONS[$tvshow_season]=$tvshow_season;
+			}
+		}
+		return $this->KODI_ARRAY_SEASONS;
 	}
 	public function StreamUrl($showSelected)
 	{
