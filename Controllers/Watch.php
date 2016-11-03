@@ -45,7 +45,7 @@ class Watch extends CI_Controller
     		$typeVid="mp4";
     		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
-    		$urlEpisode=str_replace('smb', 'file', $urlEpisode);
+    		//$urlEpisode=str_replace('smb', 'file', $urlEpisode);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
     	}
 		
