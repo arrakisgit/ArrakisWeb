@@ -47,8 +47,8 @@ class Watch extends CI_Controller
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
     		$urlEpisode=str_replace('smb', '', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
-    		$comm='mount -t cifs '.str_replace(strrev(strrev(explode('//',$urlEpisode)(0))),'',$urlEpisode).' -o /var/www/html/ArrakisWeb/NASSRV';
-    		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV/".strrev(strrev(explode('//',$urlEpisode)(0)));
+    		$comm='mount -t cifs '.str_replace(strrev(strrev(explode('//',$urlEpisode)[0])),'',$urlEpisode).' -o /var/www/html/ArrakisWeb/NASSRV';
+    		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV/".strrev(strrev(explode('//',$urlEpisode)[0]));
     		$cmdShell->ExcuteShell($comm);
     		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
     	}
