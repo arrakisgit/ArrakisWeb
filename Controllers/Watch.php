@@ -48,10 +48,11 @@ class Watch extends CI_Controller
     		$urlEpisode=str_replace('smb', '', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
     		//192.168.0.10/share	/media/documents	cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0
-    		$comm='echo -e /"'.str_replace(strrev(strrev(explode('//',$urlEpisode)[0])),'',$urlEpisode).' /var/www/html/ArrakisWeb/NASSRV cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0/" >> //etc//fstab';
+    		$comm='sudo echo -e /"'.str_replace(strrev(strrev(explode('//',$urlEpisode)[0])),'',$urlEpisode).' /var/www/html/ArrakisWeb/NASSRV cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0/" >> //etc//fstab';
     		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV/".strrev(strrev(explode('//',$urlEpisode)[0]));
-    		$cmdShell->ExcuteShell($comm);
-    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
+    		$result=$cmdShell->ExcuteShell($comm);
+    		$this->load->view('view_debug', array('result' => $result));
+    		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
     	}
 		
 	}
