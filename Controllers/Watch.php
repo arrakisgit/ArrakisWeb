@@ -45,13 +45,13 @@ class Watch extends CI_Controller
     		$typeVid="mp4";
     		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
-    		$urlEpisode=str_replace('smb', '', $urlEpisode);
+    		$urlEpisode=str_replace('smb:', '', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
     		//192.168.0.10/share	/media/documents	cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0
     		$hostNas=str_replace(strrev(explode('/',strrev($urlEpisode))[0]),'',$urlEpisode);
     		$comm='sudo mount.cifs '.$hostNas.' -o /var/www/html/ArrakisWeb/SRVNAS_WEB -o guest,workgroup=WORKGROUP,users';
     		//$comm='sudo echo -e /"'' /var/www/html/ArrakisWeb/NASSRV cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0/" >> //etc//fstab';
-    		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV_WEB/".strrev(strrev(explode('/',$urlEpisode)[0]));
+    		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV_WEB/".strrev(explode('/',strrev($urlEpisode))[0]);
     		$result=$cmdShell->ExcuteShell($comm);
     		$this->load->view('view_debug', array('result' => $comm));
     		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
