@@ -227,5 +227,11 @@ class ScrappingCURL
 		$this->errors = $treeBuilder->getErrors();
 		return $treeBuilder->document();
 	}
+	public function ExcuteShell($cmd)
+	{
+		$output = shell_exec($cmd);
+		
+	}
 }
+
 ?>
