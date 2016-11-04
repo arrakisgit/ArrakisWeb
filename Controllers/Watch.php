@@ -49,14 +49,16 @@ class Watch extends CI_Controller
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
     		$urlEpisode=str_replace('smb://ARRAKISNAS', '//192.168.0.14', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
+    		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/unmount_smb.sh';
+    		$result=$cmdShell->ExcuteShell($comm);
     		$hostNas=str_replace('/'.strrev(explode('/',strrev($urlEpisode))[0]),$vide,$urlEpisode);
     		$folderNAS=str_replace('/'.strrev(explode('/',strrev($hostNas))[0]),$vide,$hostNas);
     		
     		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh \''.$folderNAS.'\'';
     		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.strrev(explode('/',strrev($hostNas))[0]).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$result=$cmdShell->ExcuteShell($comm);
-    		$this->load->view('view_debug', array('result' => $comm));
-    		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
+    		//$this->load->view('view_debug', array('result' => $comm));
+    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
     	}
 		
 	}

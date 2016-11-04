@@ -1,5 +1,7 @@
 sudo apt-get update
 sudo apt-get upgrade
+sudo -i
+echo 'www-data   ALL=(ALL)   NOPASSWD: ALL'>>/etc/sudoers
 sudo apt-get install apache2
 sudo chown -R www-data:pi /var/www/html/
 sudo chmod -R 770 /var/www/html/
