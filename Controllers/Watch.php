@@ -44,11 +44,12 @@ class Watch extends CI_Controller
     	elseif ($Channel[0]=='Kodi')
     	{
     		$typeVid="mp4";
+    		$vide='';
     		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
     		$urlEpisode=str_replace('smb://ARRAKISNAS', 'http://192.168.0.14', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
-    		$hostNas=str_replace(strrev(explode('/',strrev($urlEpisode))[0]),"",$urlEpisode);
+    		$hostNas=str_replace('/'.strrev(explode('/',strrev($urlEpisode))[0]),$vide,$urlEpisode);
     		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh '.$hostNas;
     		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV_WEB/".strrev(explode('/',strrev($urlEpisode))[0]);
     		$result=$cmdShell->ExcuteShell($comm);
