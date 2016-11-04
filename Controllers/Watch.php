@@ -9,6 +9,7 @@
 
 include_once 'lib_php/Includer.php';
 
+
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Watch extends CI_Controller
@@ -47,10 +48,8 @@ class Watch extends CI_Controller
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
     		$urlEpisode=str_replace('smb:', '', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
-    		//192.168.0.10/share	/media/documents	cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0
     		$hostNas=str_replace(strrev(explode('/',strrev($urlEpisode))[0]),'',$urlEpisode);
-    		$comm='sudo mount.cifs '.$hostNas.' -o /var/www/html/ArrakisWeb/SRVNAS_WEB -o guest,workgroup=WORKGROUP,rw,unhide,uid=48,gid=500,users';
-    		//$comm='sudo echo -e /"'' /var/www/html/ArrakisWeb/NASSRV cifs	guest,iocharset=utf8,gid=100,uid=1000,_netdev	0	0/" >> //etc//fstab';
+    		$comm='sh ./var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh '.$hostNas;
     		$urlPath="http://192.168.0.18/ArrakisWeb/NASSRV_WEB/".strrev(explode('/',strrev($urlEpisode))[0]);
     		$result=$cmdShell->ExcuteShell($comm);
     		$this->load->view('view_debug', array('result' => $comm));
