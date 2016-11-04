@@ -66,8 +66,8 @@ class Watch extends CI_Controller
     		{
     			$commandeShell='sudo ffmpeg -i '.$urlPath.' -c:v libx264 -preset slow -crf 22 -c:a libfaac -b:a 128k '.$URL_COVERT_VIDEOS;	
     			$result=$cmdShell->ExcuteShell($commandeShell);
-    			//$this->load->view('view_debug', array('result' => $comm));
-    			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
+    			$this->load->view('view_debug', array('result' => $commandeShell));
+    			//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
     			 
     			
     		}
