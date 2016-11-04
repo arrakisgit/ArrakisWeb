@@ -2,6 +2,18 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo -i
 echo 'www-data   ALL=(ALL)   NOPASSWD: ALL'>>/etc/sudoers
+cd /usr/src
+sudo git clone git://git.videolan.org/x264
+cd x264
+sudo ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+sudo make
+sudo make install
+cd /usr/src
+sudo git clone https://github.com/FFmpeg/FFmpeg.git
+cd FFmpeg
+sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree
+sudo make
+sudo make install
 sudo apt-get install apache2
 sudo chown -R www-data:pi /var/www/html/
 sudo chmod -R 770 /var/www/html/
