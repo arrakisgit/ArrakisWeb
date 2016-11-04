@@ -52,7 +52,7 @@ class Watch extends CI_Controller
     		$hostNas=str_replace('/'.strrev(explode('/',strrev($urlEpisode))[0]),$vide,$urlEpisode);
     		$folderNAS=str_replace('/'.strrev(explode('/',strrev($hostNas))[0]),$vide,$hostNas);
     		
-    		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh \''.$folderNAS.'\'';
+    		$comm='/var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh \''.$folderNAS.'\'';
     		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.strrev(explode('/',strrev($hostNas))[0]).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$result=$cmdShell->ExcuteShell($comm);
     		$this->load->view('view_debug', array('result' => $comm));
