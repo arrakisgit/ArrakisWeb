@@ -64,10 +64,10 @@ class Watch extends CI_Controller
     		
     		if ($extension=='AVI')
     		{
-    			$commandeShell='sudo ffmpeg -i '.str_replace('http://192.168.0.18','/var/www/html',$urlPath).' -c:v libx264 -preset slow -crf 22 -preset slow -c:a aac -strict experimental -b:a 128k '.str_replace('http://192.168.0.18','/var/www/html',$URL_COVERT_VIDEOS);	
+    			$commandeShell='sudo avconv -i '.str_replace('http://192.168.0.18','/var/www/html',$urlPath).' -c:v libx264 -c:a copy '.str_replace('http://192.168.0.18','/var/www/html',$URL_COVERT_VIDEOS);	
     			$result=$cmdShell->ExcuteShell($commandeShell);
-    			$this->load->view('view_debug', array('result' => $commandeShell));
-    			//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
+    			//$this->load->view('view_debug', array('result' => $commandeShell));
+    			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
     			 
     			
     		}
