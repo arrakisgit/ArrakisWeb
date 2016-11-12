@@ -44,6 +44,12 @@ class Watch extends CI_Controller
     	elseif ($Channel[0]=='Kodi')
     	{
     		$typeVid="mp4";
+    		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
+    		$inFile = $ChannelCategories->File_Video_Url($Channel);
+    		$ws_init=new WebService();
+    		$ws_init->ws_command_shell_conv_mp4($inFile);
+    		$this->load->view('view_debug', array('result' => 'ok'));
+    		/*$typeVid="mp4";
     		$vide='';
     		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
@@ -83,7 +89,7 @@ class Watch extends CI_Controller
     		{
     			//$this->load->view('view_debug', array('result' => $comm));
     			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
-    		}
+    		}*/
     		
     	}
 		

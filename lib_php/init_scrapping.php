@@ -16,7 +16,7 @@ use Masterminds\HTML5\Parser\Scanner;
 use Masterminds\HTML5\Parser\StringInputStream;
 use Masterminds\HTML5\Parser\Tokenizer;
 use Masterminds\HTML5\Tests\Parser;
-
+ 
 class ScrappingCURL
 {
 	//initialisation variable session et traitement
@@ -230,8 +230,9 @@ class ScrappingCURL
 	public function ExcuteShell($cmd)
 	{
 		$output = shell_exec($cmd);
-		
+	
 	}
+	
 }
 
 ?>

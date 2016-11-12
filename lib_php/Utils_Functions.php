@@ -6,6 +6,13 @@
  *Description : Fonctions de gestion des fichiers HTML/JSON
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
+
+function ExcuteShell($cmd)
+{
+	$output = shell_exec($cmd);
+
+}
+
 function FileCopy($fileUrl,$zipPath)
 {
 	
