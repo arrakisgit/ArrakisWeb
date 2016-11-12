@@ -16,6 +16,7 @@ sudo rm -r Episodes.php
 sudo rm -r Seasons.php
 sudo rm -r Watch.php
 sudo rm -r debug.php
+sudo rm -r webservice_server.php
 cd /var/www/html/ArrakisWeb/application/views
 sudo rm -r Template.php
 sudo rm -r view_categories.php
@@ -34,6 +35,7 @@ sudo cp -R Seasons.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Episodes.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R Watch.php /var/www/html/ArrakisWeb/application/controllers
 sudo cp -R debug.php /var/www/html/ArrakisWeb/application/controllers
+sudo cp -R webservice_server.php /var/www/html/ArrakisWeb/application/controllers
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb/Views
 sudo cp -R *.php /var/www/html/ArrakisWeb/application/views
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb
