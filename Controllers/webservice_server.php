@@ -38,7 +38,7 @@ class webservice_sever extends CI_Controller
 		
 		if ($extension=='AVI')
 		{
-			$commandeShell='sudo avconv -i '.str_replace('http://192.168.0.44','/var/www/html',$urlPath).' -c:v libx264 -c:a copy '.str_replace('http://192.168.0.18','/var/www/html',$URL_COVERT_VIDEOS);
+			$commandeShell='sudo avconv -i '.str_replace('http://192.168.0.44','/var/www/html',$urlPath).' -c:v libx264 -c:a copy '.str_replace('http://127.0.0.1','/var/www/html',$URL_COVERT_VIDEOS);
 			$result=$cmdShell->ExcuteShell($commandeShell);
 			return $URL_COVERT_VIDEOS;
 			 

@@ -55,7 +55,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='http://127.0.0.1/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else
@@ -71,7 +71,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='http://127.0.0.1/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else
