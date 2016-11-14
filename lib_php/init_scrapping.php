@@ -24,12 +24,14 @@ class ScrappingCURL
 	private $ch;
 	private $DOMResultat;
 	private $jsonresultat;
+	private $urlArrakisServices;
 	
 	//constructeur: initialisation de la variable $pURL et initialisation cURL
 	
 	public function __construct()
 	{
 		$this->ch = curl_init();
+		$this->urlArrakisServices='http://192.168.0.44/ArrakisServices/ArrakisServices/index.php/Actions';
 	}
 	
 	//scrapping uniquement par html 4
@@ -231,6 +233,38 @@ class ScrappingCURL
 	{
 		$output = shell_exec($cmd);
 	
+	}
+	public function SendCallArrakisServices($urlFile)
+	{
+		//$params=explode('_', $idShow);
+		$postData = array(
+				'urlPath'=> $urlFile,
+		);
+		
+		
+		// Setup cURL
+		//return $postData;
+		$this->ch = curl_init($this->urlArrakisServices);
+		curl_setopt_array($this->ch, array(
+				CURLOPT_POST => TRUE,
+				CURLOPT_RETURNTRANSFER => TRUE,
+				CURLOPT_HTTPHEADER => array(
+						'Content-Type: application/json'
+				),
+				CURLOPT_POSTFIELDS => json_encode($postData)
+		));
+		
+		// Send the request
+		$response = curl_exec($this->ch);
+		
+		// Check for errors
+		if($response === FALSE)
+		{
+			die(curl_error($this->ch));
+		}
+		$returnFile=json_decode($response);
+		
+		return $returnFile['UrlConverted'];
 	}
 	
 }
