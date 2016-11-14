@@ -11,7 +11,7 @@
 foreach ($ArraySeason as $SeasonID=>$labelSeason)
 {
 	//echo
-	echo "<br><a href='http://127.0.0.1/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
+	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
 }
 
 ?>
