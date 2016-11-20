@@ -265,7 +265,7 @@ class ScrappingCURL
 		$returnFile=json_decode($response);
 		
 		//return $returnFile['UrlConverted'];
-		return var_dump(curl_exec($this->ch));
+		return $this->urlArrakisServices;
 	}
 	
 }
