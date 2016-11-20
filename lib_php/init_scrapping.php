@@ -265,7 +265,7 @@ class ScrappingCURL
 		$returnFile=json_decode($response);
 		
 		//return $returnFile['UrlConverted'];
-		return json_encode($postData);
+		return $response;
 	}
 	
 }
