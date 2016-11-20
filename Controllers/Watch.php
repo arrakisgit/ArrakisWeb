@@ -63,7 +63,8 @@ class Watch extends CI_Controller
     		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh \''.$folderNAS.'\'';
     		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.str_replace(' ','%20',strrev(explode('/',strrev($hostNas))[0])).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$urlConv=$cmdShell->SendCallArrakisServices($urlPath);
-    		$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlConv));
+    		$this->load->view('view_debug', array('result' => $urlConv));
+    		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlConv));
     		/*$SRV_CONVERT='http://127.0.0.1/ArrakisWeb/ArrakisVideos/';
     		$extension=strtoupper(strrev(explode('.',strrev(strrev(explode('/',strrev($urlEpisode))[0])))[0]));
     		$NameVideos=str_replace('.'.strtolower($extension),$vide,strrev(explode('/',strrev($urlEpisode))[0]));
