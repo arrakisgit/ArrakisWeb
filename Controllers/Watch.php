@@ -43,12 +43,7 @@ class Watch extends CI_Controller
     	}
     	elseif ($Channel[0]=='Kodi')
     	{
-    		//$typeVid="mp4";
-    		//$ChannelCategories=new Kodi('http://192.168.0.30','8080');
-    		//$inFile = $ChannelCategories->File_Video_Url($Channel);
-    		//$ws_init=new WebService();
-    		//$ws_init->ws_command_shell_conv_mp4($inFile);
-    		//$this->load->view('view_debug', array('result' => 'ok'));
+    		
     		$typeVid="mp4";
     		$vide='';
     		$ChannelCategories=new Kodi('http://192.168.0.30','8080');
@@ -64,36 +59,7 @@ class Watch extends CI_Controller
     		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.str_replace(' ','%20',strrev(explode('/',strrev($hostNas))[0])).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$urlConv=$cmdShell->SendCallArrakisServices($urlPath);
     		$this->load->view('view_debug', array('result' => $urlConv));
-    		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlConv));
-    		/*$SRV_CONVERT='http://127.0.0.1/ArrakisWeb/ArrakisVideos/';
-    		$extension=strtoupper(strrev(explode('.',strrev(strrev(explode('/',strrev($urlEpisode))[0])))[0]));
-    		$NameVideos=str_replace('.'.strtolower($extension),$vide,strrev(explode('/',strrev($urlEpisode))[0]));
-    		$URL_COVERT_VIDEOS=$SRV_CONVERT.$NameVideos.'.mp4';
-    		$result=$cmdShell->ExcuteShell($comm);
-    		
-    		if ($extension=='AVI')
-    		{
-    			$commandeShell='sudo avconv -i '.str_replace('http://127.0.0.1','/var/www/html',$urlPath).' -c:v libx264 -c:a copy '.str_replace('http://127.0.0.1','/var/www/html',$URL_COVERT_VIDEOS);	
-    			$result=$cmdShell->ExcuteShell($commandeShell);
-    			//$this->load->view('view_debug', array('result' => $commandeShell));
-    			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
-    			 
-    			
-    		}
-    		elseif ($extension=="MKV")
-    		{
-    			$commandeShell='sudo ffmpeg -i '.$urlPath.' -vcodec copy -acodec copy '.$URL_COVERT_VIDEOS;
-    			$result=$cmdShell->ExcuteShell($commandeShell);
-    			//$this->load->view('view_debug', array('result' => $comm));
-    			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$URL_COVERT_VIDEOS));
-    			 
-    		}
-    		else
-    		{
-    			//$this->load->view('view_debug', array('result' => $comm));
-    			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlPath));
-    		}*/
-    		
+    		    		
     	}
 		
 	}
