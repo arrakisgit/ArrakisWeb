@@ -44,7 +44,7 @@ function stopRunning() {
 function retrieveVideo(videosPath) {
   alert(videosPath);
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", videosPath, true);
+  oReq.open("POST", videosPath, true);
   oReq.responseType = "arraybuffer";
   console.log(oReq);
   oReq.onload = function (oEvent) {
