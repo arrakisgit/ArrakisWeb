@@ -38,6 +38,8 @@ function retrieveVideo(videosPath) {
 }
 
 function parseArguments(text) {
+	console.log("parser");
+	console.log(text);
   text = text.replace(/\s+/g, ' ');
   var args = [];
   // Allow double quotes to not split args.
@@ -49,6 +51,7 @@ function parseArguments(text) {
       args = args.concat(t.split(" "));
     }
   });
+  console.log(args);
   return args;
 }
 
