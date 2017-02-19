@@ -31,11 +31,13 @@ function retrieveVideo(videosPath) {
   oReq.addEventListener('readystatechange', function() {
 	    if (oReq.readyState === XMLHttpRequest.DONE) { 
 	    	sampleVideoData = new Uint8Array(this.response);
+	    	alert('fini');
 	    }
 	    else
 	    	{
-	    	alert('dans le cul');
+	    	console.log(oReq.readyState);
 	    	}
+
 	});
     
     console.log(sampleVideoData);
