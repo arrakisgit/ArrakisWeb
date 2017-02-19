@@ -32,6 +32,7 @@ function retrieveVideo(videosPath) {
 	    if (oReq.readyState === XMLHttpRequest.DONE) { 
 	    	sampleVideoData = new Uint8Array(this.response);
 	    	alert('fini');
+	    	console.log(sampleVideoData);
 	    }
 	    else
 	    	{
@@ -39,8 +40,6 @@ function retrieveVideo(videosPath) {
 	    	}
 
 	});
-    
-    console.log(sampleVideoData);
     
 }
 
