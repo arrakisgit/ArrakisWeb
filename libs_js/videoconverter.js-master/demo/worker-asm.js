@@ -12,7 +12,7 @@ function print(text) {
 onmessage = function(event) {
 
   var message = event.data;
-
+  alert("wwoorrkkeerr");
   if (message.type === "command") {
 
     var Module = {
