@@ -5,6 +5,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
 <script type="text/javascript" src="http://192.168.0.18/ArrakisWeb_Lib/libs_js/videoconverter.js-master/demo/terminal.js"></script>
+<script type="text/javascript" src="http://192.168.0.18/ArrakisWeb_Lib/libs_js/videoconverter.js-master/demo/worker-asm.js"></script>
 
 
 </head>
