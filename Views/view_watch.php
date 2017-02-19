@@ -18,8 +18,8 @@
     {
     	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
     	//echo "<script type='text/javascript'>\n";
-    	echo "retrieveVideo('".$urlEpisode."');\n";
     	echo "initWorker();\n";
+    	echo "retrieveVideo('".$urlEpisode."');\n";
     	echo "runCommand('".$js_ffmpeg_command."');\n";
     	//echo "</script>\n";
     }
