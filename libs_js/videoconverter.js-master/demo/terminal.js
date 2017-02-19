@@ -11,6 +11,7 @@ var isSupported = (function() {
 })();
 
 function isReady() {
+  alert("Ready:"+(running && isWorkerLoaded && sampleImageData && sampleVideoData));
   return !running && isWorkerLoaded && sampleImageData && sampleVideoData;
 }
 
@@ -116,7 +117,8 @@ function getDownloadLink(fileData, fileName) {
 
 function initWorker() {
   worker = new Worker("worker-asm.js");
-  worker.onmessage = function (event) {
+  alert("worker");
+  /*worker.onmessage = function (event) {
     var message = event.data;
     if (message.type == "ready") {
       isWorkerLoaded = true;
@@ -138,34 +140,8 @@ function initWorker() {
         filesElement.appendChild(getDownloadLink(file.data, file.name));
       });
     }
-  };
+  };*/
 }
 
-document.addEventListener("DOMContentLoaded", function() {
 
-  initWorker();
-  retrieveSampleVideo();
-  //retrieveSampleImage();
 
-  var inputElement = document.querySelector("#input");
-  outputElement = document.querySelector("#output");
-  filesElement = document.querySelector("#files");
-
-  inputElement.addEventListener("keydown", function(e) {
-    if (e.keyCode === 13) {
-      runCommand(inputElement.value);
-    }
-  }, false);
-  document.querySelector("#run").addEventListener("click", function() {
-    runCommand(inputElement.value);
-  });
-
-  [].forEach.call(document.querySelectorAll(".sample"), function(link) {
-    link.addEventListener("click", function(e) {
-      inputElement.value = this.getAttribute("data-command");
-      runCommand(inputElement.value);
-      e.preventDefault();
-    });
-  });
-
-});
