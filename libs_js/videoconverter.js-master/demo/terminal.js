@@ -59,6 +59,7 @@ function parseArguments(text) {
 function runCommand(text) {
 	alert(text);
   if (isReady()) {
+	  alert("go");
     startRunning();
     var args = parseArguments(text);
     console.log(args);
