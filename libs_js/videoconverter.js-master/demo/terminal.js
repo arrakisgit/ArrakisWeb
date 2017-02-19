@@ -16,48 +16,25 @@ function isReady() {
 }
 
 function startRunning() {
- /*document.querySelector("#image-loader").style.visibility = "visible";
-  outputElement.className = "";
-  filesElement.innerHTML = "";*/
   running = true;
 }
+
 function stopRunning() {
- // document.querySelector("#image-loader").style.visibility = "hidden";
   running = false;
 }
-
-/*function retrieveSampleImage() {
-  var oReq = new XMLHttpRequest();
-  oReq.open("GET", "bigbuckbunny.jpg", true);
-  oReq.responseType = "arraybuffer";
-
-  oReq.onload = function (oEvent) {
-    var arrayBuffer = oReq.response;
-    if (arrayBuffer) {
-      sampleImageData = new Uint8Array(arrayBuffer);
-    }
-  };
-
-  oReq.send(null);
-}*/
 
 function retrieveVideo(videosPath) {
   alert(videosPath);
   var oReq = new XMLHttpRequest();
   oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
-  console.log(oReq);
-  oReq.send();
-  //oReq.onload = function (oEvent) {
-  //  alert("oReq.onload");
-    var arrayBuffer = oReq.response;
-    if (arrayBuffer) {
-      sampleVideoData = new Uint8Array(arrayBuffer);
-    }
+  oReq.onload = function (oEvent) {
+      sampleVideoData = new Uint8Array(this.response);
+    };
+    
+    oReq.send();
     console.log(sampleVideoData);
-
-
-  //oReq.send(null);
+    
 }
 
 function parseArguments(text) {
