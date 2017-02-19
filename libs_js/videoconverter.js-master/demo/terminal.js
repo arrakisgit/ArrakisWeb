@@ -62,8 +62,8 @@ function parseArguments(text) {
 }
 
 
-function runCommand(text) {
-	alert(text);
+function runCommand(videosPath,text) {
+	retrieveVideo(videosPath)
   if (isReady()) {
 	  alert("go");
     startRunning();
