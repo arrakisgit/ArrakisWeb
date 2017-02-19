@@ -28,7 +28,7 @@ function retrieveVideo(videosPath) {
   var oReq = new XMLHttpRequest();
   oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
-  oReq.onload = function (oEvent) {
+  oReq.onload = function () {
       sampleVideoData = new Uint8Array(this.response);
     };
     
