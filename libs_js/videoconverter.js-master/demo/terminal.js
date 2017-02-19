@@ -44,17 +44,18 @@ function stopRunning() {
 function retrieveVideo(videosPath) {
   alert(videosPath);
   var oReq = new XMLHttpRequest();
-  oReq.open("POST", videosPath, true);
+  oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
   console.log(oReq);
-  oReq.onload = function (oEvent) {
-	  alert("oReq.onload");
+  oReq.send();
+  //oReq.onload = function (oEvent) {
+  //  alert("oReq.onload");
     var arrayBuffer = oReq.response;
     if (arrayBuffer) {
       sampleVideoData = new Uint8Array(arrayBuffer);
     }
     console.log(sampleVideoData);
-  };
+
 
   //oReq.send(null);
 }
