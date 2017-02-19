@@ -45,7 +45,7 @@ function retrieveVideo(videosPath) {
   var oReq = new XMLHttpRequest();
   oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
-
+  console.log(oReq);
   oReq.onload = function (oEvent) {
 	  alert("oReq.onload");
     var arrayBuffer = oReq.response;
