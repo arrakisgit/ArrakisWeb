@@ -47,6 +47,7 @@ function retrieveVideo(videosPath) {
   oReq.responseType = "arraybuffer";
 
   oReq.onload = function (oEvent) {
+	  alert("oReq.onload");
     var arrayBuffer = oReq.response;
     if (arrayBuffer) {
       sampleVideoData = new Uint8Array(arrayBuffer);
