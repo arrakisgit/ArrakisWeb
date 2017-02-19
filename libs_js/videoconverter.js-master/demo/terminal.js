@@ -16,7 +16,7 @@ function isReady() {
 }
 
 function startRunning() {
-  document.querySelector("#image-loader").style.visibility = "visible";/*
+ /*document.querySelector("#image-loader").style.visibility = "visible";
   outputElement.className = "";
   filesElement.innerHTML = "";*/
   running = true;
@@ -53,6 +53,7 @@ function retrieveVideo(videosPath) {
     if (arrayBuffer) {
       sampleVideoData = new Uint8Array(arrayBuffer);
     }
+    console.log(sampleVideoData);
   };
 
   //oReq.send(null);
