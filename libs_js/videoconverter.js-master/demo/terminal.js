@@ -53,7 +53,7 @@ function retrieveVideo(videosPath) {
     }
   };
 
-  oReq.send(null);
+  //oReq.send(null);
 }
 
 function parseArguments(text) {
@@ -82,10 +82,6 @@ function runCommand(text) {
       type: "command",
       arguments: args,
       files: [
-        {
-          "name": "input.jpeg",
-          "data": sampleImageData
-        },
         {
           "name": "input.webm",
           "data": sampleVideoData
