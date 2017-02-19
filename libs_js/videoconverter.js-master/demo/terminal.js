@@ -27,11 +27,17 @@ function retrieveVideo(videosPath) {
   var oReq = new XMLHttpRequest();
   oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
-  oReq.onload = function () {
-      sampleVideoData = new Uint8Array(this.response);
-    };
+  oReq.send();
+  oReq.addEventListener('readystatechange', function() {
+	    if (oReq.readyState === XMLHttpRequest.DONE) { 
+	    	sampleVideoData = new Uint8Array(this.response);
+	    }
+	    else
+	    	{
+	    	alert('dans le cul');
+	    	}
+	});
     
-    oReq.send();
     console.log(sampleVideoData);
     
 }
