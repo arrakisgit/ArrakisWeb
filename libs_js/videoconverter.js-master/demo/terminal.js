@@ -16,13 +16,13 @@ function isReady() {
 }
 
 function startRunning() {
-  document.querySelector("#image-loader").style.visibility = "visible";
+  document.querySelector("#image-loader").style.visibility = "visible";/*
   outputElement.className = "";
-  filesElement.innerHTML = "";
+  filesElement.innerHTML = "";*/
   running = true;
 }
 function stopRunning() {
-  document.querySelector("#image-loader").style.visibility = "hidden";
+ // document.querySelector("#image-loader").style.visibility = "hidden";
   running = false;
 }
 
@@ -116,7 +116,13 @@ function getDownloadLink(fileData, fileName) {
 }
 
 function initWorker() {
-  worker = new Worker("worker-asm.js");
+  //worker = new Worker("worker-asm.js");
+  
+  if( 'function' === typeof importScripts) {
+	   importScripts('worker-asm.js');
+	   addEventListener('message', onMessage);
+  }
+
   alert("worker");
   /*worker.onmessage = function (event) {
     var message = event.data;
