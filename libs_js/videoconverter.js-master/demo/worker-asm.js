@@ -9,6 +9,9 @@ function print(text) {
   });
 }
 
+if( 'function' === typeof importScripts) {
+	   importScripts('../build/ffmpeg-all-codecs.js');
+}
 onmessage = function(event) {
 
   var message = event.data;

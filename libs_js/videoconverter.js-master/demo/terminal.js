@@ -116,12 +116,9 @@ function getDownloadLink(fileData, fileName) {
 }
 
 function initWorker() {
-  //worker = new Worker("worker-asm.js");
+  worker = new Worker("worker-asm.js");
   
-  if( 'function' === typeof importScripts) {
-	   importScripts('worker-asm.js');
-	   addEventListener('message', onMessage);
-  }
+  
 
   alert("worker");
   /*worker.onmessage = function (event) {
