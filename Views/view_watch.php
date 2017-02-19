@@ -13,7 +13,7 @@
 
 <div id="player"></div>
     <script>
-    <?php if ($typeVid=='mp4')
+    <?php if ($typeVid=='avi')
     {
     	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
     	echo "<script type='text/javascript'>";
