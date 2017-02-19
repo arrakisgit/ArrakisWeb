@@ -11,8 +11,7 @@ var isSupported = (function() {
 })();
 
 function isReady() {
-  alert("Ready:"+(running && isWorkerLoaded && sampleImageData && sampleVideoData));
-  return !running && isWorkerLoaded && sampleImageData && sampleVideoData;
+  return !running && isWorkerLoaded && sampleVideoData;
 }
 
 function startRunning() {
@@ -98,7 +97,7 @@ function getDownloadLink(fileData, fileName) {
 
 function initWorker() {
   worker = new Worker("worker-asm.js");
-  
+  isWorkerLoaded = true;
   
 
   alert("worker");
