@@ -4,6 +4,7 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+<script type="text/javascript" src="http://192.168.0.18/ArrakisWeb_Lib/libs_js/videoconverter.js-master/demo/terminal.js"></script>
 
 
 </head>
@@ -12,6 +13,14 @@
 
 <div id="player"></div>
     <script>
+    <?php if ($typeVid=='mp4')
+    {
+    	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
+    	echo "<script type='text/javascript'>";
+    	echo "retrieveVideo('".$urlEpisode."');";
+    	echo "runCommand('".$js_ffmpeg_command."');";
+    }
+    	?>
         var player = new Clappr.Player({
             							source: <?php echo "'".$urlEpisode."',\n"?>
         								parentId: "#player", 

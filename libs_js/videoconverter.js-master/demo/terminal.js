@@ -25,7 +25,7 @@ function stopRunning() {
   running = false;
 }
 
-function retrieveSampleImage() {
+/*function retrieveSampleImage() {
   var oReq = new XMLHttpRequest();
   oReq.open("GET", "bigbuckbunny.jpg", true);
   oReq.responseType = "arraybuffer";
@@ -38,11 +38,11 @@ function retrieveSampleImage() {
   };
 
   oReq.send(null);
-}
+}*/
 
-function retrieveSampleVideo() {
+function retrieveVideo(videosPath) {
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "bigbuckbunny.webm", true);
+  oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
 
   oReq.onload = function (oEvent) {
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   initWorker();
   retrieveSampleVideo();
-  retrieveSampleImage();
+  //retrieveSampleImage();
 
   var inputElement = document.querySelector("#input");
   outputElement = document.querySelector("#output");
