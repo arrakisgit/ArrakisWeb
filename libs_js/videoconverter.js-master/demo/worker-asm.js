@@ -57,7 +57,7 @@ onmessage = function(event) {
   }
 };
 
-postMessage({
+/*postMessage({
   'type' : 'ready',
   'data' : 'ready'
-});
+});*/
