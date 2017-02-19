@@ -63,7 +63,8 @@ function parseArguments(text) {
 
 
 function runCommand(videosPath,text) {
-	retrieveVideo(videosPath)
+	initWorker();
+	retrieveVideo(videosPath);
   if (isReady()) {
 	  alert("go");
     startRunning();
@@ -107,7 +108,7 @@ function initWorker() {
   isWorkerLoaded = true;
   
 
-  alert("worker");
+ // alert("worker");
   /*worker.onmessage = function (event) {
     var message = event.data;
     if (message.type == "ready") {
