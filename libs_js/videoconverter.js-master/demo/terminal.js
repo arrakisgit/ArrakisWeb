@@ -35,7 +35,7 @@ function retrieveVideo(videosPath) {
 	    	alert('fini');
 	    	console.log(sampleVideoData);
 	    	if (isReady()) {
-	    		  alert("go");
+	    		  alert("go it");
 	    	    startRunning();
 	    	    var args = parseArguments(text);
 	    	    console.log(args);
