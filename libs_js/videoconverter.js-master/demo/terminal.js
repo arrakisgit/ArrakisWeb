@@ -23,6 +23,31 @@ function stopRunning() {
   running = false;
 }
 
+function runConvert()
+{
+	if (isReady()) {
+		  alert("go it");
+	    startRunning();
+	    var args = parseArguments(text);
+	    console.log(args);
+	    worker.postMessage({
+	      type: "command",
+	      arguments: args,
+	      files: [
+	        {
+	          "name": "input.webm",
+	          "data": sampleVideoData
+	        }
+	      ]
+	    });
+	  }
+	  else
+		  {
+		  alert("echec");
+		  }
+
+	}
+
 function retrieveVideo(videosPath) {
   alert(videosPath);
   var oReq = new XMLHttpRequest();
@@ -33,33 +58,10 @@ function retrieveVideo(videosPath) {
 	    if (oReq.readyState === XMLHttpRequest.DONE) { 
 	    	sampleVideoData = new Uint8Array(this.response);
 	    	alert('fini');
-	    	console.log(sampleVideoData);
-	    	if (isReady()) {
-	    		  alert("go it");
-	    	    startRunning();
-	    	    var args = parseArguments(text);
-	    	    console.log(args);
-	    	    worker.postMessage({
-	    	      type: "command",
-	    	      arguments: args,
-	    	      files: [
-	    	        {
-	    	          "name": "input.webm",
-	    	          "data": sampleVideoData
-	    	        }
-	    	      ]
-	    	    });
-	    	  }
-	    	  else
-	    		  {
-	    		  alert("echec");
-	    		  }
+	    	runConvert();
 	    }
-	    else
-	    	{
-	    	console.log(oReq.readyState);
-	    	}
-
+	    	//console.log(sampleVideoData);
+	    	
 	});
     
 }
