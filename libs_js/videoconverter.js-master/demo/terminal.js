@@ -82,6 +82,10 @@ function runCommand(videosPath,text) {
       ]
     });
   }
+  else
+	  {
+	  alert("echec");
+	  }
 }
 
 function getDownloadLink(fileData, fileName) {
