@@ -34,6 +34,26 @@ function retrieveVideo(videosPath) {
 	    	sampleVideoData = new Uint8Array(this.response);
 	    	alert('fini');
 	    	console.log(sampleVideoData);
+	    	if (isReady()) {
+	    		  alert("go");
+	    	    startRunning();
+	    	    var args = parseArguments(text);
+	    	    console.log(args);
+	    	    worker.postMessage({
+	    	      type: "command",
+	    	      arguments: args,
+	    	      files: [
+	    	        {
+	    	          "name": "input.webm",
+	    	          "data": sampleVideoData
+	    	        }
+	    	      ]
+	    	    });
+	    	  }
+	    	  else
+	    		  {
+	    		  alert("echec");
+	    		  }
 	    }
 	    else
 	    	{
@@ -66,7 +86,7 @@ function parseArguments(text) {
 function runCommand(videosPath,text) {
 	initWorker();
 	retrieveVideo(videosPath);
-  if (isReady()) {
+  /*if (isReady()) {
 	  alert("go");
     startRunning();
     var args = parseArguments(text);
@@ -85,7 +105,7 @@ function runCommand(videosPath,text) {
   else
 	  {
 	  alert("echec");
-	  }
+	  }*/
 }
 
 function getDownloadLink(fileData, fileName) {
