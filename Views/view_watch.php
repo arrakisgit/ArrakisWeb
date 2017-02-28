@@ -35,6 +35,8 @@
     //$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
     //echo "runCommand('".$urlEpisode."','".$js_ffmpeg_command."');\n";
 	}
+	else 
+	{
     	?>
     	
         var player = new Clappr.Player({
@@ -47,6 +49,6 @@
             						          appId: '9DFB77C0'
             						        }
             							});
-      
+     <?php }?> 
     </script>
 </body></html>
