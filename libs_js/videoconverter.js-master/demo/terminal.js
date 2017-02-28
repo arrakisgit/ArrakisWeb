@@ -25,6 +25,7 @@ function stopRunning() {
 
 function runConvert()
 {
+	alert("i am in the runConvert()");
 	if (isReady()) {
 		  alert("go it");
 	    startRunning();
@@ -58,7 +59,6 @@ function retrieveVideo(videosPath) {
 	    if (oReq.readyState === XMLHttpRequest.DONE) { 
 	    	sampleVideoData = new Uint8Array(this.response);
 	    	alert('fini');
-	    	runConvert();
 	    }
 	    	//console.log(sampleVideoData);
 	    	
@@ -88,6 +88,7 @@ function parseArguments(text) {
 function runCommand(videosPath,text) {
 	initWorker();
 	retrieveVideo(videosPath);
+	runConvert();
   /*if (isReady()) {
 	  alert("go");
     startRunning();
