@@ -1,11 +1,10 @@
 <html><head>
 
-<title>Video/Audio</title>
+<title>ArrakisWeb Player</title>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
-<script type="text/javascript" src="http://192.168.0.18/ArrakisWeb_Lib/libs_js/videoconverter.js-master/demo/terminal.js"></script>
-<script type="text/javascript" src="http://192.168.0.18/ArrakisWeb_Lib/libs_js/videoconverter.js-master/demo/worker-asm.js"></script>
+
 
 
 </head>
@@ -14,15 +13,28 @@
 
 <div id="player"></div>
     <script>
-    alert(<?php echo "'".$typeVid."'"?>);
     <?php if ($typeVid=='avi')
-    {
-    	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
-    	//echo "<script type='text/javascript'>\n";
-    	//echo "initWorker();\n";
-    	echo "runCommand('".$urlEpisode."','".$js_ffmpeg_command."');\n";
-    	//echo "</script>\n";
-    }
+    {?>
+    	var worker = new Worker("http://192.168.0.18/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
+    	worker.onmessage = function (event) {
+    		var message = event.data;
+    		if (message.type == "ready") {
+    			outputElement.textContent = "Loaded";
+    			worker.postMessage({
+    				type: 'command',
+    				arguments: ['-help']
+    			})
+    		} else if (message.type == "stdout") {
+    			outputElement.textContent += message.data + "\n";
+    		} else if (message.type == "start") {
+    			outputElement.textContent = "Worker has received command\n";
+    		}
+    	};
+    	
+    <?php
+    //$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
+    //echo "runCommand('".$urlEpisode."','".$js_ffmpeg_command."');\n";
+	}
     	?>
     	
         var player = new Clappr.Player({
@@ -37,11 +49,4 @@
             							});
       
     </script>
-<?php 
-
-		//echo "<div class='container'><video width='700' height='400'><source src='".$urlEpisode."' type='application/x-mpegURL'></video></div>";
-		//echo "<div><br>".$id.'|'.$Shows."|".$urlEpisode."</br></div>";
-	//}
-	
-?>
 </body></html>
