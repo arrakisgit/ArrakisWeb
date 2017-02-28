@@ -19,17 +19,46 @@
     	worker.onmessage = function (event) {
     		var message = event.data;
     		if (message.type == "ready") {
-    			outputElement.textContent = "Loaded";
+    			alert("Loaded");
     			worker.postMessage({
     				type: 'command',
     				arguments: ['-help']
     			})
     		} else if (message.type == "stdout") {
-    			outputElement.textContent += message.data + "\n";
+    			alert(message.data);
     		} else if (message.type == "start") {
-    			outputElement.textContent = "Worker has received command\n";
+    			alert("Worker has received command");
     		}
     	};
+    		var sampleVideoData;
+    		function retrieveSampleVideo() {
+    		  var oReq = new XMLHttpRequest();
+    		  oReq.open("GET", <?php echo '"'.$urlEpisode.'"'?>, true);
+    		  oReq.responseType = "arraybuffer";
+
+    		  oReq.onload = function (oEvent) {
+    		    var arrayBuffer = oReq.response;
+    		    if (arrayBuffer) {
+    		      sampleVideoData = new Uint8Array(arrayBuffer);
+    		    }
+    		  };
+
+    		  oReq.send(null);
+    		}
+    		function getDownloadLink(fileData, fileName) {
+    			  var a = document.createElement('a');
+    			  a.download = fileName;
+    			  var blob = new Blob([fileData]);
+    			  var src = window.URL.createObjectURL(blob);
+    			  a.href = src;
+    			  a.textContent = 'Click here to download ' + fileName + "!";
+    			  return a;
+    			}
+
+    			var result = ffmpeg_run(module);
+    			result.forEach(function(file) {
+    			  getDownloadLink(file.data, file.name);
+    			});
     	
     <?php
     //$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
