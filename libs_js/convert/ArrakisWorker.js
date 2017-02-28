@@ -1,4 +1,4 @@
-importScripts('/build/ffmpeg.js');
+importScripts('/ArrakisWeb_Lib/libs_js/convert/build/ffmpeg.js');
 
 function print(text) {
   postMessage({
