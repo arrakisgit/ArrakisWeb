@@ -54,15 +54,21 @@ function retrieveVideo(videosPath) {
   var oReq = new XMLHttpRequest();
   oReq.open("GET", videosPath, true);
   oReq.responseType = "arraybuffer";
+  oReq.onload = function (oEvent) {
+	    var arrayBuffer = oReq.response;
+	    if (arrayBuffer) {
+	      sampleVideoData = new Uint8Array(arrayBuffer);
+	    }
+	  };
   oReq.send();
-  oReq.addEventListener('readystatechange', function() {
+  /*oReq.addEventListener('readystatechange', function() {
 	    if (oReq.readyState === XMLHttpRequest.DONE) { 
 	    	sampleVideoData = new Uint8Array(this.response);
 	    	alert('fini');
 	    }
 	    	//console.log(sampleVideoData);
 	    	
-	});
+	});*/
     
 }
 
