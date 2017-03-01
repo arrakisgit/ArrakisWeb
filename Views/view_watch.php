@@ -14,7 +14,8 @@
 <div id="player"></div>
     <script>
     <?php if ($typeVid=='avi')
-    {?>
+    {
+    	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';?>
     	var worker = new Worker("http://192.168.0.18/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
@@ -55,6 +56,36 @@
     			  return a;
     			}
 
+    		function parseArguments(text) {
+    			console.log("parser");
+    			console.log(text);
+    		  text = text.replace(/\s+/g, ' ');
+    		  var args = [];
+    		  // Allow double quotes to not split args.
+    		  text.split('"').forEach(function(t, i) {
+    		    t = t.trim();
+    		    if ((i % 2) === 1) {
+    		      args.push(t);
+    		    } else {
+    		      args = args.concat(t.split(" "));
+    		    }
+    		  });
+    		  console.log(args);
+    		  return args;
+    		}
+
+    		var args = parseArguments(<?php echo "'".$js_ffmpeg_command.'"'?>);
+    		    console.log(args);
+    		    worker.postMessage({
+    		      type: "command",
+    		      arguments: args,
+    		      files: [
+    		        {
+    		          "name": "input.webm",
+    		          "data": sampleVideoData
+    		        }
+    		      ]
+    		    });
     			var result = ffmpeg_run(module);
     			result.forEach(function(file) {
     			  getDownloadLink(file.data, file.name);
