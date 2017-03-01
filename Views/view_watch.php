@@ -74,7 +74,7 @@
     		  return args;
     		}
 
-    		var args = parseArguments(<?php echo "'".$js_ffmpeg_command.'"'?>);
+    		var args = parseArguments(<?php echo '"'.$js_ffmpeg_command.'"'?>);
     		    console.log(args);
     		    worker.postMessage({
     		      type: "command",
