@@ -15,20 +15,20 @@
     <script>
     <?php if ($typeVid=='avi')
     {
-    	$js_ffmpeg_command='-i input.avi -c:a aac -b:a 128k -c:v libx264 -crf 23 output.mp4';?>
+    	$js_ffmpeg_command='input.avi -acodec copy -vcodec copy output.mp4';?>
     	var worker = new Worker("http://192.168.0.18/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
     		if (message.type == "ready") {
-    			document.writeln("Loaded\n");
+    			document.writeln("Loaded<br/>");
     			worker.postMessage({
     				type: 'command',
     				arguments: ['-help']
     			})
     		} else if (message.type == "stdout") {
-    			document.writeln(message.data+"\n");
+    			document.writeln(message.data+"<br/>");
     		} else if (message.type == "start") {
-    			document.writeln("Worker has received command\n");
+    			document.writeln("Worker has received command<br/>");
     		}
     	};
     		var sampleVideoData;
