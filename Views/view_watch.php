@@ -19,15 +19,15 @@
     	worker.onmessage = function (event) {
     		var message = event.data;
     		if (message.type == "ready") {
-    			alert("Loaded");
+    			document.writeln("Loaded");
     			worker.postMessage({
     				type: 'command',
     				arguments: ['-help']
     			})
     		} else if (message.type == "stdout") {
-    			alert(message.data);
+    			document.writeln(message.data);
     		} else if (message.type == "start") {
-    			alert("Worker has received command");
+    			document.writeln("Worker has received command");
     		}
     	};
     		var sampleVideoData;
