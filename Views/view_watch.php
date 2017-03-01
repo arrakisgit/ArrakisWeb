@@ -15,20 +15,20 @@
     <script>
     <?php if ($typeVid=='avi')
     {
-    	$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';?>
+    	$js_ffmpeg_command='-i input.avi -vf showinfo -strict -2 output.mp4';?>
     	var worker = new Worker("http://192.168.0.18/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
     		if (message.type == "ready") {
-    			document.writeln("Loaded");
+    			document.writeln("Loaded\n");
     			worker.postMessage({
     				type: 'command',
     				arguments: ['-help']
     			})
     		} else if (message.type == "stdout") {
-    			document.writeln(message.data);
+    			document.writeln(message.data+"\n");
     		} else if (message.type == "start") {
-    			document.writeln("Worker has received command");
+    			document.writeln("Worker has received command\n");
     		}
     	};
     		var sampleVideoData;
@@ -81,15 +81,12 @@
     		      arguments: args,
     		      files: [
     		        {
-    		          "name": "input.webm",
+    		          "name": "input.avi",
     		          "data": sampleVideoData
     		        }
     		      ]
     		    });
-    			var result = ffmpeg_run(module);
-    			result.forEach(function(file) {
-    			  getDownloadLink(file.data, file.name);
-    			});
+
     	
     <?php
     //$js_ffmpeg_command='-i input.webm -vf showinfo -strict -2 output.mp4';
