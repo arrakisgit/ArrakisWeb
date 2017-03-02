@@ -15,7 +15,7 @@
     <script>
     <?php if ($typeVid=='avi')
     {
-    	$js_ffmpeg_command=str_replace('http://192.168.0.18/','/',$urlEpisode).' -y -acodec copy -vcodec copy output.mp4';?>
+    	$js_ffmpeg_command='-i input.avi -y -acodec copy -vcodec copy output.mp4';?>
     	var worker = new Worker("/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
@@ -81,7 +81,7 @@
     		      arguments: args,
     		      files: [
     		        {
-    		          "name": <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
+    		          "name": "input.avi"<?php //echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
     		          "data": sampleVideoData
     		        }
     		      ]
