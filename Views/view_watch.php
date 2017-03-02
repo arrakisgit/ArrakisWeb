@@ -81,7 +81,7 @@
     		      arguments: args,
     		      files: [
     		        {
-    		          "name": "input.avi",
+    		          "name": <?php echo '"'.$urlEpisode.'"'?>,
     		          "data": sampleVideoData
     		        }
     		      ]
