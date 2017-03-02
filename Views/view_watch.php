@@ -34,7 +34,7 @@
     		var sampleVideoData;
     		function retrieveSampleVideo() {
     		  var oReq = new XMLHttpRequest();
-    		  oReq.open("GET", <?php echo '"'.$urlEpisode.'"'?>, true);
+    		  oReq.open("GET", <?php echo '"'.str_replace($urlEpisode,'http//192.168.0.18/','./').'"'?>, true);
     		  oReq.responseType = "arraybuffer";
 
     		  oReq.onload = function (oEvent) {
@@ -81,7 +81,7 @@
     		      arguments: args,
     		      files: [
     		        {
-    		          "name": <?php echo '"'.$urlEpisode.'"'?>,
+    		          "name": <?php echo '"'.str_replace($urlEpisode,'http//192.168.0.18/','./').'"'?>,
     		          "data": sampleVideoData
     		        }
     		      ]
