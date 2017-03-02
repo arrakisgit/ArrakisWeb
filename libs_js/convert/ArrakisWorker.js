@@ -18,6 +18,7 @@ onmessage = function(event) {
     'type' : 'start',
     'data' : module.arguments
   });
+  console.log(module);
   var result = ffmpeg_run(module);
   postMessage({
     'type' : 'done',
