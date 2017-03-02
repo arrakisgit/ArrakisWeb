@@ -15,8 +15,8 @@
     <script>
     <?php if ($typeVid=='avi')
     {
-    	$js_ffmpeg_command=$urlEpisode.' -y -acodec copy -vcodec copy output.mp4';?>
-    	var worker = new Worker("http://192.168.0.18/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
+    	$js_ffmpeg_command=str_replace('http://192.168.0.18/','/',$urlEpisode).' -y -acodec copy -vcodec copy output.mp4';?>
+    	var worker = new Worker("/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
     		if (message.type == "ready") {
@@ -34,7 +34,7 @@
     		var sampleVideoData;
     		function retrieveSampleVideo() {
     		  var oReq = new XMLHttpRequest();
-    		  oReq.open("GET", <?php echo '"'.$urlEpisode.'"'?>, true);
+    		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
     		  oReq.responseType = "arraybuffer";
 
     		  oReq.onload = function (oEvent) {
@@ -81,7 +81,7 @@
     		      arguments: args,
     		      files: [
     		        {
-    		          "name": <?php echo '"'.$urlEpisode.'"'?>,
+    		          "name": <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
     		          "data": sampleVideoData
     		        }
     		      ]
