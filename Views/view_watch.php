@@ -32,28 +32,6 @@
     		}
     	};
     		var sampleVideoData;
-    		function retrieveSampleVideo() {
-    		  var oReq = new XMLHttpRequest();
-    		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
-    		  oReq.responseType = "arraybuffer";
-    		  oReq.send(null);
-    		  oReq.addEventListener('readystatechange', function() {
-    			    if (oReq.readyState === XMLHttpRequest.DONE) { 
-    			    	sampleVideoData = new Uint8Array(this.response);
-    			    }
-    		  });
-
-    		}
-    		function getDownloadLink(fileData, fileName) {
-    			  var a = document.createElement('a');
-    			  a.download = fileName;
-    			  var blob = new Blob([fileData]);
-    			  var src = window.URL.createObjectURL(blob);
-    			  a.href = src;
-    			  a.textContent = 'Click here to download ' + fileName + "!";
-    			  return a;
-    			}
-
     		function parseArguments(text) {
     			console.log("parser");
     			console.log(text);
@@ -71,19 +49,43 @@
     		  console.log(args);
     		  return args;
     		}
+    		function retrieveSampleVideo() {
+    		  var oReq = new XMLHttpRequest();
+    		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
+    		  oReq.responseType = "arraybuffer";
+    		  oReq.send(null);
+    		  oReq.addEventListener('readystatechange', function() {
+    			    if (oReq.readyState === XMLHttpRequest.DONE) { 
+    			    	sampleVideoData = new Uint8Array(this.response);
+    			    	var args = parseArguments(<?php echo '"'.$js_ffmpeg_command.'"'?>);
+    	    		    console.log(args);
+    	    		    worker.postMessage({
+    	    		      type: "command",
+    	    		      arguments: args,
+    	    		      files: [
+    	    		        {
+    	    		          "name": "input.avi"<?php //echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
+    	    		          "data": sampleVideoData
+    	    		        }
+    	    		      ]
+    	    		    });
+    			    }
+    		  });
 
-    		var args = parseArguments(<?php echo '"'.$js_ffmpeg_command.'"'?>);
-    		    console.log(args);
-    		    worker.postMessage({
-    		      type: "command",
-    		      arguments: args,
-    		      files: [
-    		        {
-    		          "name": "input.avi"<?php //echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
-    		          "data": sampleVideoData
-    		        }
-    		      ]
-    		    });
+    		}
+    		function getDownloadLink(fileData, fileName) {
+    			  var a = document.createElement('a');
+    			  a.download = fileName;
+    			  var blob = new Blob([fileData]);
+    			  var src = window.URL.createObjectURL(blob);
+    			  a.href = src;
+    			  a.textContent = 'Click here to download ' + fileName + "!";
+    			  return a;
+    			}
+
+    		
+
+    		
 
     	
     <?php
