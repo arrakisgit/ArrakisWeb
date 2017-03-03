@@ -25,9 +25,9 @@
     				type: 'command',
     				arguments: ['-help']
     			})
-    		} else if (message.type == "stdout") {
-    			document.writeln(message.data+"<br/>");
-    		} else if (message.type == "start") {
+    		} //else if (message.type == "stdout") {
+    			//document.writeln(message.data+"<br/>");
+    		/*}*/ else if (message.type == "start") {
     			document.writeln("Worker has received command<br/>");
     		}
     	};
