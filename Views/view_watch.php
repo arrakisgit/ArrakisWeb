@@ -86,7 +86,7 @@
     			  a.textContent = 'Click here to download ' + fileName + "!";
     			  return a;
     			}
-
+    		retrieveSampleVideo();
     		
 
     		
