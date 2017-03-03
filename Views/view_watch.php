@@ -36,15 +36,13 @@
     		  var oReq = new XMLHttpRequest();
     		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
     		  oReq.responseType = "arraybuffer";
-
-    		  oReq.onload = function (oEvent) {
-    		    var arrayBuffer = oReq.response;
-    		    if (arrayBuffer) {
-    		      sampleVideoData = new Uint8Array(arrayBuffer);
-    		    }
-    		  };
-
     		  oReq.send(null);
+    		  oReq.addEventListener('readystatechange', function() {
+    			    if (oReq.readyState === XMLHttpRequest.DONE) { 
+    			    	sampleVideoData = new Uint8Array(this.response);
+    			    }
+    		  });
+
     		}
     		function getDownloadLink(fileData, fileName) {
     			  var a = document.createElement('a');
