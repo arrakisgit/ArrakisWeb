@@ -15,7 +15,7 @@
     <script>
     <?php if ($typeVid=='avi')
     {
-    	$js_ffmpeg_command='-i input.avi -y -c:a aac -b:a 128k -c:v libx264 -crf 23 output.mp4';?>
+    	$js_ffmpeg_command='-i input.avi -y -c:a aac -b:a 128k -c:v libx264 -crf 23 -strict -2 output.mp4';?>
     	var worker = new Worker("/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
     		var message = event.data;
