@@ -53,7 +53,7 @@
     		  var oReq = new XMLHttpRequest();
     		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
     		  oReq.responseType = "arraybuffer";
-    		  oReq.send(null);
+    		  oReq.send();
     		  oReq.addEventListener('readystatechange', function() {
     			    if (oReq.readyState === XMLHttpRequest.DONE) { 
     			    	sampleVideoData = new Uint8Array(this.response);
