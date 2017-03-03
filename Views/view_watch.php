@@ -70,6 +70,10 @@
     	    		      ]
     	    		    });
     			    }
+    			    else
+    		    	{
+    		    	console.log(oReq.readyState);
+    		    	}
     		  });
 
     		}
