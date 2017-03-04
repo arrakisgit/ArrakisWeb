@@ -15,6 +15,7 @@
     <script>
     <?php if ($typeVid=='avi')
     {
+    	
     	$js_ffmpeg_command='-i input.avi -y -acodec copy -vcodec copy  output.mp4';?>
     	var worker = new Worker("/ArrakisWeb_Lib/libs_js/convert/ArrakisWorker.js");
     	worker.onmessage = function (event) {
