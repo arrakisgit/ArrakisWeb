@@ -59,8 +59,8 @@ class Watch extends CI_Controller
     		$result=$cmdShell->ExcuteShell($comm);
     		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.str_replace(' ','%20',strrev(explode('/',strrev($hostNas))[0])).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$typeVid=strrev(explode('.',strrev($urlEpisode))[0]);
-    		$cmdShell->SendCallArrakisServices($urlPath);
-    		//$this->load->view('view_debug', array('result' => $urlPath));
+    		$result=$cmdShell->SendCallArrakisServices($urlPath);
+    		$this->load->view('view_debug', array('result' => $result));
     		//$this->load->view('view_watch',array('typeVid'=>$typeVid,'urlEpisode'=>$urlPath));
     		    		
     	}
