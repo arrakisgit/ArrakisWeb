@@ -251,6 +251,8 @@ class ScrappingCURL
 		$this->ch = curl_init($this->urlArrakisServices);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
+				CURLOPT_HTTPHEADER => array(
+						'Content-Type: application/xml'),
 				CURLOPT_RETURNTRANSFER => TRUE,
 				CURLOPT_POSTFIELDS => $post,
 				CURLOPT_SAFE_UPLOAD => false
