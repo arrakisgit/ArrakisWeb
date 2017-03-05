@@ -240,13 +240,13 @@ class ScrappingCURL
 		$file_name_with_full_path=$urlFile;
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
-			$cFile = curl_file_create(realpath($file_name_with_full_path));
+			$cFile = curl_file_create(str_replace('http://192.168.0.18/','/var/www/html/',$file_name_with_full_path));
 		} 
 		else 
 		{ //
 			$cFile = '@' . realpath($file_name_with_full_path);
 		}
-		//return $cFile;
+		return $cFile;
 		$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
 		//return $post;
 		$this->ch = curl_init($this->urlArrakisServices);
