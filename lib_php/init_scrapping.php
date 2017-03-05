@@ -255,8 +255,7 @@ class ScrappingCURL
 				CURLOPT_HTTPHEADER => array(
 						'Content-Type: application/xml'),
 				CURLOPT_RETURNTRANSFER => TRUE,
-				CURLOPT_POSTFIELDS => $post,
-				CURLOPT_SAFE_UPLOAD => false
+				CURLOPT_POSTFIELDS => $post
 		));
 		
 		// Send the request
