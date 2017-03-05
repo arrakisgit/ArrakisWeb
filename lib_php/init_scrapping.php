@@ -240,7 +240,7 @@ class ScrappingCURL
 		$file_name_with_full_path=str_replace('http://192.168.0.18/', './', $urlFile);
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
-			$cFile = curl_file_create($file_name_with_full_path);
+			$cFile = curl_file_create(realpath($file_name_with_full_path));
 		} 
 		else 
 		{ //
