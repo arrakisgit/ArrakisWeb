@@ -236,22 +236,24 @@ class ScrappingCURL
 	}
 	public function SendCallArrakisServices($urlFile)
 	{
-		//$params=explode('_', $idShow);
-		$postData = array(
-				'urlPath'=> $urlFile,
-		);
 		
+		$file_name_with_full_path=str_replace('http://192.168.0.18/', './', $urlFile);
+		if (function_exists('curl_file_create')) 
+		{ // php 5.6+
+			$cFile = curl_file_create($file_name_with_full_path);
+		} 
+		else 
+		{ //
+			$cFile = '@' . realpath($file_name_with_full_path);
+		}
+		$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
 		
-		// Setup cURL
-		//return $postData;
 		$this->ch = curl_init($this->urlArrakisServices);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
 				CURLOPT_RETURNTRANSFER => TRUE,
-				CURLOPT_HTTPHEADER => array(
-						'Content-Type: application/json'
-				),
-				CURLOPT_POSTFIELDS => json_encode($postData)
+				CURLOPT_POSTFIELDS => $post,
+				CURLOPT_SAFE_UPLOAD => false
 		));
 		
 		// Send the request
