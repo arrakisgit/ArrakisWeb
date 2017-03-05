@@ -246,6 +246,7 @@ class ScrappingCURL
 		{ //
 			$cFile = '@' . realpath($file_name_with_full_path);
 		}
+		return $cFile;
 		$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
 		//return $post;
 		$this->ch = curl_init($this->urlArrakisServices);
