@@ -252,7 +252,6 @@ class ScrappingCURL
 		$this->ch = curl_init($this->urlArrakisServices);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
-				CURLOPT_HTTPHEADER =>TRUE,
 				CURLOPT_RETURNTRANSFER => TRUE,
 				CURLOPT_POSTFIELDS => $post
 		));
