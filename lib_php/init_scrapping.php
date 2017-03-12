@@ -237,10 +237,10 @@ class ScrappingCURL
 	public function SendCallArrakisServices($urlFile)
 	{
 		
-		$file_name_with_full_path=str_replace('http://192.168.0.18/','/var/www/html/',$urlFile);
+		$file_name_with_full_path=str_replace('http://192.168.0.18/','./',$urlFile);
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
-			$cFile = curl_file_create($file_name_with_full_path);//,'video/avi','test');
+			$cFile = curl_file_create($file_name_with_full_path,mime_content_type($file_name_with_full_path),'test');//,'video/avi','test');
 		} 
 		else 
 		{ //
@@ -252,8 +252,7 @@ class ScrappingCURL
 		$this->ch = curl_init($this->urlArrakisServices);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
-				CURLOPT_HTTPHEADER => array(
-						'Content-Type: application/xml'),
+				CURLOPT_HTTPHEADER =>TRUE,
 				CURLOPT_RETURNTRANSFER => TRUE,
 				CURLOPT_POSTFIELDS => $post
 		));
