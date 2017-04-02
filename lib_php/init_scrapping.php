@@ -238,6 +238,9 @@ class ScrappingCURL
 	{
 		
 		$file_name_with_full_path=str_replace('http://192.168.0.18/','/var/www/html/',$urlFile);
+		
+		$this->ch = curl_init($this->urlArrakisServices);
+		
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
 			$cFile = curl_file_create($file_name_with_full_path,'video/avi','test');//,'video/avi','test');
@@ -249,7 +252,6 @@ class ScrappingCURL
 		return $cFile;
 		$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
 		//return $post;
-		$this->ch = curl_init($this->urlArrakisServices);
 		curl_setopt_array($this->ch, array(
 				CURLOPT_POST => TRUE,
 				CURLOPT_RETURNTRANSFER => TRUE,
