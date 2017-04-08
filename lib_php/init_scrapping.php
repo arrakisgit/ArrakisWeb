@@ -237,15 +237,15 @@ class ScrappingCURL
 	public function SendCallArrakisServices($urlFile)
 	{
 		
-		$file_name_with_full_path=str_replace('%20',' ',str_replace('http://192.168.0.18/','/var/www/html/',$urlFile));
+		$file_name_with_full_path=str_replace('%20',' ',str_replace('http://192.168.0.18/','///var/www/html/',$urlFile));
 		
 		$this->ch = curl_init($this->urlArrakisServices);
 		
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
-			return finfo_file($finfo, $file_name_with_full_path); 
-			$cFile = new CURLFile($file_name_with_full_path,'');//,'video/avi','test');//,'video/avi','test');
+			$typemim= finfo_file($finfo, $file_name_with_full_path); 
+			$cFile = new CURLFile($file_name_with_full_path,$typemim);//,'video/avi','test');//,'video/avi','test');
 		} 
 		else 
 		{ //
