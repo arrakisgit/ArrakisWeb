@@ -264,11 +264,11 @@ class ScrappingCURL
 		$response = curl_exec($this->ch);
 		
 		// Check for errors
-		if($response === FALSE)
+		/*if($response === FALSE)
 		{
 			die(curl_error($this->ch));
 		}
-		$returnFile=json_decode($response);
+		$returnFile=json_decode($response);*/
 		
 		//return $returnFile['UrlConverted'];
 		return $response;
