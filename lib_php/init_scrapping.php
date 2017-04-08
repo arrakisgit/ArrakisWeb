@@ -237,7 +237,7 @@ class ScrappingCURL
 	public function SendCallArrakisServices($urlFile)
 	{
 		
-		$file_name_with_full_path=str_replace('%20',' ',str_replace('http://192.168.0.18/','var/www/html/',$urlFile));
+		$file_name_with_full_path=str_replace('%20',' ',str_replace('http://192.168.0.18/','/var/www/html/',$urlFile));
 		
 		$this->ch = curl_init($this->urlArrakisServices);
 		
