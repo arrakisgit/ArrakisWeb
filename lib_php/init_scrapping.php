@@ -244,7 +244,7 @@ class ScrappingCURL
 		if (function_exists('curl_file_create')) 
 		{ // php 5.6+
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
-			return finfo_file($finfo, $urlFile); 
+			return finfo_file($finfo, $file_name_with_full_path); 
 			$cFile = new CURLFile($file_name_with_full_path,'');//,'video/avi','test');//,'video/avi','test');
 		} 
 		else 
