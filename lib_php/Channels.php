@@ -538,24 +538,24 @@ class FranceTV extends ScrappingCURL implements IChannel
 	private $FILE_JSON_FRANCE4;
 	private $FILE_JSON_FRANCE5;
 	private $FILE_JSON_FRANCEO;
-	private $JSON_RESULT_FRANCETV;
-	private $JSON_RESULT_CATEGORIES_FRANCETV;
+	private $HTML5_RESULT_FRANCETV;
+	private $HTML5_RESULT_CATEGORIES_FRANCETV;
 	private $FRANCETV_CATEGORIES;
 	private $FRANCETV_SHOWS;
 	private $FRANCETV_EPISODES;
 	
 	public function __construct($FranceTvChannel)
 	{
-		$this->ROOT_JSON_FILES="http://192.168.0.18/ArrakisWeb_Lib/libs_json/FranceTV/";
-		$this->FILE_JSON_FRANCE2=$this->ROOT_JSON_FILES."catch_up_france2.json";
-		$this->FILE_JSON_FRANCE3=$this->ROOT_JSON_FILES."catch_up_france3.json";
-		$this->FILE_JSON_FRANCE4=$this->ROOT_JSON_FILES."catch_up_france4.json";
-		$this->FILE_JSON_FRANCE5=$this->ROOT_JSON_FILES."catch_up_france5.json";
-		$this->FILE_JSON_FRANCEO=$this->ROOT_JSON_FILES."catch_up_franceo.json";
-		$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
-		$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
-		$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
-		$this->JSON_RESULT_CATEGORIES_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."categories.json");
+		$this->ROOT_JSON_FILES="https://www.france.tv/";
+		$this->FILE_JSON_FRANCE2=$this->ROOT_JSON_FILES."france-2/";
+		$this->FILE_JSON_FRANCE3=$this->ROOT_JSON_FILES."france-3/";
+		$this->FILE_JSON_FRANCE4=$this->ROOT_JSON_FILES."france-4/";
+		$this->FILE_JSON_FRANCE5=$this->ROOT_JSON_FILES."france-5/";
+		$this->FILE_JSON_FRANCEO=$this->ROOT_JSON_FILES."france-o/";
+		//$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
+		//$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
+		//$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
+		$this->HTML5_RESULT_CATEGORIES_FRANCETV=Array();
 		$this->FRANCETV_CATEGORIES=Array();
 		$this->FRANCETV_EPISODES=Array();
 		$this->FRANCETV_SHOWS=Array();
@@ -563,19 +563,19 @@ class FranceTV extends ScrappingCURL implements IChannel
 		switch ($FranceTvChannel)
 		{
 			case 'France2':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE2);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE2);
 				break;
 			case 'France3':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE3);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE3);
 				break;
 			case 'France4':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE4);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE4);
 				break;
 			case 'France5':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE5);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE5);
 				break;
 			case 'FranceO':
-				$this->JSON_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCEO);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCEO);
 				break;
 		}
 	}
@@ -586,54 +586,28 @@ class FranceTV extends ScrappingCURL implements IChannel
 	public function Categories()
 	{
 		$ARRAY_CATEGORIES=Array();
-		foreach($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'] as $categories)
+		
+		$html_result = $this->HTML5_RESULT_FRANCETV;
+		foreach($html_result->getElementsByTagName('header') as $elem_div)
 		{
-			foreach($categories['genres'] as $genres)
+			if ($elem_div->getAttribute('class')=='pr')
 			{
-				if(array_key_exists($genres['genre'], $this->FRANCETV_CATEGORIES)==false)
+				foreach($elem_div->getElementsByTagName('a') as $elem_a)
 				{
-					$this->FRANCETV_CATEGORIES[str_replace('é','e',$genres['genre'])]=str_replace('é','e',$categories['titre']);
+					if(array_key_exists($elem_a->nodeValue, $ARRAY_CATEGORIES)==false)
+					{
+						$ARRAY_CATEGORIES[$elem_a->nodeValue]=strrev(explode("/",strrev($elem_a->getAttribute('href')))[0]);
+					}
 				}
 			}
-
-			foreach($categories['formats'] as $formats)
-			{
-				if(array_key_exists($formats['format'], $this->FRANCETV_CATEGORIES)==false)
-				{
-					$this->FRANCETV_CATEGORIES[str_replace('é','e',$formats['format'])]=str_replace('é','e',$categories['titre']);
-				}
-			}
-					
 		}
-		
-		foreach($this->FRANCETV_CATEGORIES as $gender=>$title)
-		{
-			if(array_key_exists($title, $ARRAY_CATEGORIES)==false)
-			{
-					$title=str_replace('é','e',$title);
-					
-					if ($title=="Serie & Fiction")
-					{
-						$ARRAY_CATEGORIES["Serie"]="Serie";
-					}
-					else
-					{
-						$ARRAY_CATEGORIES[$title]=$title;
-					}
-				
-			}
-		}
-		
-		return $ARRAY_CATEGORIES;//var_dump($this->JSON_RESULT_CATEGORIES_FRANCETV['categories'][0]['genres'][0]['genre']);//
+		$this->HTML5_RESULT_CATEGORIES_FRANCETV = $ARRAY_CATEGORIES;
 	}
+	
 	
 	public function Shows($categorySelected)
 	{
 		$arrayDump = Array();
-		if ($categorySelected=="Serie")
-		{
-			$categorySelected="Serie & Fiction";
-		}
 		
 		$arrayDump=$this->Categories();
 		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
