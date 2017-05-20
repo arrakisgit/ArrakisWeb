@@ -540,6 +540,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 	private $FILE_JSON_FRANCEO;
 	private $HTML5_RESULT_FRANCETV;
 	private $HTML5_RESULT_CATEGORIES_FRANCETV;
+	private $HTML5_URL_SELECTED;
 	private $FRANCETV_CATEGORIES;
 	private $FRANCETV_SHOWS;
 	private $FRANCETV_EPISODES;
@@ -564,18 +565,23 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			case 'France2':
 				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE2);
+				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE2;
 				break;
 			case 'France3':
 				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE3);
+				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE3;
 				break;
 			case 'France4':
 				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE4);
+				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE4;
 				break;
 			case 'France5':
 				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE5);
+				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE5;
 				break;
 			case 'FranceO':
 				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCEO);
+				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCEO;
 				break;
 		}
 	}
@@ -607,35 +613,23 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Shows($categorySelected)
 	{
-		$arrayDump = Array();
 		
-		$arrayDump=$this->Categories();
-		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$categorySelected) = Array();
+		
+		foreach($html_result->getElementsByTagName('li') as $elem_div)
 		{
-			$currentprog='vide';
-			$genreprg=str_replace('\\u00e9','e',str_replace('é','e',$program['genre_simplifie']));
-			$formatprg=str_replace('\\u00e9','e',str_replace('é','e',$program['format']));
-			
-			if(array_key_exists($genreprg, $this->FRANCETV_CATEGORIES)==true)
+			if ($elem_div->getAttribute('class')=='card card-small card-inverse')
 			{
-				$currentprog=$genreprg;
-			}
-			elseif(array_key_exists($formatprg, $this->FRANCETV_CATEGORIES)==true)
-			{
-				$currentprog=$formatprg;
-			}
-			
-			if ($currentprog!='vide')
-			{
-				if($this->FRANCETV_CATEGORIES[$currentprog]==$categorySelected)
+				foreach($elem_div->getElementsByTagName('a') as $elem_a)
 				{
-					if(array_key_exists($program['id_programme'], $this->FRANCETV_SHOWS)==false)
+					if(array_key_exists($elem_a->nodeValue, $this->FRANCETV_SHOWS)==false)
 					{
-						$this->FRANCETV_SHOWS[$program['id_programme']]=$program['titre'];
+						$this->FRANCETV_SHOWS[$elem_a->nodeValue]=strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]);
 					}
 				}
 			}
 		}
+		
 		return $this->FRANCETV_SHOWS;
 	}
 	
