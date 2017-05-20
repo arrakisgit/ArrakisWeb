@@ -601,7 +601,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 				}
 			}
 		}
-		$this->HTML5_RESULT_CATEGORIES_FRANCETV = $ARRAY_CATEGORIES;
+		return $this->HTML5_RESULT_CATEGORIES_FRANCETV = $ARRAY_CATEGORIES;
 	}
 	
 	
