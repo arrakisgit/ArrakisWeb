@@ -615,16 +615,18 @@ class FranceTV extends ScrappingCURL implements IChannel
 	{
 		
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$categorySelected.'/');// = Array();
-		
-		foreach($html_result->getElementsByTagName('li') as $elem_div)
+		foreach ($html_result->getElementsByTagName('ul') as $elem_ul)
 		{
-			if ($elem_div->getAttribute('class')=='card card-small card-inverse')
+			foreach($elem_ul->getElementsByTagName('li') as $elem_li)
 			{
-				foreach($elem_div->getElementsByTagName('a') as $elem_a)
+				if ($elem_li->getAttribute('class')=='card card-small card-inverse')
 				{
-					if(array_key_exists($elem_a->nodeValue, $this->FRANCETV_SHOWS)==false)
+					foreach($elem_li->getElementsByTagName('a') as $elem_a)
 					{
-						$this->FRANCETV_SHOWS[$elem_a->nodeValue]=strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]);
+						if(array_key_exists($elem_a->nodeValue, $this->FRANCETV_SHOWS)==false)
+						{
+							$this->FRANCETV_SHOWS[$elem_a->nodeValue]=strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]);
+						}
 					}
 				}
 			}
