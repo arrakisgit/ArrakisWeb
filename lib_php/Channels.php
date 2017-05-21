@@ -695,16 +695,17 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function File_Video_Url($showSelected)
 	{
-		$this->FRANCETV_SHOWS=$this->Shows($showSelected[1]);
-		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected[1].'/'.$showSelected[2]);// = Array();
+		foreach ($html_result->getElementsByTagName('param') as $elem_param)
 		{
-			if($program['id_diffusion']==$showSelected[2])
+			if ($elem_param->getAttribute('name')=='movie')
 			{
-				return $this->URL_BASE_VIDEOS.$program['url_video'];
+				return $elem_param->getAttribute('value');
 			}
+		
 		}
 	}
-	
 }
 
 class Kodi extends ScrappingCURL implements IChannel
