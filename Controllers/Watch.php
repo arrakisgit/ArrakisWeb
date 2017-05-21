@@ -23,7 +23,8 @@ class Watch extends CI_Controller
 			$typeVid="swf";
 			$ChannelCategories = new FranceTV($Channel[0]);
 			$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
-			$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
+			//$this->load->view('view_watch',array('typeVid'=>$typeVid,'id'=>$Channel[0],'Channels'=>$Channel[0],'Shows'=>$Channel[1],'urlEpisode'=>$urlEpisode));
+			$this->load->view('view_debug', array('result' => var_dump($urlEpisode)));
     	}
     	elseif ($Channel[0]=='NRJ12')
     	{
