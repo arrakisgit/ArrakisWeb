@@ -697,6 +697,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 	{
 		
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected[1].'/'.$showSelected[3]);// = Array();
+		return $this->HTML5_URL_SELECTED.$showSelected[1].'/'.$showSelected[3];
 		foreach ($html_result->getElementsByTagName('object') as $elem_obj)
 		{
 			return $elem_obj->getAttribute('data');
