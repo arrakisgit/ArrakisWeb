@@ -25,9 +25,9 @@ class Categories extends CI_Controller
     	}
     	elseif (substr($Channel, 0,6)=='France')
     	{
-    		$cmdShell = new ScrappingCURL();
-    		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/update_arrakisweb_json_francetv.sh';
-    		$result=$cmdShell->ExcuteShell($comm);
+    		//$cmdShell = new ScrappingCURL();
+    		//$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/update_arrakisweb_json_francetv.sh';
+    		//$result=$cmdShell->ExcuteShell($comm);
     		$ChannelCategories = new FranceTV($Channel);
     		$ArrayCat = $ChannelCategories->Categories();
     		$this->load->view('view_categories',array('Channels'=>$Channel,'ArrayCat'=>$ArrayCat));
