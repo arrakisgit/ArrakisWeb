@@ -31,7 +31,7 @@ class Episodes extends CI_Controller
     		
     		$ChannelCategories = new FranceTV($Channel[0]);
     		$Episodes = $ChannelCategories->Episodes($Channel[2]);
-    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Categories'=>'Cat','Seasons'=>'Seasons','Episodes'=>$Episodes));
+    		$this->load->view('view_episodes',array('Channels'=>$Channel[0],'Shows'=>$Channel[1],'Categories'=>$Channel[2],'Seasons'=>'Seasons','Episodes'=>$Episodes));
     		
     	}
     	elseif (substr($Channel[0], 0,3)=='BFM')
