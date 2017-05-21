@@ -641,22 +641,29 @@ class FranceTV extends ScrappingCURL implements IChannel
 	public function Episodes($showSelected)
 	{
 		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected.'/');// = Array();
-		foreach ($html_result->getElementsByTagName('li') as $elem_li)
+		foreach ($html_result->getElementsByTagName('ul') as $elem_ul)
 		{
-			if ($elem_li->getAttribute('class')=='card card-small ')
+			if ($elem_ul->getAttribute('class')=='wall')
 			{
-				foreach($elem_li->getElementsByTagName('a') as $elem_a)
+				foreach ($html_result->getElementsByTagName('li') as $elem_li)
 				{
-					$elem_href=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
-					$elem_title=trim($elem_a->getAttribute('title'));
-							
-					if(array_key_exists($elem_href, $this->FRANCETV_EPISODES)==false)
+					if ($elem_li->getAttribute('class')=='card card-small ')
 					{
-						$this->FRANCETV_EPISODES[$elem_href]=$elem_title;
+						foreach($elem_li->getElementsByTagName('a') as $elem_a)
+						{
+							$elem_href=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
+							$elem_title=trim($elem_a->getAttribute('title'));
+							
+							if(array_key_exists($elem_href, $this->FRANCETV_EPISODES)==false)
+							{
+								$this->FRANCETV_EPISODES[$elem_href]=$elem_title;
+							}
+						}
 					}
 				}
 			}
 		}
+		
 		
 		return $this->FRANCETV_EPISODES;
 	}
