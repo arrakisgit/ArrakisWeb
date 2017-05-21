@@ -623,9 +623,10 @@ class FranceTV extends ScrappingCURL implements IChannel
 				{
 					foreach($elem_li->getElementsByTagName('a') as $elem_a)
 					{
-						if(array_key_exists(trim($elem_a->getAttribute('title')), $this->FRANCETV_SHOWS)==false)
+						$elem_href=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
+						if(array_key_exists($elem_href, $this->FRANCETV_SHOWS)==false)
 						{
-							$this->FRANCETV_SHOWS[trim($elem_a->getAttribute('title'))]=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
+							$this->FRANCETV_SHOWS[$elem_href]=trim($elem_a->getAttribute('title'));
 						}
 					}
 				}
