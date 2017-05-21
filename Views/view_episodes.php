@@ -13,7 +13,7 @@
 			//echo $Episodes;
 			if ($Channels!='Kodi')
 			{
-				echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+				echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Watch/index/".$Channels."_".$Categories."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
 		
 			}
 			else
