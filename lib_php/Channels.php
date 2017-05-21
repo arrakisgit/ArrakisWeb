@@ -624,9 +624,11 @@ class FranceTV extends ScrappingCURL implements IChannel
 					foreach($elem_li->getElementsByTagName('a') as $elem_a)
 					{
 						$elem_href=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
+						$elem_title=trim($elem_a->getAttribute('title'));
+						
 						if(array_key_exists($elem_href, $this->FRANCETV_SHOWS)==false)
 						{
-							$this->FRANCETV_SHOWS[$elem_href]=trim($elem_a->getAttribute('title'));
+							$this->FRANCETV_SHOWS[$elem_href]=$elem_title;
 						}
 					}
 				}
@@ -638,19 +640,24 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function Episodes($showSelected)
 	{
-		//$categShow=explode('_', $showSelected);
-		$this->FRANCETV_SHOWS=$this->Shows($showSelected[1]);
-		
-		foreach($this->JSON_RESULT_FRANCETV['programmes'] as $program)
+		$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected.'/');// = Array();
+		foreach ($html_result->getElementsByTagName('li') as $elem_li)
 		{
-			if($program['id_programme']==$showSelected[2])
+			if ($elem_li->getAttribute('class')=='card card-small ')
 			{
-				if(array_key_exists($program['id_diffusion'], $this->FRANCETV_EPISODES)==false)
+				foreach($elem_li->getElementsByTagName('a') as $elem_a)
 				{
-					$this->FRANCETV_EPISODES[$program['id_diffusion']]=$program['titre'];
+					$elem_href=trim(strrev(explode("/",strrev($elem_a->getAttribute('href')))[1]));
+					$elem_title=trim($elem_a->getAttribute('title'));
+							
+					if(array_key_exists($elem_href, $this->FRANCETV_EPISODES)==false)
+					{
+						$this->FRANCETV_EPISODES[$elem_href]=$elem_title;
+					}
 				}
 			}
 		}
+		
 		return $this->FRANCETV_EPISODES;
 	}
 	
