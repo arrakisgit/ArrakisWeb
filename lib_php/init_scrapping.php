@@ -38,13 +38,15 @@ class ScrappingCURL
 	public function Func_Get_Source_From_IPhone($pUrl)
 	{
 		
-		$client = new GuzzleHttp\Client();
-		$client->setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1');
-		$response = $client->get($pUrl);
-		$responseHTML = $response->getBody();
-		$html5=new HTML5(array('disable_html_ns' => true,));
-		$this->DOMResultat=$html5->loadHTML($responseHTML);
+		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
+		curl_setopt($this->$ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48b Safari/419.3');
+		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+		$resultat = curl_exec ($this->ch);
+		curl_close($this->ch);
+		$this->DOMResultat = new DOMDocument();
+		$this->DOMResultat->loadHTML($resultat);
 		return $this->DOMResultat;
+		
 	
 	}
 	//scrapping uniquement par html 4
