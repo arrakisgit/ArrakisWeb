@@ -61,7 +61,8 @@ class ScrappingCURL
 									   ]);
 		
 		$responseHTML = $response->getBody();
-		$html5=new HTML5(array('disable_html_ns' => true,));
+		$html5=new HTML5();
+		//$html5=new HTML5(array('disable_html_ns' => true,));
 		$this->DOMResultat=$html5->loadHTML($responseHTML);
 		return $this->DOMResultat;
 	}
