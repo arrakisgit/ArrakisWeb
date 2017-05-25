@@ -33,7 +33,20 @@ class ScrappingCURL
 		$this->ch = curl_init();
 		$this->urlArrakisServices='http://192.168.0.44/ArrakisServices/ArrakisServices/index.php/Actions';
 	}
+	//scrapping uniquement par IPHONE/IPAD
 	
+	public function Func_Get_Source_From_IPhone($pUrl)
+	{
+		
+		$client = new GuzzleHttp\Client();
+		$client->setUserAgent('Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48b Safari/419.3');
+		$response = $client->get($pUrl);
+		$responseHTML = $response->getBody();
+		$html5=new HTML5(array('disable_html_ns' => true,));
+		$this->DOMResultat=$html5->loadHTML($responseHTML);
+		return $this->DOMResultat;
+	
+	}
 	//scrapping uniquement par html 4
 	
 	public function Func_Get_Source_Code_From_URL($pUrl)
