@@ -37,8 +37,8 @@ class ScrappingCURL
 	
 	public function Func_Get_Source_From_IPhone($pUrl)
 	{
-		
-		curl_setopt($this->ch, CURLOPT_URL, $pUrl);
+		$this->ch = curl_init($pUrl);
+		//curl_setopt($this->ch, CURLOPT_URL, $pUrl);
 		curl_setopt($this->ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48b Safari/419.3');
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		$resultat = curl_exec ($this->ch);
