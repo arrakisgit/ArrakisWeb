@@ -49,6 +49,17 @@ class ScrappingCURL
 		
 	
 	}
+	
+	public function Func_Get_Source_IPhone_HTML5($pUrl)
+	{
+		$client = new GuzzleHttp\Client();
+		$client->setUserAgent('Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48b Safari/419.3');
+		$response = $client->get($pUrl);
+		$responseHTML = $response->getBody();
+		$html5=new HTML5(array('disable_html_ns' => true,));
+		$this->DOMResultat=$html5->loadHTML($responseHTML);
+		return $this->DOMResultat;
+	}
 	//scrapping uniquement par html 4
 	
 	public function Func_Get_Source_Code_From_URL($pUrl)
