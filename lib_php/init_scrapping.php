@@ -39,7 +39,7 @@ class ScrappingCURL
 	{
 		
 		$client = new GuzzleHttp\Client();
-		$client->setUserAgent('Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48b Safari/419.3');
+		$client->setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1');
 		$response = $client->get($pUrl);
 		$responseHTML = $response->getBody();
 		$html5=new HTML5(array('disable_html_ns' => true,));
