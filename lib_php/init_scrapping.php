@@ -8,7 +8,7 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-require '/vendor/autoload.php';
+require '../vendor/autoload.php';
 use Masterminds\HTML5;
 use GuzzleHttp\Client;
 use Masterminds\HTML5\Parser\DOMTreeBuilder;
