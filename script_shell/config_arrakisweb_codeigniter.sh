@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb
 sudo git pull
 cd /var/www/html/ArrakisWeb
