@@ -3,7 +3,7 @@
  *Projet      : Arrakis
  *Date        : 09/09/2016 10:25 PM
  *Licence     : GNU GPL v3
- *Description : View CodeIgniter manage les catégories des chaînes
+ *Description : View CodeIgniter manage les catï¿½gories des chaï¿½nes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
@@ -11,7 +11,7 @@
 header('Content-type: text/html; charset=UTF-8');
 foreach ($ArrayCat as $labelCat=>$channelID)
 {
-	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Shows/index/".$Channels."_".$channelID."'>".$labelCat."</a></br>";
+	echo "<br><a href='http://localhost/ArrakisWeb/index.php/Shows/index/".$Channels."_".$channelID."'>".$labelCat."</a></br>";
 }
 
 ?>

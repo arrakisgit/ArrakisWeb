@@ -3,7 +3,7 @@
  *Projet      : Arrakis
  *Date        : 01/11/2016 4:30 AM
  *Licence     : GNU GPL v3
- *Description : View CodeIgniter manage les saisons des séries
+ *Description : View CodeIgniter manage les saisons des sï¿½ries
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
@@ -11,7 +11,7 @@
 foreach ($ArraySeason as $SeasonID=>$labelSeason)
 {
 	//echo
-	echo "<br><a href='http://192.168.0.18/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
+	echo "<br><a href='http://localhost/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
 }
 
 ?>

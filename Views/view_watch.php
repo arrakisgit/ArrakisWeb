@@ -52,7 +52,7 @@
     		}
     		function retrieveSampleVideo() {
     		  var oReq = new XMLHttpRequest();
-    		  oReq.open("GET", <?php echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>, true);
+    		  oReq.open("GET", <?php echo '"'.str_replace('http://localhost/','/',$urlEpisode).'"'?>, true);
     		  oReq.responseType = "arraybuffer";
     		  oReq.send();
     		  oReq.addEventListener('readystatechange', function() {
@@ -65,7 +65,7 @@
     	    		      arguments: args,
     	    		      files: [
     	    		        {
-    	    		          "name": "input.avi"<?php //echo '"'.str_replace('http://192.168.0.18/','/',$urlEpisode).'"'?>,
+    	    		          "name": "input.avi"<?php //echo '"'.str_replace('http://localhost/','/',$urlEpisode).'"'?>,
     	    		          "data": sampleVideoData
     	    		        }
     	    		      ]
