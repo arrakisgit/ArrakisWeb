@@ -568,19 +568,19 @@ class FranceTV extends ScrappingCURL implements IChannel
 				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE2;
 				break;
 			case 'France3':
-				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE3);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE3);
 				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE3;
 				break;
 			case 'France4':
-				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE4);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE4);
 				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE4;
 				break;
 			case 'France5':
-				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCE5);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCE5);
 				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCE5;
 				break;
 			case 'FranceO':
-				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->FILE_JSON_FRANCEO);
+				$this->HTML5_RESULT_FRANCETV=parent::Func_Get_Source_Code_From_JSON_SESSION($this->FILE_JSON_FRANCEO);
 				$this->HTML5_URL_SELECTED=$this->FILE_JSON_FRANCEO;
 				break;
 		}
@@ -615,7 +615,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		
 		foreach($this->HTML5_RESULT_FRANCETV['reponse']['emissions'] as $programItem)
 		{
-			if($programItem==$categorySelected)
+			if($programItem['genre_filtre']==$categorySelected)
 			{
 				if(array_key_exists($programItem['titre_programme'], $ARRAY_SHOWS)==false)
 				{
