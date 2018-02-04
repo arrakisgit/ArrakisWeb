@@ -598,7 +598,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($programItem['genre'], $ARRAY_CATEGORIES)==false)
 			{
-				$ARRAY_CATEGORIES[$programItem['genre']]=$programItem['genre_simplifie'];
+				$ARRAY_CATEGORIES[$programItem['genre']]=$programItem['genre_filtre'];
 			}
 			
 		}
