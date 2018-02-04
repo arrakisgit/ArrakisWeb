@@ -17,11 +17,11 @@ foreach ($ArrayShows as $labelShow=>$showID)
 {
 	if($Channels!='Kodi')
 	{
-		echo "<br><a href='".$SERVEUR_PATH."index.php/Episodes/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+		echo "<br><a href='".$SERVEUR_PATH."index.php/Episodes/index/".$Channels."_".$Shows."_".$showID."'>".$labelShow."</a></br>";
 	}
 	else
 	{
-		echo "<br><a href='".$SERVEUR_PATH."index.php/Seasons/index/".$Channels."_".$Shows."_".$labelShow."'>".$showID."</a></br>";
+		echo "<br><a href='".$SERVEUR_PATH."index.php/Seasons/index/".$Channels."_".$Shows."_".$ShowsID."'>".$labelShow."</a></br>";
 	}
 }
 
