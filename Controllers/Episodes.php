@@ -3,7 +3,7 @@
  *Projet      : Arrakis
  *Date        : 09/09/2016 3:19 AM
  *Licence     : GNU GPL v3
- *Description : Controller CodeIgniter manage les episodes des chaînes
+ *Description : Controller CodeIgniter manage les episodes des chaï¿½nes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
@@ -55,7 +55,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='http://127.0.0.1/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='".$SERVEUR_PATH."ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else
@@ -71,7 +71,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='http://127.0.0.1/ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='".$SERVEUR_PATH."ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else

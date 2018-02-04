@@ -11,5 +11,5 @@ include_once 'Channels.php';
 include_once 'Interfaces.php';
 include_once 'init_scrapping.php';
 include_once 'Utils_Functions.php';
-
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
 ?>

@@ -8,10 +8,13 @@
  */
 
 //echo $ArrayShows;
+
+include_once "lib_php/Includer.php";
+
 foreach ($ArraySeason as $SeasonID=>$labelSeason)
 {
 	//echo
-	echo "<br><a href='http://localhost/ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
+	echo "<br><a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
 }
 
 ?>

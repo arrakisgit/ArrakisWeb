@@ -7,7 +7,7 @@
  *Description : Classe de scrapping site web HTML/JSON
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-
+include_once 'Includer.php';
 require '../vendor/autoload.php';
 use Masterminds\HTML5;
 use GuzzleHttp\Client;
@@ -269,7 +269,7 @@ class ScrappingCURL
 	public function SendCallArrakisServices($urlFile)
 	{
 		
-		$file_name_with_full_path=str_replace('%20',' ',str_replace('http://192.168.0.18/','///var/www/html/',$urlFile));
+		$file_name_with_full_path=str_replace('%20',' ',str_replace($SERVEUR_PATH,'///var/www/html/',$urlFile));
 		
 		$this->ch = curl_init($this->urlArrakisServices);
 		

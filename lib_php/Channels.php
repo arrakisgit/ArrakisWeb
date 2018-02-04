@@ -3,14 +3,14 @@
  *Projet      : Arrakis
  *Date        : 09/08/2016 O9:13 PM
  *Licence     : GNU GPL v3
- *Description : Chaînes scrapping site web HTML/JSON
+ *Description : Chaï¿½nes scrapping site web HTML/JSON
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
 include_once 'Interfaces.php';
 include_once 'init_scrapping.php';
 include_once 'Utils_Functions.php';
-
+//include_once "lib_php/Includer.php";
 class Arte extends ScrappingCURL implements IChannel
 {
 	private $URL_CATEGORIES;

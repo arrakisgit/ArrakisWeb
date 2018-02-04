@@ -6,30 +6,31 @@
  *Description : Panel des cha�nes disponibles
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
+include_once "lib_php/Includer.php";
 ?>
 <html>
 <head>
 </head>
 <body>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/Arte'>Arte</a>
+<<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/Arte'>Arte</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/France2'>France 2</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/France2'>France 2</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/France3'>France 3</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/France3'>France 3</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/France4'>France 4</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/France4'>France 4</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/France5'>France 5</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/France5'>France 5</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/FranceO'>France O</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/FranceO'>France O</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/BFMTV'>BFM TV</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/BFMTV'>BFM TV</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/Itele'>I T�l�</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/Itele'>I T�l�</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/NRJ12'>NRJ 12</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/NRJ12'>NRJ 12</a>";?>
 <br>
-<a href='http://localhost/ArrakisWeb/index.php/Categories/index/Cherie25'>Ch�rie 25</a>
+<?php echo "<a href='".$SERVEUR_PATH."ArrakisWeb/index.php/Categories/index/Cherie25'>Ch�rie 25</a>";?>
 </body>
 </html>
