@@ -8,7 +8,7 @@
  */
 
 //include_once "lib_php/Includer.php";
-$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'ArrakisWeb/';
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 
 //echo $ArrayCat;
 header('Content-type: text/html; charset=UTF-8');

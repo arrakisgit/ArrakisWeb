@@ -9,7 +9,7 @@
 */
 
 include_once "lib_php/Includer.php";
-$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'ArrakisWeb/';
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 

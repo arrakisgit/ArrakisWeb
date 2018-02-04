@@ -6,7 +6,7 @@
  *Description : Panel des cha�nes disponibles
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'ArrakisWeb/';
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 ?>
 <html>
 <head>
