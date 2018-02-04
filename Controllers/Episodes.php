@@ -55,7 +55,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='".$SERVEUR_PATH."ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='".$SERVEUR_PATH."index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else
@@ -71,7 +71,7 @@ class Episodes extends CI_Controller
     		
     		if (is_null($Episodes)==true || empty($Episodes)==true)
     		{
-    			$urlsend='".$SERVEUR_PATH."ArrakisWeb/index.php/Watch/index/'.$id."_".$Channel[2];
+    			$urlsend='".$SERVEUR_PATH."index.php/Watch/index/'.$id."_".$Channel[2];
     			header('Location: '.$urlsend);
     		}
     		else

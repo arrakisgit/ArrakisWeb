@@ -3,7 +3,7 @@
  *Projet      : Arrakis
  *Date        : 19/10/2016 9:01 PM
  *Licence     : GNU GPL v3
- *Description : Controller CodeIgniter manage le visionnages des chaînes
+ *Description : Controller CodeIgniter manage le visionnages des chaï¿½nes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
@@ -51,14 +51,14 @@ class Watch extends CI_Controller
     		$urlEpisode = $ChannelCategories->File_Video_Url($Channel);
     		$urlEpisode=str_replace('smb://ARRAKISNAS', '//192.168.0.41', $urlEpisode);
     		$cmdShell=new ScrappingCURL();
-    		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/unmount_smb.sh';
+    		$comm='sh /var/www/html/application/script_shell/unmount_smb.sh';
     		$result=$cmdShell->ExcuteShell($comm);
     		$hostNas=str_replace('/'.strrev(explode('/',strrev($urlEpisode))[0]),$vide,$urlEpisode);
     		$folderNAS=str_replace('/'.strrev(explode('/',strrev($hostNas))[0]),$vide,$hostNas);
     		
-    		$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/mount_smb.sh \''.$folderNAS.'\'';
+    		$comm='sh /var/www/html/application/script_shell/mount_smb.sh \''.$folderNAS.'\'';
     		$result=$cmdShell->ExcuteShell($comm);
-    		$urlPath='http://192.168.0.18/ArrakisWeb/NASSRV_WEB/'.str_replace(' ','%20',strrev(explode('/',strrev($hostNas))[0])).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
+    		$urlPath='http://192.168.0.18/NASSRV_WEB/'.str_replace(' ','%20',strrev(explode('/',strrev($hostNas))[0])).'/'.strrev(explode('/',strrev($urlEpisode))[0]);
     		$typeVid=strrev(explode('.',strrev($urlEpisode))[0]);
     		$result=$cmdShell->SendCallArrakisServices($urlPath);
     		$this->load->view('view_debug', array('result' => $result));

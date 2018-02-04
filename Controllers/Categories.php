@@ -3,7 +3,7 @@
  *Projet      : Arrakis
  *Date        : 09/09/2016 3:19 AM
  *Licence     : GNU GPL v3
- *Description : Controller CodeIgniter manage les catégories des chaînes
+ *Description : Controller CodeIgniter manage les catï¿½gories des chaï¿½nes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
@@ -26,7 +26,7 @@ class Categories extends CI_Controller
     	elseif (substr($Channel, 0,6)=='France')
     	{
     		//$cmdShell = new ScrappingCURL();
-    		//$comm='sh /var/www/html/ArrakisWeb/application/ArrakisWeb/script_shell/update_arrakisweb_json_francetv.sh';
+    		//$comm='sh /var/www/html/application/script_shell/update_arrakisweb_json_francetv.sh';
     		//$result=$cmdShell->ExcuteShell($comm);
     		$ChannelCategories = new FranceTV($Channel);
     		$ArrayCat = $ChannelCategories->Categories();
