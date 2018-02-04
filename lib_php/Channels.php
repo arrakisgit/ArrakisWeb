@@ -680,7 +680,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$urlVideos=str_replace('[id-diff]', $showSelected, $this->FRANCETV_VIDEOS_DETAIL);
 		//$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected[2].'/'.$showSelected[3]);// = Array();
 		$html_result=parent::Func_Get_Source_Code_From_JSON_SESSION($urlVideos);
-		return $urlVideos;
+		//return $urlVideos;
 		foreach($html_result['videos']as $programItem)
 		{
 			if($programItem['format']=='m3u8-download')

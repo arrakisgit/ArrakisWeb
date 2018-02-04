@@ -118,8 +118,13 @@
         var player = new Clappr.Player({
         	  parentId: "#player",
         	  source: <?php echo "'".$urlEpisode."',\n"?>
-        	  plugins: [Clappr.FlasHLS]
-        	});
+		      plugins: {'core': [ChromecastPlugin], 
+		        	  playback: [Clappr.FlasHLS]},
+		      baseUrl: '/latest',
+			  chromecast: {
+					  appId: '9DFB77C0'
+					}
+		       });
        
      <?php }
 }?> 
