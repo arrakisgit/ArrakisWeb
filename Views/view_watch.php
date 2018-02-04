@@ -99,28 +99,29 @@
 	}
 	else 
 	{
-    	?>
+    	if ($typeVid=="mp4")
+    	{?>
     	
         var player = new Clappr.Player({
             							source: <?php echo "'".$urlEpisode."',\n"?>
         								parentId: "#player", 
             							plugins: {'core': [ChromecastPlugin],
-                							<?php 
-                							 if ($typeVid != "swf")
-                							 {
-                							 	echo "playback: [Clappr.HLS]},\n";
-                							 }
-                							 else
-                							 {
-                							 	echo "playback: [Clappr.FlasHLS]},\n";
-                							 }
-                							 ?>
+                							 	playback: [Clappr.HLS]},
             							baseUrl: '/latest',
             							chromecast: {
             						          appId: '9DFB77C0'
             						        }
             							});
+		<?php }
+		else 
+		{?>
+        var player = new Clappr.Player({
+        	  parentId: "#player",
+        	  source: <?php echo "'".$urlEpisode."',\n"?>
+        	  plugins: [Clappr.FlasHLS]
+        	});
        
-     <?php }?> 
+     <?php }
+}?> 
     </script>
 </body></html>
