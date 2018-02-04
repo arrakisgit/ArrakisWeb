@@ -15,7 +15,7 @@ $SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 foreach ($ArraySeason as $SeasonID=>$labelSeason)
 {
 	//echo
-	echo "<br><a href='".$SERVEUR_PATH."index.php/Episodes/index/".$Channels."_".$Categories."_".$Shows."_".$SeasonID."'>".$labelSeason."</a></br>";
+	echo "<br><a href='".$SERVEUR_PATH."index.php/Episodes/index/".$Channels."%".$Categories."%".$Shows."%".$SeasonID."'>".$labelSeason."</a></br>";
 }
 
 ?>

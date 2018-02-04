@@ -14,7 +14,7 @@ $SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 header('Content-type: text/html; charset=UTF-8');
 foreach ($ArrayCat as $labelCat=>$channelID)
 {
-	echo "<br><a href='".$SERVEUR_PATH."index.php/Shows/index/".$Channels."_".$channelID."'>".$labelCat."</a></br>";
+	echo "<br><a href='".$SERVEUR_PATH."index.php/Shows/index/".$Channels."%".$channelID."'>".$labelCat."</a></br>";
 }
 
 ?>

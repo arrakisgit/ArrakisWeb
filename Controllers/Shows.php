@@ -17,7 +17,7 @@ class Shows extends CI_Controller
 
     public function index($id)
     {
-    	$Channel=explode('_',$id);
+    	$Channel=explode('%',$id);
     	if ($Channel[0]=="Arte")
     	{
     		$ChannelCategories = new Arte("CAT");
