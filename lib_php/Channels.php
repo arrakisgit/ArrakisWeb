@@ -636,7 +636,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$ARRAY_EPISODES=array();
 		foreach($this->HTML5_RESULT_FRANCETV['reponse']['emissions']as $programItem)
 		{
-			if($programItem['genre_filtre']==$showSelected[1] && $programItem['titre']==$showSelected[2])
+			if($programItem['genre_filtre']==$showSelected[1] && $programItem['code_programme']==$showSelected[2])
 			{
 				
 					if ($programItem['soustitre']!="")
