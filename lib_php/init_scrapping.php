@@ -16,7 +16,8 @@ use Masterminds\HTML5\Parser\Scanner;
 use Masterminds\HTML5\Parser\StringInputStream;
 use Masterminds\HTML5\Parser\Tokenizer;
 use Masterminds\HTML5\Tests\Parser;
- 
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
+
 class ScrappingCURL
 {
 	//initialisation variable session et traitement

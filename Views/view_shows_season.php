@@ -9,7 +9,8 @@
 
 //echo $ArrayShows;
 
-include_once "lib_php/Includer.php";
+//include_once "lib_php/Includer.php";
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
 
 foreach ($ArraySeason as $SeasonID=>$labelSeason)
 {

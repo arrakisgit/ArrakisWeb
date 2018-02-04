@@ -7,7 +7,8 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */	
 
-include_once "lib_php/Includer.php";
+//include_once "lib_php/Includer.php";
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
 
 		foreach ($Episodes as $labelShow=>$showID)
 		{

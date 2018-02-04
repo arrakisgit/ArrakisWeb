@@ -3,11 +3,12 @@
  *Projet      : Arrakis
  *Date        : 09/09/2016 3:19 AM
  *Licence     : GNU GPL v3
- *Description : Controller CodeIgniter manage les emissions des chaînes
+ *Description : Controller CodeIgniter manage les emissions des chaï¿½nes
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
 include_once 'lib_php/Includer.php';
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
