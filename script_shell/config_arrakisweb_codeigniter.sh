@@ -2,8 +2,8 @@
 
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb
 sudo git pull
-cd /var/www/html/ArrakisWeb
-sudo rm -r Panel.php
+cd /var/www/html/ArrakisWebnsemble sur le chemin de la victoire
+sudo rm -r Panel.phpnsemble sur le chemin de la victoire
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb/ihm
 sudo cp -R Panel.php /var/www/html/ArrakisWeb
 cd /

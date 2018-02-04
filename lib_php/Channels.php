@@ -596,9 +596,9 @@ class FranceTV extends ScrappingCURL implements IChannel
 		
 		foreach($this->HTML5_RESULT_FRANCETV['reponse']['emissions'] as $programItem)
 		{
-			if(array_key_exists($programItem['genre_simplifie'], $ARRAY_CATEGORIES)==false)
+			if(array_key_exists($programItem['genre'], $ARRAY_CATEGORIES)==false)
 			{
-				$ARRAY_CATEGORIES[$programItem['genre_simplifie']]=$programItem['genre_filtre'];
+				$ARRAY_CATEGORIES[$programItem['genre']]=$programItem['genre'];
 			}
 			
 		}
@@ -616,11 +616,11 @@ class FranceTV extends ScrappingCURL implements IChannel
 		
 		foreach($this->HTML5_RESULT_FRANCETV['reponse']['emissions'] as $programItem)
 		{
-			if($programItem['genre_filtre']==$categorySelected)
+			if($programItem['genre']==$categorySelected)
 			{
-				if(array_key_exists($programItem['titre_programme'], $ARRAY_SHOWS)==false)
+				if(array_key_exists($programItem['code_programme'], $ARRAY_SHOWS)==false)
 				{
-					$ARRAY_SHOWS[$programItem['titre_programme']]=$programItem['titre'];
+					$ARRAY_SHOWS[$programItem['code_programme']]=$programItem['titre'];
 				}
 			}
 			
@@ -636,11 +636,18 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$ARRAY_EPISODES=array();
 		foreach($this->HTML5_RESULT_FRANCETV['reponse']['emissions']as $programItem)
 		{
-			if($programItem['genre_filtre']==$showSelected[1] && $programItem['titre']==$showSelected[2])
+			if($programItem['genre']==$showSelected[1] && $programItem['code_programme']==$showSelected[2])
 			{
 				if(array_key_exists($programItem['soustitre'], $ARRAY_EPISODES)==false)
 				{
-					$ARRAY_EPISODES[$programItem['soustitre']]=$programItem['id_diffusion'];
+					if ($programItem['soustitre']!="")
+					{
+						$ARRAY_EPISODES[$programItem['soustitre']]=$programItem['id_diffusion'];
+					}
+					else
+					{
+						$ARRAY_EPISODES[$programItem['titre']]=$programItem['id_diffusion'];
+					}
 				}
 			}
 			
