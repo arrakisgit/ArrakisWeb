@@ -6,14 +6,14 @@
  *Description : Panel des cha�nes disponibles
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
-include_once "lib_php/Includer.php";
+$SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'];
 ?>
 <html>
 <head>
 </head>
 <body>
 <br>
-<<?php echo "<a href='".$SERVEUR_PATH."index.php/Categories/index/Arte'>Arte</a>";?>
+<?php echo "<a href='".$SERVEUR_PATH."index.php/Categories/index/Arte'>Arte</a>";?>
 <br>
 <?php echo "<a href='".$SERVEUR_PATH."index.php/Categories/index/France2'>France 2</a>";?>
 <br>

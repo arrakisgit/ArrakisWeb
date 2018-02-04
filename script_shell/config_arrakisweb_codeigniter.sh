@@ -45,23 +45,12 @@ sudo cp -R libs_css /var/www/html/ArrakisWeb_Lib
 sudo cp -R libs_js /var/www/html/ArrakisWeb_Lib
 cd /var/www/html/ArrakisWeb/application/controllers/lib_php/
 sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-EXPECTED_SIGNATURE=$(wget https://composer.github.io/installer.sig -O - -q)
+cd /var/www/html/ArrakisWeb/application/controllers/lib_php/
 sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
-
-if [ "$EXPECTED_SIGNATURE" = "$ACTUAL_SIGNATURE" ]
-then
-    sudo php composer-setup.php --quiet
-    RESULT=$?
-    sudo rm composer-setup.php
-    exit $RESULT
-else
-    >&2 echo 'ERROR: Invalid installer signature'
-    sudo rm composer-setup.php
-    exit 1
-fi
-
-
+sudo php -r "if (hash_file('SHA384', 'composer-setup.php') === ACTUAL_SIGNATURE) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php composer-setup.php
+sudo php -r "unlink('composer-setup.php');"
 sudo cp -R /var/www/html/ArrakisWeb/application/ArrakisWeb/composer.json /var/www/html/ArrakisWeb/application/controllers/lib_php/
 sudo php composer.phar install
 cd /var/www/html/ArrakisWeb/application/ArrakisWeb
