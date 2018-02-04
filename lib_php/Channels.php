@@ -544,15 +544,19 @@ class FranceTV extends ScrappingCURL implements IChannel
 	private $FRANCETV_CATEGORIES;
 	private $FRANCETV_SHOWS;
 	private $FRANCETV_EPISODES;
+	private $FRANCETV_VIDEOS_DETAIL;
 	
 	public function __construct($FranceTvChannel)
 	{
 		$this->ROOT_JSON_FILES="http://pluzz.webservices.francetelevisions.fr/pluzz/liste/type/replay/nb/10000/chaine/";
+		$this->FRANCETV_VIDEOS_DETAIL="http://webservices.francetelevisions.fr/tools/getInfosOeuvre/v2/?idDiffusion=[id-diff]&catalogue=Pluzz";
+		
 		$this->FILE_JSON_FRANCE2=$this->ROOT_JSON_FILES."france2/";
 		$this->FILE_JSON_FRANCE3=$this->ROOT_JSON_FILES."france3/";
 		$this->FILE_JSON_FRANCE4=$this->ROOT_JSON_FILES."france4/";
 		$this->FILE_JSON_FRANCE5=$this->ROOT_JSON_FILES."france5/";
 		$this->FILE_JSON_FRANCEO=$this->ROOT_JSON_FILES."franceo/";
+		
 		//$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
 		//$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
 		//$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
@@ -676,17 +680,16 @@ class FranceTV extends ScrappingCURL implements IChannel
 	
 	public function File_Video_Url($showSelected)
 	{
-		
+		$urlVideos=str_replace('[id-diff]', $showSelected, $this->FRANCETV_VIDEOS_DETAIL);
 		//$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected[2].'/'.$showSelected[3]);// = Array();
-		$html_result=parent::Func_Get_Source_IPhone_HTML5(str_replace('www', 'mobile',$this->ROOT_JSON_FILES).$showSelected[3]);
-		return $html_result;
-		foreach ($html_result->getElementsByTagName('object') as $elem_obj)
+		$html_result=parent::Func_Get_Source_Code_From_JSON_SESSION($urlVideos);
+		foreach($html_result['videos']as $programItem)
 		{
-			return $elem_obj->getAttribute('data');
-			//{
-			//	return $elem_param->getAttribute('value');
-			//}
-		
+			if($programItem['format']=='m3u8-download')
+			{
+				return $programItem['url'];
+			}
+			
 		}
 	}
 }
