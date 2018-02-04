@@ -7,7 +7,7 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-include_once 'lib_php/Includer.php';
+include_once "../lib_php/Includer.php";
 
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');

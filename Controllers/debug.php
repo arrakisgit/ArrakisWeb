@@ -4,11 +4,11 @@
  *Projet      : Arrakis
 *Date        : 24/09/2016 10:25 PM
 *Licence     : GNU GPL v3
-*Description : Controller CodeIgniter manage les catégories des chaînes
+*Description : Controller CodeIgniter manage les catï¿½gories des chaï¿½nes
 *git         : https://github.com/arrakisgit/ArrakisWeb.git
 */
 
-include_once 'lib_php/Includer.php';
+include_once "../lib_php/Includer.php";
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
