@@ -105,12 +105,22 @@
             							source: <?php echo "'".$urlEpisode."',\n"?>
         								parentId: "#player", 
             							plugins: {'core': [ChromecastPlugin],
-                							playback: [Clappr.HLS]},
+                							<?php 
+                							 if ($typeVid != "swf")
+                							 {
+                							 	echo "playback: [Clappr.HLS]},\n";
+                							 }
+                							 else
+                							 {
+                							 	echo "playback: [Clappr.FlasHLS]},\n";
+                							 }
+                							 ?>
             							baseUrl: '/latest',
             							chromecast: {
             						          appId: '9DFB77C0'
             						        }
             							});
+       
      <?php }?> 
     </script>
 </body></html>
