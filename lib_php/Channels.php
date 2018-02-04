@@ -77,7 +77,7 @@ class Arte extends ScrappingCURL implements IChannel
 				{
 					if(array_key_exists($programItem['PID'], $this->ArrayShows)==false)
 					{
-						$this->ArrayShows[$programItem['PID']]=$programItem['TIT'];
+						$this->ArrayShows[$programItem['TIT']]=$programItem['PID'];
 					}
 				}	
 			}
@@ -356,7 +356,7 @@ class BFMTV extends ScrappingCURL implements IChannel
 		{
 			if(array_key_exists($videolist['video'], $ArrayShows)==false)
 			{
-				$ArrayShows[$videolist['video']]=$videolist['title'];
+				$ArrayShows[$videolist['title']]=$videolist['video'];
 			}
 			
 		}
@@ -471,7 +471,7 @@ class Itele extends ScrappingCURL implements IChannel
 		
 		foreach($json_result[$elem] as $cat)
 		{
-			$this->ITELE_ARRAY_SHOWS[$cat['uid']]=$cat['title'];
+			$this->ITELE_ARRAY_SHOWS[$cat['title']]=$cat['uid'];
 		}
 		
 		return $this->ITELE_ARRAY_SHOWS;
