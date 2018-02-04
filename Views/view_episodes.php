@@ -16,12 +16,12 @@ $SERVEUR_PATH="http://".$_SERVER['HTTP_HOST'].'/ArrakisWeb/';
 			//echo $Episodes;
 			if ($Channels!='Kodi')
 			{
-				echo "<br><a href='".$SERVEUR_PATH."index.php/Watch/index/".$Channels."%".$Categories."%".$Shows."%".$showID."'>".$labelShow."</a></br>";
+				echo "<br><a href='".$SERVEUR_PATH."index.php/Watch/index/".$Channels."~".$Categories."~".$Shows."~".$showID."'>".$labelShow."</a></br>";
 		
 			}
 			else
 			{
-				echo "<br><a href='".$SERVEUR_PATH."index.php/Watch/index/".$Channels."%".$Categories."%".$Shows."%".$Seasons."%".$showID."'>".$labelShow."</a></br>";
+				echo "<br><a href='".$SERVEUR_PATH."index.php/Watch/index/".$Channels."~".$Categories."~".$Shows."~".$Seasons."~".$showID."'>".$labelShow."</a></br>";
 			}
 		}
 		//echo "<div class='container'><video width='700' height='400'><source src='".$Episode."' type='application/x-mpegURL'></video></div>";

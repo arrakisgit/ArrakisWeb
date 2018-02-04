@@ -18,7 +18,7 @@ class Episodes extends CI_Controller
     public function index($id)
     {
     	$typeVid="FRTV";
-    	$Channel=explode('%',$id);
+    	$Channel=explode('~',$id);
     	if ($Channel[0]=="Arte")
     	{
     		$typeVid="mp4";

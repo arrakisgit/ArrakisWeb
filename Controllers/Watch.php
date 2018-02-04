@@ -16,7 +16,7 @@ class Watch extends CI_Controller
 {
 	public function index($id)
 	{
-		$Channel=explode('%',$id);
+		$Channel=explode('~',$id);
 		
 		if (substr($Channel[0], 0,6)=='France')
     	{

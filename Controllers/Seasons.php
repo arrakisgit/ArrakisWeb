@@ -17,7 +17,7 @@ class Seasons extends CI_Controller
 
 	public function index($id)
 	{
-		$Channel=explode('%',$id);
+		$Channel=explode('~',$id);
 		if ($Channel[0]=='Kodi')
 		{
 			$ChannelCategories = new Kodi('http://192.168.0.30','8080');
