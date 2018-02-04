@@ -557,9 +557,6 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$this->FILE_JSON_FRANCE5=$this->ROOT_JSON_FILES."france5/";
 		$this->FILE_JSON_FRANCEO=$this->ROOT_JSON_FILES."franceo/";
 		
-		//$jsonresult=parent::Func_Get_Source_Code_From_JSON_SESSION($this->ROOT_JSON_FILES."message_FT.json");
-		//$this->URL_BASE_VIDEOS=$jsonresult['configuration']['url_base_videos'];
-		//$this->URL_BASE_IMAGES=$jsonresult['configuration']['url_base_images'];
 		$this->HTML5_RESULT_CATEGORIES_FRANCETV=Array();
 		$this->FRANCETV_CATEGORIES=Array();
 		$this->FRANCETV_EPISODES=Array();
@@ -683,6 +680,7 @@ class FranceTV extends ScrappingCURL implements IChannel
 		$urlVideos=str_replace('[id-diff]', $showSelected, $this->FRANCETV_VIDEOS_DETAIL);
 		//$html_result=parent::Func_Get_Source_Code_From_URL_HTML5_SESSION($this->HTML5_URL_SELECTED.$showSelected[2].'/'.$showSelected[3]);// = Array();
 		$html_result=parent::Func_Get_Source_Code_From_JSON_SESSION($urlVideos);
+		return $urlVideos;
 		foreach($html_result['videos']as $programItem)
 		{
 			if($programItem['format']=='m3u8-download')
