@@ -9,7 +9,7 @@
 
 //echo $ArrayShows;
 
-include_once "../lib_php/Includer.php";
+include_once "lib_php/Includer.php";
 
 foreach ($ArrayShows as $labelShow=>$showID)
 {

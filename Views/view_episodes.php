@@ -7,7 +7,7 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */	
 
-include_once "../lib_php/Includer.php";
+include_once "lib_php/Includer.php";
 
 		foreach ($Episodes as $labelShow=>$showID)
 		{

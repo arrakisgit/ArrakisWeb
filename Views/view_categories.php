@@ -7,7 +7,7 @@
  *git         : https://github.com/arrakisgit/ArrakisWeb.git
  */
 
-include_once "../lib_php/Includer.php";
+include_once "lib_php/Includer.php";
 //echo $ArrayCat;
 header('Content-type: text/html; charset=UTF-8');
 foreach ($ArrayCat as $labelCat=>$channelID)
